@@ -3,6 +3,8 @@
 namespace wd_codec{
     namespace galois{
 
+        const   field_symbol GFERROR = -1;
+
         Field::Field(const unsigned int  pwr, const std::size_t primpoly_deg, const unsigned int* primitive_poly)
             :power_(pwr),
              prim_poly_deg_(primpoly_deg),
@@ -30,7 +32,7 @@ namespace wd_codec{
             }
 
             //Create a unique hash value for a given primitive polynomial to provide optimization for comparing two fields.            prim_poly_hash_ = 0xAAAAAAAA;  //10101010101010b good for hashing
-            for (std::size_t i = 0; i < (prim_poly_deg_ + 1); ++i)
+            for (std::size_t i = 0; i < (prim_poly_deg_ + 1); i++)
             {
                 prim_poly_hash_ += ((i & 1) == 0) ? ((prim_poly_hash_ << 7) ^ primitive_poly[i] * (prim_poly_hash_ >> 3)) :
                     (~((prim_poly_hash_ << 11) + (primitive_poly[i] ^ (prim_poly_hash_ >> 5))));
@@ -61,6 +63,7 @@ namespace wd_codec{
                 // log(a) + log(b), normalize, and look up the corresponding field element.
                 return alpha_to_[normalize(index_of_[a] + index_of_[b])];
         }
+
         inline field_symbol Field::gen_div(const field_symbol& a, const field_symbol& b) const
         {
             if (b == 0)  // check division by zero 
@@ -113,6 +116,76 @@ namespace wd_codec{
 			}
 			return x;
 		}
+
+        inline void Field::generate_field(const unsigned int* prim_poly)
+        {
+            field_symbol mask = 1;
+
+            alpha_to_[power_] = 0;
+
+            for (field_symbol i = 0; i < static_cast<field_symbol>(power_); ++i)
+            {
+                //a is the primitive element
+                //alpha_to_[i] = a^i
+                alpha_to_[i] = mask;
+                //index_of_[a^i] = i  (index_of_[a^i] = log(a^i)
+                index_of_[alpha_to_[i]] = i;
+                // checks if the current coefficient in the primitive polynomial is 1 (non-zero).
+                if (prim_poly[i] != 0)
+                {
+                    alpha_to_[power_] ^= mask;
+                }
+
+                mask <<= 1;
+            }
+
+            index_of_[alpha_to_[power_]] = power_;
+
+            mask >>= 1;
+
+            for (field_symbol i = power_ + 1; i < static_cast<field_symbol>(field_size_); ++i)
+            {
+                if (alpha_to_[i - 1] >= mask)//alpha_to_[i - 1]<<1 will be out of the field range so it needs to be "normalizes
+                    alpha_to_[i] = alpha_to_[power_] ^ ((alpha_to_[i - 1] ^ mask) << 1);
+                else
+                    alpha_to_[i] = alpha_to_[i - 1] << 1;
+                //index_of_[alpha_to_[i]] = i = log(alpha_to_[i])
+                index_of_[alpha_to_[i]] = i;
+            }
+            //log of nothig is zero!
+            index_of_[0] = GFERROR;
+            alpha_to_[field_size_] = 1;
+
+            #if !defined(NO_GFLUT)
+
+            for (field_symbol i = 0; i < static_cast<field_symbol>(field_size_ + 1); ++i)
+            {
+                for (field_symbol j = 0; j < static_cast<field_symbol>(field_size_ + 1); ++j)
+                {
+                    mul_table_[i][j] = gen_mul(i, j);
+                    div_table_[i][j] = gen_div(i, j);
+                    exp_table_[i][j] = gen_exp(i, j);
+                }
+            }
+
+            #ifdef LINEAR_EXP_LUT
+            for (field_symbol i = 0; i < static_cast<field_symbol>(field_size_ + 1); ++i)
+            {
+                for (int j = 0; j < static_cast<field_symbol>(2 * field_size_); ++j)
+                {
+                    linear_exp_table_[i][j] = gen_exp(i, j);
+                }
+            }
+            #endif
+
+            for (field_symbol i = 0; i < static_cast<field_symbol>(field_size_ + 1); ++i)
+            {
+                mul_inverse_[i] = gen_inverse(i);
+                mul_inverse_[i + (field_size_ + 1)] = mul_inverse_[i];
+            }
+
+        #endif
+        }
 	}
 }
 
