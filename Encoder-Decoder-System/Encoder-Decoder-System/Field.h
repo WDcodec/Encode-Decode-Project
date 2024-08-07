@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include <cstddef>
-
+#include <vector>
 namespace wd_codec {
 
 	namespace galois {

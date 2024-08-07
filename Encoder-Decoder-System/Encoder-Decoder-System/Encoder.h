@@ -5,7 +5,7 @@
 
 #include "Field.h"
 #include "Polynomial.h"
-#include "Field_element.h"
+#include "Field_Element.h"
 
 namespace wd_codec
 {
