@@ -14,23 +14,6 @@ namespace wd_codec {
 		public:
 			Field(const unsigned int  pwr, const std::size_t primpoly_deg, const unsigned int* primitive_poly);
 			Field();
-			Field(const Field& field) {};
-			~Field();
-            //FOR IMPLEMENTATION
-            inline field_symbol index(const field_symbol value) const;
-            inline field_symbol alpha(const field_symbol value) const;
-            inline unsigned int size() const;
-            inline unsigned int pwr() const;
-            inline unsigned int mask() const;
-            inline field_symbol add(const field_symbol& a, const field_symbol& b) const;
-            inline field_symbol sub(const field_symbol& a, const field_symbol& b) const;
-            inline field_symbol normalize(field_symbol x) const;
-            inline field_symbol mul(const field_symbol& a, const field_symbol& b) const;
-            inline field_symbol div(const field_symbol& a, const field_symbol& b) const;
-            inline field_symbol exp(const field_symbol& a, int n) const;
-            inline field_symbol inverse(const field_symbol& val) const;
-            inline unsigned int prim_poly_term(const unsigned int index) const;
-            friend std::ostream& operator << (std::ostream& os, const Field& gf);
 
 
 
@@ -50,29 +33,10 @@ namespace wd_codec {
 			field_symbol** exp_table_; //exp_table_[i][j] = alpha^(j*i)
 			field_symbol** linear_exp_table_;//for complex operations that involve linear combinations of field elements 
 			char* buffer_;
-            
-            
-            
-            
-            //FOR IMPLEMENTATION
-            void         generate_field(const unsigned int* prim_poly_);
-            field_symbol gen_mul(const field_symbol& a, const field_symbol& b) const;
-            field_symbol gen_div(const field_symbol& a, const field_symbol& b) const;
-            field_symbol gen_exp(const field_symbol& a, const std::size_t& n) const;
-            field_symbol gen_inverse(const field_symbol& val) const;
-
-            std::size_t create_array(char buffer_[],
-                const std::size_t& length,
-                const std::size_t offset,
-                field_symbol** array);
-
-            std::size_t create_2d_array(char buffer_[],
-                std::size_t row_cnt, std::size_t col_cnt,
-                const std::size_t offset,
-                field_symbol*** array);
-
 
 		};
+
+
         //define basic primitive polynomials
         //start from 4 becuase the min possible m for gf(2^m) is 2
         /* 1x^0 + 1x^1 + 0x^2 + 1x^3 */
