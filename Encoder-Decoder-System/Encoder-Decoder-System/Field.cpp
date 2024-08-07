@@ -1,8 +1,5 @@
 #include "Field.h"
-#include "Field.h"
-namespace wd_codec {
 
-    namespace galois {
 
         typedef int field_symbol;
 
