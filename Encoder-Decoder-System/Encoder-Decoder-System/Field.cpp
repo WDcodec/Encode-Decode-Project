@@ -64,7 +64,7 @@ namespace wd_codec {
             // we want to find b so:
             // (a^e)*(a^b) = 1 :   = a^(e+b) = 1
             // e + b = 0 = field_size_(because the field is cyclic)
-            //field_size_ - log(val)
+            //b = field_size_ - log(val)
             return alpha_to_[normalize(field_size_ - index_of_[val])];
         }
         inline void Field::generate_field(const unsigned int* prim_poly)
@@ -85,7 +85,7 @@ namespace wd_codec {
                 {
                     alpha_to_[power_] ^= mask;
                 }
-
+                //a^(i+1)
                 mask <<= 1;
             }
 
@@ -95,7 +95,7 @@ namespace wd_codec {
 
             for (field_symbol i = power_ + 1; i < static_cast<field_symbol>(field_size_); ++i)
             {
-                if (alpha_to_[i - 1] >= mask)//alpha_to_[i - 1]<<1 will be out of the field range so it needs to be "normalizes
+                if (alpha_to_[i - 1] >= mask)//alpha_to_[i - 1]<<1 will be out of the field range so it needs to be "normalizes"
                     alpha_to_[i] = alpha_to_[power_] ^ ((alpha_to_[i - 1] ^ mask) << 1);
                 else
                     alpha_to_[i] = alpha_to_[i - 1] << 1;
@@ -104,6 +104,7 @@ namespace wd_codec {
             }
             //log of nothig is zero!
             index_of_[0] = GFERROR;
+            //becouse the field is cyclic
             alpha_to_[field_size_] = 1;
 
             #if !defined(NO_GFLUT)
@@ -118,16 +119,7 @@ namespace wd_codec {
                 }
             }
 
-            #ifdef LINEAR_EXP_LUT
-            for (field_symbol i = 0; i < static_cast<field_symbol>(field_size_ + 1); ++i)
-            {
-                for (int j = 0; j < static_cast<field_symbol>(2 * field_size_); ++j)
-                {
-                    linear_exp_table_[i][j] = gen_exp(i, j);
-                }
-            }
-            #endif
-
+            //TODO: check about the linear exp table
             for (field_symbol i = 0; i < static_cast<field_symbol>(field_size_ + 1); ++i)
             {
                 mul_inverse_[i] = gen_inverse(i);
