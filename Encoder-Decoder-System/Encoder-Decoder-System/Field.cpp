@@ -54,6 +54,20 @@ namespace wd_codec{
             if (!buffer_)      { delete[] buffer_; buffer_ = 0; }
         }
 
+        inline bool Field::operator==(const Field& field) const {
+            return this->power_ == field.power_ && this->prim_poly_hash_ == field.prim_poly_hash_;
+        }
+
+        inline bool Field::operator!=(const Field& field) const {
+            return !operator==(field);
+        }
+
+        std::ostream& operator << (std::ostream& os, const Field& field) {
+            for (int i = 0; i < field.field_size_; i++) {
+                os << i << ": " << "alpha[i]= " << field.alpha_to_[i] << " index[i]= " << field.index_of_[i] << "\n";
+            }
+            return os;
+        }
 
         inline field_symbol Field::gen_mul(const field_symbol& a, const field_symbol& b) const
         {
@@ -185,6 +199,24 @@ namespace wd_codec{
             }
 
         #endif
+        }
+        std::size_t Field::create_array(char buffer[], const std::size_t & length, const std::size_t offset, field_symbol * *array)
+        {
+            const std::size_t row_size = length * sizeof(field_symbol);
+            (*array) = new(buffer + offset)field_symbol[length];
+            return row_size + offset;
+        }
+
+        std::size_t Field:: create_2d_array(char buffer[], std::size_t row_cnt, std::size_t col_cnt, const std::size_t offset, field_symbol*** array)
+        {
+            const std::size_t row_size = col_cnt * sizeof(field_symbol);
+            char* buffer__offset = buffer + offset;
+            (*array) = new field_symbol * [row_cnt];
+            for (std::size_t i = 0; i < row_cnt; ++i)
+            {
+                (*array)[i] = new(buffer__offset + (i * row_size))field_symbol[col_cnt];
+            }
+            return (row_cnt * row_size) + offset;
         }
 	}
 }
