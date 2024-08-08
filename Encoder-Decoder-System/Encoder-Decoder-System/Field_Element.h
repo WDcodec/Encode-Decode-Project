@@ -40,9 +40,9 @@ namespace wd_codec {
 			inline void normalize();
 			friend std::ostream& operator << (std::ostream& os, const Field_Element& gfe);
 
-		private:
+		//private:
 			const Field& field_;
-			//the value of the coafficient
+			//the value of the coefficient
 			field_symbol poly_value_;
 
 		};
