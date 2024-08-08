@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstddef>
 #include <vector>
+
 namespace wd_codec {
 
 	namespace galois {
@@ -14,25 +15,102 @@ namespace wd_codec {
 		public:
 			Field(const unsigned int  pwr, const std::size_t primpoly_deg, const unsigned int* primitive_poly);
 			Field();
-			Field(const Field& field) {};
 			~Field();
-            //FOR IMPLEMENTATION
-            inline field_symbol index(const field_symbol value) const;
-            inline field_symbol alpha(const field_symbol value) const;
-            inline unsigned int size() const;
-            inline unsigned int pwr() const;
-            inline unsigned int mask() const;
-            inline field_symbol add(const field_symbol& a, const field_symbol& b) const;
-            inline field_symbol sub(const field_symbol& a, const field_symbol& b) const;
+             // convert a field element to its corresponding exponent in terms of a primitive element
+            inline field_symbol index(const field_symbol value) const {
+                return index_of_[value];
+            }
+            //returns the field element corresponding to a given exponent using a precomputed antilog table.
+            inline field_symbol alpha(const field_symbol value) const {
+                return alpha_to_[value];
+            }
+            //get size of the Galois Field.
+            inline unsigned int size() const {
+                return field_size_;
+            }
+            //returns the power m used to define the field size 2^m
+            inline unsigned int pwr() const {
+                return power_;
+            }
+            //returns a mask value used for bitwise operations
+            inline unsigned int mask() const {
+                return field_size_;
+            }
+            //addition in a Galois Field
+            inline field_symbol add(const field_symbol& a, const field_symbol& b) const {
+                return (a ^ b);
+            }
+            //subtraction of two field elements
+            inline field_symbol sub(const field_symbol& a, const field_symbol& b) const {
+                return (a ^ b);
+            }
             inline field_symbol normalize(field_symbol x) const;
-            inline field_symbol mul(const field_symbol& a, const field_symbol& b) const;
-            inline field_symbol div(const field_symbol& a, const field_symbol& b) const;
-            inline field_symbol exp(const field_symbol& a, int n) const;
-            inline field_symbol inverse(const field_symbol& val) const;
-            inline unsigned int prim_poly_term(const unsigned int index) const;
+
+            inline field_symbol mul(const field_symbol& a, const field_symbol& b) const
+            {
+               #if !defined(NO_GFLUT)
+                   return mul_table_[a][b];
+               #else
+                if ((a == 0) || (b == 0))
+                    return 0;
+                else
+                    return alpha_to_[normalize(index_of_[a] + index_of_[b])];
+              #endif
+            }
+
+            inline field_symbol div(const field_symbol& a, const field_symbol& b) const
+            {
+              #if !defined(NO_GFLUT)
+                return div_table_[a][b];
+              #else
+                if ((a == 0) || (b == 0))
+                    return 0;
+                else
+                    return alpha_to_[normalize(index_of_[a] - index_of_[b] + field_size_)];
+              #endif
+            }
+
+            inline field_symbol exp(const field_symbol& a, int n) const
+            {
+               #if !defined(NO_GFLUT)
+                if (n >= 0)
+                    return exp_table_[a][n & field_size_];
+                else
+                {
+                    while (n < 0) n += field_size_;
+
+                    return (n ? exp_table_[a][n] : 1);
+                }
+               #else
+                if (a != 0)
+                {
+                    if (n < 0)
+                    {
+                        while (n < 0) n += field_size_;
+                        return (n ? alpha_to_[normalize(index_of_[a] * n)] : 1);
+                    }
+                    else if (n)
+                        return alpha_to_[normalize(index_of_[a] * static_cast<field_symbol>(n))];
+                    else
+                        return 1;
+                }
+                else
+                    return 0;
+            #endif
+            }
+
+            inline field_symbol inverse(const field_symbol& val) const {
+                //todo #if
+                return mul_inverse_[val];
+            }
+
+            //accesses the coefficients of the primitive polynomial at a specified index.prim_poly_term(0) returns 1 (coefficient of x^0)
+            inline unsigned int prim_poly_term(const unsigned int index) const {
+                return prim_poly_[index];
+            }
             friend std::ostream& operator << (std::ostream& os, const Field& gf);
-
-
+            inline bool operator==(const Field& field) const;
+            inline bool operator!=(const Field& field) const;
 
 		private:
 			//finite field parameters:
@@ -52,9 +130,6 @@ namespace wd_codec {
 			char* buffer_;
             
             
-            
-            
-            //FOR IMPLEMENTATION
             void         generate_field(const unsigned int* prim_poly_);
             field_symbol gen_mul(const field_symbol& a, const field_symbol& b) const;
             field_symbol gen_div(const field_symbol& a, const field_symbol& b) const;
