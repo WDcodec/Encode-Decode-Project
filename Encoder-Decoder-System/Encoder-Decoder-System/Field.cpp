@@ -80,6 +80,7 @@ namespace wd_codec{
                 return alpha_to_[normalize(index_of_[a] + index_of_[b])];
         }
 
+
         inline field_symbol Field::gen_div(const field_symbol& a, const field_symbol& b) const
         {
             if ((a == 0) || (b == 0)) {// if the numerator or denominator is zero, the result is zero or error(which represnt in the table as zero)
