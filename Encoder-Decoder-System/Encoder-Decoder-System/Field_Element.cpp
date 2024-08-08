@@ -26,24 +26,22 @@ inline Field_Element& Field_Element::operator= (const field_symbol& value) {
 }
 
 inline Field_Element& Field_Element::operator += (const Field_Element& gfe) {
-	//xor does addition in galois fiels
-	this->poly_value_ ^= gfe.poly_value_;
+	this->poly_value_ = this->field_.add(poly_value_, gfe.poly_value_);
 	return *this;
 }
 
 inline Field_Element& Field_Element::operator += (const field_symbol& value) {
-	this->poly_value_ ^= value;
+	this->poly_value_ = this->field_.add(poly_value_, value);
 	return *this;
 }
 
 inline Field_Element& Field_Element::operator -= (const Field_Element& gfe) {
-	//xor does subtraction in galois fiels
-	this->poly_value_ ^= gfe.poly_value_;
+	this->poly_value_ = this->field_.sub(poly_value_, gfe.poly_value_);
 	return *this;
 }
 
 inline Field_Element& Field_Element::operator -= (const field_symbol& value) {
-	this->poly_value_ ^= value;
+	this->poly_value_ = this->field_.sub(poly_value_, value);
 	return *this;
 }
 
@@ -66,6 +64,21 @@ inline Field_Element& Field_Element::operator /= (const field_symbol& value) {
 	this->poly_value_ = this->field_.div(poly_value_, value);
 	return *this;
 }
+
+inline Field_Element& Field_Element::operator ^= (const int& n) {
+	this->poly_value_ = field_.exp(poly_value_, n);
+	return *this;
+}
+
+inline field_symbol Field_Element::inverse() const {
+	return field_.inverse(poly_value_);
+}
+
+inline void Field_Element::normalize() {
+	//assign the modulo to keep in range of field size
+	 poly_value_ &= field_.size();
+}
+
 
 
 	}
