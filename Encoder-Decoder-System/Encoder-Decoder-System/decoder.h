@@ -6,14 +6,15 @@
 #include "Polynomial.h"
 //#include "Block.h"
 //#include "Traits"
+
 namespace wd_codec {
 
 	namespace reed_solomon {
-
 		template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>// n-data+redundancy ,redundancy length, k-data length
 
 		class Decoder
 		{
+
 		public:
 			//typedef Traits::reed_solomon_triat<code_length, fec_length, data_length> trait;//n, k , n-k
 			//typedef Block<code_length, fec_length> block_type;                             //n,k
@@ -31,7 +32,7 @@ namespace wd_codec {
 			Decoder(const Decoder& dec);
 			Decoder& operator=(const Decoder& dec);
 			~Decoder();
-		};
+
 	}
 }
 
