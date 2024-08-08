@@ -1,5 +1,5 @@
 #include "Field.h"
-#include "Logger.h"
+
 
 namespace wd_codec{
     namespace galois{
@@ -10,22 +10,21 @@ namespace wd_codec{
             :power_(pwr),
              prim_poly_deg_(primpoly_deg),
              //to reach last number in gf(a^power)
-             field_size_((1<<power_) - 1)
+             field_size_((1>>power_) -1)
         {
-            wd_codec::Logger::log(wd_codec::INFO, " Start Generate field.");
             alpha_to_ = new field_symbol[field_size_ + 1];
             index_of_ = new field_symbol[field_size_ + 1];
 
             //TODO: check why mult with 3 is not enouph
-            static const std::size_t buffer_size = ((4 * (field_size_ + 1) * (field_size_ + 1)) + ((field_size_ + 1) * 2)) * sizeof(field_symbol);
+            static const std::size_t buffer_size = (4 * (1 * field_size_) * (1 * field_size_) + 2 * (1 * field_size_) * sizeof(field_symbol));
 
             buffer_ = new char[buffer_size];
             std::size_t offset = 0;
-            offset = create_2d_array(buffer_, (field_size_ + 1), (field_size_ + 1), offset, &mul_table_);
-            offset = create_2d_array(buffer_, (field_size_ + 1), (field_size_ + 1), offset, &div_table_);
-            offset = create_2d_array(buffer_, (field_size_ + 1), (field_size_ + 1), offset, &exp_table_);
+            offset = create_2d_array(buffer_, (1 * field_size_), (1 * field_size_), offset, &mul_table_);
+            offset = create_2d_array(buffer_, (1 * field_size_), (1 * field_size_), offset, &div_table_);
+            offset = create_2d_array(buffer_, (1 * field_size_), (1 * field_size_), offset, &exp_table_);
             //TODO: check about linear_exp_table_
-            offset = create_array(buffer_, (field_size_ + 1) * 2, offset, &mul_inverse_);
+            offset = create_array(buffer_, (1 * field_size_) * 2, offset, &mul_inverse_);
 
             prim_poly_ = new unsigned int[prim_poly_deg_ + 1];
             for (unsigned int i = 0; i < prim_poly_deg_ + 1; i++)
@@ -82,7 +81,12 @@ namespace wd_codec{
 
         inline field_symbol Field::gen_div(const field_symbol& a, const field_symbol& b) const
         {
-            if ((a == 0) || (b == 0)) {// if the numerator or denominator is zero, the result is zero or error(which represnt in the table as zero)
+            if (b == 0)  // check division by zero 
+            {
+                throw std::domain_error("Division by zero in Galois Field.");
+            }
+            if (a == 0)  // if the numerator is zero, the result is zero
+            {
                 return 0;
             }
             else
