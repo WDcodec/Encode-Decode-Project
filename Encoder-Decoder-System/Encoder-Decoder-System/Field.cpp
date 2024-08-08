@@ -79,6 +79,7 @@ namespace wd_codec{
                 return alpha_to_[normalize(index_of_[a] + index_of_[b])];
         }
 
+
         inline field_symbol Field::gen_div(const field_symbol& a, const field_symbol& b) const
         {
             if (b == 0)  // check division by zero 
