@@ -8,37 +8,37 @@ namespace wd_codec {
 
 
 
-		inline wd_codec::galois::Field_Element operator + (const wd_codec::galois::Field_Element& a, const wd_codec::galois::Field_Element& b) {
+		inline Field_Element operator + (const Field_Element& a, const Field_Element& b) {
 			Field_Element result = a;
 			result += b;
 			return result;
 		}
-		inline wd_codec::galois::Field_Element operator - (const wd_codec::galois::Field_Element& a, const wd_codec::galois::Field_Element& b) {
+		inline Field_Element operator - (const Field_Element& a, const Field_Element& b) {
 			Field_Element result = a;
 			result -= b;
 			return result;
 		}
-		inline wd_codec::galois::Field_Element operator * (const wd_codec::galois::Field_Element& a, const wd_codec::galois::Field_Element& b) {
+		inline Field_Element operator * (const Field_Element& a, const Field_Element& b) {
 			Field_Element result = a;
 			result *= b;
 			return result;
 		}
-		inline wd_codec::galois::Field_Element operator * (const wd_codec::galois::Field_Element& a, const wd_codec::galois::field_symbol& b) {
+		inline Field_Element operator * (const Field_Element& a, const field_symbol& b) {
 			Field_Element result = a;
 			result *= b;
 			return result;
 		}
-		inline wd_codec::galois::Field_Element operator * (const wd_codec::galois::field_symbol& a, const wd_codec::galois::Field_Element& b) {
+		inline Field_Element operator * (const field_symbol& a, const Field_Element& b) {
 			Field_Element result = b;
 			result *= a;
 			return result;
 		}
-		inline wd_codec::galois::Field_Element operator / (const wd_codec::galois::field_symbol& a, const wd_codec::galois::Field_Element& b) {
+		inline Field_Element operator / (const field_symbol& a, const Field_Element& b) {
 			Field_Element result = b;
 			result /= a;
 			return result;
 		}
-		inline wd_codec::galois::Field_Element operator ^ (const wd_codec::galois::Field_Element& a, const int& b) {
+		inline Field_Element operator ^ (const Field_Element& a, const int& b) {
 			Field_Element result = a;
 			result ^= b;
 			return result;
