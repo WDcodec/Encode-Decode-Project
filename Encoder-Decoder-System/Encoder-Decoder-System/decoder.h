@@ -21,7 +21,7 @@ namespace wd_codec {
 			Decoder(const galois::Field& field, const unsigned int& gen_initial_index = 0);//get  encoded polynomial.
 		protected:
 			bool                                  decoder_valid_;          //if decoder is properly initialized
-			const galois::Field&                  field_;                  // used in decoding
+			const galois::Field& field_;                  // used in decoding
 			std::vector<galois::field_symbol>     root_exponent_table_;    // Stores root exponents for error correction
 			std::vector<galois::field_symbol>     syndrome_exponent_table_;// Holds syndrome exponents for error detection
 			std::vector<galois::Polynomial> gamma_table_;            // Contains gamma polynomials for error correction
@@ -32,7 +32,7 @@ namespace wd_codec {
 			Decoder(const Decoder& dec);
 			Decoder& operator=(const Decoder& dec);
 			~Decoder();
-
+		};
 	}
 }
 
