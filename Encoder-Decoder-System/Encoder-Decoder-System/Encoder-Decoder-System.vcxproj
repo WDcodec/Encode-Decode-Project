@@ -132,12 +132,14 @@
     <ClCompile Include="Encoder.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Field_Element.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Polynomial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Encoder.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="Field_Element.h" />
+    <ClInclude Include="Logger.h" />
     <ClInclude Include="Polynomial.h" />
   </ItemGroup>
   <ItemGroup>
