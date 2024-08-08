@@ -1,14 +1,54 @@
 #include "Field_Element.h"
+#include <iostream>
+
+
 namespace wd_codec {
+
 	namespace galois {
 
-        inline wd_codec::galois::Field_Element operator + (const wd_codec::galois::Field_Element& a, const wd_codec::galois::Field_Element& b);
-        inline wd_codec::galois::Field_Element operator - (const wd_codec::galois::Field_Element& a, const wd_codec::galois::Field_Element& b);
-        inline wd_codec::galois::Field_Element operator * (const wd_codec::galois::Field_Element& a, const wd_codec::galois::Field_Element& b);
-        inline wd_codec::galois::Field_Element operator * (const wd_codec::galois::Field_Element& a, const wd_codec::galois::Field_Element& b);
-        inline wd_codec::galois::Field_Element operator * (const wd_codec::galois::Field_Element& a, const wd_codec::galois::Field_Element& b);
-        inline wd_codec::galois::Field_Element operator / (const wd_codec::galois::Field_Element& a, const wd_codec::galois::Field_Element& b);
-        inline wd_codec::galois::Field_Element operator ^ (const wd_codec::galois::Field_Element& a, const int& b);
+
+
+		inline Field_Element operator + (const Field_Element& a, const Field_Element& b) {
+			Field_Element result = a;
+			result += b;
+			return result;
+		}
+		inline Field_Element operator - (const Field_Element& a, const Field_Element& b) {
+			Field_Element result = a;
+			result -= b;
+			return result;
+		}
+		inline Field_Element operator * (const Field_Element& a, const Field_Element& b) {
+			Field_Element result = a;
+			result *= b;
+			return result;
+		}
+		inline Field_Element operator * (const Field_Element& a, const field_symbol& b) {
+			Field_Element result = a;
+			result *= b;
+			return result;
+		}
+		inline Field_Element operator * (const field_symbol& a, const Field_Element& b) {
+			Field_Element result = b;
+			result *= a;
+			return result;
+		}
+		inline Field_Element operator / (const field_symbol& a, const Field_Element& b) {
+			Field_Element result = b;
+			result /= a;
+			return result;
+		}
+		inline Field_Element operator ^ (const Field_Element& a, const int& b) {
+			Field_Element result = a;
+			result ^= b;
+			return result;
+		}
+		std::ostream& operator << (std::ostream& os, const Field_Element& gfe) {
+			return os << gfe.poly_value_;
+		}
+
+	
+
 
         //check if the two Field_Element equals
         inline bool Field_Element::operator == (const Field_Element& gfe) const
