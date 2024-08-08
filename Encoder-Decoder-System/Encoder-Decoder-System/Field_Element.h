@@ -10,8 +10,8 @@ namespace wd_codec {
 		public: 
 
 
-			Field_Element(const Field& field, const field_symbol& value):field_(const_cast<Field&>(field)),poly_value_(value){}//dtor
-			Field_Element(const Field& gfield):field_(gfield),poly_value_(-1){}//dtor
+			Field_Element(const Field& field, const field_symbol& value):field_(const_cast<Field&>(field)),poly_value_(value){}//ctor
+			Field_Element(const Field& gfield):field_(gfield),poly_value_(-1){}//ctor
 			Field_Element(const Field_Element& element) :field_(const_cast<Field&>(element.field_)), poly_value_(element.poly_value_) {}//copy ctor
 			~Field_Element() {};//dtor 
 
