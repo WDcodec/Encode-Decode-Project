@@ -30,7 +30,7 @@ namespace wd_codec{
             {
                 prim_poly_[i] = primitive_poly[i];
             }
-
+            prim_poly_hash_ = 0xAAAAAAAA;
             //Create a unique hash value for a given primitive polynomial to provide optimization for comparing two fields.            prim_poly_hash_ = 0xAAAAAAAA;  //10101010101010b good for hashing
             for (std::size_t i = 0; i < (prim_poly_deg_ + 1); i++)
             {
