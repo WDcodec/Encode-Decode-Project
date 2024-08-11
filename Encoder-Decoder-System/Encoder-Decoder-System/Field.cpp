@@ -1,30 +1,31 @@
 #include "Field.h"
+#include "Logger.h"
 
-
-namespace wd_codec{
-    namespace galois{
+namespace wd_codec {
+    namespace galois {
 
         const   field_symbol GFERROR = -1;
 
         Field::Field(const unsigned int  pwr, const std::size_t primpoly_deg, const unsigned int* primitive_poly)
             :power_(pwr),
-             prim_poly_deg_(primpoly_deg),
-             //to reach last number in gf(a^power)
-             field_size_((1>>power_) -1)
+            prim_poly_deg_(primpoly_deg),
+            //to reach last number in gf(a^power)
+            field_size_((1 << power_) - 1)
         {
+            wd_codec::Logger::log(wd_codec::INFO, " Start Generate field.");
             alpha_to_ = new field_symbol[field_size_ + 1];
             index_of_ = new field_symbol[field_size_ + 1];
 
             //TODO: check why mult with 3 is not enouph
-            static const std::size_t buffer_size = (4 * (1 * field_size_) * (1 * field_size_) + 2 * (1 * field_size_) * sizeof(field_symbol));
+            static const std::size_t buffer_size = ((4 * (field_size_ + 1) * (field_size_ + 1)) + ((field_size_ + 1) * 2)) * sizeof(field_symbol);
 
             buffer_ = new char[buffer_size];
             std::size_t offset = 0;
-            offset = create_2d_array(buffer_, (1 * field_size_), (1 * field_size_), offset, &mul_table_);
-            offset = create_2d_array(buffer_, (1 * field_size_), (1 * field_size_), offset, &div_table_);
-            offset = create_2d_array(buffer_, (1 * field_size_), (1 * field_size_), offset, &exp_table_);
+            offset = create_2d_array(buffer_, (field_size_ + 1), (field_size_ + 1), offset, &mul_table_);
+            offset = create_2d_array(buffer_, (field_size_ + 1), (field_size_ + 1), offset, &div_table_);
+            offset = create_2d_array(buffer_, (field_size_ + 1), (field_size_ + 1), offset, &exp_table_);
             //TODO: check about linear_exp_table_
-            offset = create_array(buffer_, (1 * field_size_) * 2, offset, &mul_inverse_);
+            offset = create_array(buffer_, (field_size_ + 1) * 2, offset, &mul_inverse_);
 
             prim_poly_ = new unsigned int[prim_poly_deg_ + 1];
             for (unsigned int i = 0; i < prim_poly_deg_ + 1; i++)
@@ -45,14 +46,14 @@ namespace wd_codec{
 
         Field::~Field() {
             //TODO: check about the: #if !defined(NO_GFLUT)
-            if (!alpha_to_)    { delete[] alpha_to_; alpha_to_ = 0; }
-            if (!index_of_)    { delete[] index_of_; index_of_ = 0; }
+            if (!alpha_to_) { delete[] alpha_to_; alpha_to_ = 0; }
+            if (!index_of_) { delete[] index_of_; index_of_ = 0; }
             if (!mul_inverse_) { delete[] mul_inverse_; mul_inverse_ = 0; }
-            if (!prim_poly_)   { delete[] prim_poly_; prim_poly_ = 0; }
-            if (!mul_table_)   { delete[] mul_table_; mul_table_ = 0; }
-            if (!div_table_)   { delete[] div_table_; div_table_ = 0; }
-            if (!exp_table_)   { delete[] exp_table_; exp_table_ = 0; }
-            if (!buffer_)      { delete[] buffer_; buffer_ = 0; }
+            if (!prim_poly_) { delete[] prim_poly_; prim_poly_ = 0; }
+            if (!mul_table_) { delete[] mul_table_; mul_table_ = 0; }
+            if (!div_table_) { delete[] div_table_; div_table_ = 0; }
+            if (!exp_table_) { delete[] exp_table_; exp_table_ = 0; }
+            if (!buffer_) { delete[] buffer_; buffer_ = 0; }
         }
 
         inline bool Field::operator==(const Field& field) const {
@@ -81,12 +82,7 @@ namespace wd_codec{
 
         inline field_symbol Field::gen_div(const field_symbol& a, const field_symbol& b) const
         {
-            if (b == 0)  // check division by zero 
-            {
-                throw std::domain_error("Division by zero in Galois Field.");
-            }
-            if (a == 0)  // if the numerator is zero, the result is zero
-            {
+            if ((a == 0) || (b == 0)) {// if the numerator or denominator is zero, the result is zero or error(which represnt in the table as zero)
                 return 0;
             }
             else
@@ -119,18 +115,18 @@ namespace wd_codec{
             return alpha_to_[normalize(field_size_ - index_of_[val])];
         }
 
-		//A function that normalizes the values that deviate from the field value range.
-		inline field_symbol Field::normalize(field_symbol x) const {
-			while (x < 0) {
-				x += static_cast<field_symbol>(field_size_);
-			}
-			while (x > static_cast<field_symbol>(field_size_)) {
-				x -= static_cast<field_symbol>(field_size_);
-				//optimization of the typical normalization(using mod) to addition of div and mod
-				x = (x >> power_) + (x & field_size_);
-			}
-			return x;
-		}
+        //A function that normalizes the values that deviate from the field value range.
+        inline field_symbol Field::normalize(field_symbol x) const {
+            while (x < 0) {
+                x += static_cast<field_symbol>(field_size_);
+            }
+            while (x > static_cast<field_symbol>(field_size_)) {
+                x -= static_cast<field_symbol>(field_size_);
+                //optimization of the typical normalization(using mod) to addition of div and mod
+                x = (x >> power_) + (x & field_size_);
+            }
+            return x;
+        }
 
         inline void Field::generate_field(const unsigned int* prim_poly)
         {
@@ -172,7 +168,7 @@ namespace wd_codec{
             //becouse the field is cyclic
             alpha_to_[field_size_] = 1;
 
-            #if !defined(NO_GFLUT)
+#if !defined(NO_GFLUT)
 
             for (field_symbol i = 0; i < static_cast<field_symbol>(field_size_ + 1); ++i)
             {
@@ -191,16 +187,16 @@ namespace wd_codec{
                 mul_inverse_[i + (field_size_ + 1)] = mul_inverse_[i];
             }
 
-        #endif
+#endif
         }
-        std::size_t Field::create_array(char buffer[], const std::size_t & length, const std::size_t offset, field_symbol * *array)
+        std::size_t Field::create_array(char buffer[], const std::size_t& length, const std::size_t offset, field_symbol** array)
         {
             const std::size_t row_size = length * sizeof(field_symbol);
             (*array) = new(buffer + offset)field_symbol[length];
             return row_size + offset;
         }
 
-        std::size_t Field:: create_2d_array(char buffer[], std::size_t row_cnt, std::size_t col_cnt, const std::size_t offset, field_symbol*** array)
+        std::size_t Field::create_2d_array(char buffer[], std::size_t row_cnt, std::size_t col_cnt, const std::size_t offset, field_symbol*** array)
         {
             const std::size_t row_size = col_cnt * sizeof(field_symbol);
             char* buffer__offset = buffer + offset;
@@ -211,7 +207,7 @@ namespace wd_codec{
             }
             return (row_cnt * row_size) + offset;
         }
-	}
+    }
 }
 
 
