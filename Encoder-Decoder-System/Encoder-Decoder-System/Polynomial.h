@@ -15,7 +15,8 @@ namespace wd_codec
 
 		class Polynomial
 		{
-        public:
+       
+        public: 
             Polynomial(const Field& gfield);
             Polynomial(const Field& gfield, const unsigned int& degree);
             Polynomial(const Field& gfield, const unsigned int& degree, const Field_Element element[]);
@@ -42,6 +43,7 @@ namespace wd_codec
             void simplify() {
                 simplify(*this);
             }
+            
 
             Polynomial& operator  =  (const Polynomial& polynomial);
             Polynomial& operator  =  (const Field_Element& element);
@@ -59,7 +61,7 @@ namespace wd_codec
             Polynomial& operator <<= (const unsigned int& n);
             Polynomial& operator >>= (const unsigned int& n);
 
-            Field_Element& operator[] (const std::size_t& term);
+            Field_Element&    operator[] (const std::size_t& term);
             Field_Element     operator() (const Field_Element& value);
             Field_Element     operator() (field_symbol                 value);
 
@@ -76,6 +78,7 @@ namespace wd_codec
 
             void long_division(const Polynomial& divisor, Polynomial& remainder, Polynomial& quotient);
 
+
             friend std::ostream& operator << (std::ostream& os, const Polynomial& polynomial);
 
         private:
@@ -89,5 +92,6 @@ namespace wd_codec
 			std::vector<Field_Element> poly_;
 
 		};
+
 	}
 }
