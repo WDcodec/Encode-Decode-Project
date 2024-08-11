@@ -1,11 +1,20 @@
 // Encoder-Decoder-System.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
-
+#include "Logger.h"
+#include "Field.h";
 int main()
 {
+    wd_codec::Logger::init("logfile.txt");
+
+
     std::cout << "Hello World!\n";
+    wd_codec::Logger::log(wd_codec::INFO, "Program started.");
+    wd_codec::galois::Field field(8, 9, wd_codec::galois::primitive_polynomial06);
+    wd_codec::Logger::log(wd_codec::INFO, "Finish generate field.");
+
+
+    wd_codec::Logger::close();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
