@@ -49,6 +49,61 @@ namespace wd_codec
             poly_.resize(1, element);
         }
 
+        Field_Element& Polynomial::operator[] (const std::size_t& term) {
+            assert(term < poly_.size());
+            return poly_[term];
+        }
+        const Field_Element& Polynomial::operator[](const std::size_t& term) const {
+            assert(term < poly_.size());
+            return poly_[term];
+        }
+        //function that return the placeing of value as X in the polynomial
+
+        inline const Field_Element Polynomial::operator () (const Field_Element& value) const
+        {
+            //Note :  not like schifras imlementation
+            return (*this)(value.poly());
+        }
+        //function that return the placeing of value as X in the polynomial
+        inline Field_Element Polynomial::operator() (field_symbol    value)
+        {
+            if (!poly_.empty())
+            {
+                int i = 0;
+                field_symbol total_sum = 0;
+                //loop that go throught the poly_ vector
+                for (const_poly_iter it = poly_.begin(); it != poly_.end(); ++it, ++i)
+                {
+                    //total_sum =+ (value ^ i)* coeffitient[i]
+                    total_sum ^= field_.mul(field_.exp(value, i), (*it).poly());
+                }
+                //total_sum = poly_[0] + poly_[1]*value + poly_[2]*value^2 + ... + poly_[i]*value^i
+                return Field_Element(field_, total_sum);
+            }
+            return Field_Element(field_, 0);
+        }
+        //function that return the placeing of value as X in the polynomial
+        inline Field_Element Polynomial::operator()(const Field_Element& value)  {
+            //Note :  not like schifras imlementation
+            return (*this)(value.poly());
+        }
+        //function that return the placeing of value as X in the polynomial
+        inline const Field_Element  Polynomial::operator()(field_symbol         value) const {
+            if (!poly_.empty())
+            {
+                int i = 0;
+                field_symbol total_sum = 0;
+                //loop that go throught the poly_ vector
+                for (const_poly_iter it = poly_.begin(); it != poly_.end(); ++it, ++i)
+                {
+                    //total_sum =+ (value ^ i)* coeffitient[i]
+                    total_sum ^= field_.mul(field_.exp(value, i), (*it).poly());
+                }
+                //total_sum = poly_[0] + poly_[1]*value + poly_[2]*value^2 + ... + poly_[i]*value^i
+                return Field_Element(field_, total_sum);
+            }
+            return Field_Element(field_, 0);
+        }
 
         Polynomial operator + (const Polynomial& a, const Polynomial& b);
         Polynomial operator + (const Polynomial& a, const Field_Element& b);
