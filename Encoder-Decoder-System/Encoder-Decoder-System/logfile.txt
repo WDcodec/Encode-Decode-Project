@@ -1,3 +1,0 @@
-[2024-08-11 15:18:46] INFO: Program started.
-[2024-08-11 15:18:46] INFO:  Start Generate field.
-[2024-08-11 15:18:46] INFO: Finish generate field.
