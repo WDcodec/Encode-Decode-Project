@@ -17,7 +17,7 @@ namespace wd_codec
 		{
             Polynomial(const Field& gfield);
             Polynomial(const Field& gfield, const unsigned int& degree);
-            Polynomial(const Field& gfield, const unsigned int& degree, const field_element element[]);
+            Polynomial(const Field& gfield, const unsigned int& degree, const Field_Element element[]);
             Polynomial(const Polynomial& polynomial);
             Polynomial(const Field_Element& gfe);
             ~Polynomial() {}
@@ -59,7 +59,7 @@ namespace wd_codec
 
             Polynomial derivative() const;
 
-            friend std::ostream& operator << (std::ostream& os, const field_polynomial& polynomial);
+            friend std::ostream& operator << (std::ostream& os, const Polynomial& polynomial);
 
         private:
 
