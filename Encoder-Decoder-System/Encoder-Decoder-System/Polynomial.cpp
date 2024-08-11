@@ -144,6 +144,52 @@ namespace wd_codec
             poly_[0] -= element;
             return *this;
         }
+        //function that check if two polynomials are equal
+        inline bool Polynomial::operator==(const Polynomial& polynomial) const {
+            if (field_ == polynomial.field_)
+            {
+                if (poly_.size() != polynomial.poly_.size())
+                    return false;
+                const_poly_iter it0 = poly_.begin();
+                const_poly_iter it1 = polynomial.poly_.begin();
+                while (it0 != poly_.end() && (*it0) == (*it1)) {
+                    it0++;
+                    it1++;
+                }
+                return (it0 == poly_.end());
+            }
+            else
+                return false;
+        }
+        inline bool Polynomial::operator!=(const Polynomial& polynomial) const {
+            return !((*this) == polynomial);
+        }
+
+        inline Polynomial& Polynomial::operator ^= (const unsigned int& n)
+        {
+            Polynomial result = *this;
+
+            for (std::size_t i = 0; i < n; ++i)
+            {
+                result *= *this;
+            }
+
+            *this = result;
+
+            return *this;
+        }
+
+        inline Polynomial& Polynomial::operator %= (const unsigned int& power)
+        {
+            if (poly_.size() >= power)
+            {
+                poly_.resize(power, Field_Element(field_, 0));
+                simplify(*this);
+            }
+
+            return *this;
+        }
+
         Polynomial operator + (const Polynomial& a, const Polynomial& b);
         Polynomial operator + (const Polynomial& a, const Field_Element& b);
         Polynomial operator + (const Polynomial& a, const Polynomial& b);
