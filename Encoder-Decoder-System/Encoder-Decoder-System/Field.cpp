@@ -12,7 +12,7 @@ namespace wd_codec {
             //to reach last number in gf(a^power)
             field_size_((1 << power_) - 1)
         {
-            wd_codec::Logger::log(wd_codec::INFO, " Start Generate field.");
+            wd_codec::Logger::log(wd_codec::INFO, " Start generate field.");
             alpha_to_ = new field_symbol[field_size_ + 1];
             index_of_ = new field_symbol[field_size_ + 1];
 
@@ -41,7 +41,7 @@ namespace wd_codec {
             }
 
             generate_field(prim_poly_);
-
+            wd_codec::Logger::log(wd_codec::INFO, "Finish generate field.");
         }
 
         Field::~Field() {
