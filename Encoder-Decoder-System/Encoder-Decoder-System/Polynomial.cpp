@@ -39,12 +39,43 @@ namespace wd_codec
                 int counter = 0;
 
                 //iterate and count all trailing zeros,as long as there is.
-                while ((begin != it) && (*(--it) == 0)){
+                while ((begin != it) && (*(--it) == 0)) {
                     counter++;
                 }
                 //delete the trailing zeros.
-                polynomial.poly_.resize(poly_size - counter, Field_Element(field_,0));
+                polynomial.poly_.resize(poly_size - counter);
             }
+        }
+
+        // function that check whether a plynomial is monic or not.
+        bool Polynomial::monic() const {
+            return poly_[poly_.size()-1] == static_cast<galois::field_symbol>(1);
+        }
+
+        // function that claculate the derivative of polynomials
+        Polynomial Polynomial::derivative() const {
+            // In finite fields, the derivative of a polynomial is computed using modulo arithmetic.
+            // we multiply each coefficient by its exponent modulo the field's characteristic.
+            // In GF(2), this means each coefficient is multiplied by 0 or 1:
+
+            //f(x) = x ^ n 
+            //f'(x) = (n%2) * x ^ (n-1) where n is 0/1
+            if (field_.size() > 1) { 
+                Polynomial deriv(field_, deg());
+                const std::size_t upper_bound = poly_.size();
+                //i+=2 becuase poly_[i + 1] * 0 = 0.
+                //poly_[i + 1] * 1 = poly_[i + 1];
+                for (std::size_t i = 0; i < upper_bound; i += 2)
+                {
+                    deriv.poly_[i] = poly_[i + 1];
+                }
+
+                simplify(deriv);
+                return deriv;
+
+            }
+
+            return Polynomial(field_, 0);
         }
 
 
