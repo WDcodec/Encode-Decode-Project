@@ -105,6 +105,45 @@ namespace wd_codec
             return Field_Element(field_, 0);
         }
 
+        inline Polynomial& Polynomial::operator  =  (const Polynomial& polynomial) {
+            if ((this != &polynomial) && (&field_ == &(polynomial.field_)))
+            {
+                poly_ = polynomial.poly_;
+            }
+            return (*this);
+        }
+        inline Polynomial& Polynomial::operator  =  (const Field_Element& element) {
+            if (&field_ == &(element.galois_field()))
+            {
+                poly_.resize(1, element);
+            }
+            return *this;
+        }
+        inline Polynomial& Polynomial::operator +=  (const Polynomial& element) {
+            const_poly_iter it1 = element.poly_.begin();
+            for (poly_iter it0 = poly_.begin(); it0 != poly_.end() && it1 != element.poly_.end(); ++it0, ++it1) {
+                 (*it0) += (*it1);
+            }
+            while (it1 != element.poly_.end()) {
+                 poly_.push_back(*it1);
+                 ++it1;
+            }
+            simplify(*this);
+
+            return (*this);
+        }
+
+        inline Polynomial& Polynomial::operator +=  (const Field_Element& element) {
+            poly_[0] += element;
+            return *this;
+        }
+        inline Polynomial& Polynomial ::operator -=  (const Polynomial& element) {
+            return (*this += element);
+        }
+        inline Polynomial& Polynomial::operator -=  (const Field_Element& element) {
+            poly_[0] -= element;
+            return *this;
+        }
         Polynomial operator + (const Polynomial& a, const Polynomial& b);
         Polynomial operator + (const Polynomial& a, const Field_Element& b);
         Polynomial operator + (const Polynomial& a, const Polynomial& b);

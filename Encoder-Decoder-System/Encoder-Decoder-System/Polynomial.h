@@ -15,6 +15,7 @@ namespace wd_codec
 
 		class Polynomial
 		{
+        public: 
             Polynomial(const Field& gfield);
             Polynomial(const Field& gfield, const unsigned int& degree);
             Polynomial(const Field& gfield, const unsigned int& degree, const Field_Element element[]);
