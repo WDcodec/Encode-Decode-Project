@@ -27,12 +27,23 @@ namespace wd_codec
             bool valid() const {
                 return poly_.size() > 0;
             }
-            int deg() const;
+
+            int deg() const {
+                return poly_.size() - 1;
+            }
+
             const Field& galois_field() const {
                 return field_;
             }
-            void set_degree(const unsigned int& x);
-            void simplify();
+
+            void set_degree(const unsigned int& x) {
+                poly_.resize(x - 1,Field_Element(field_,0));
+            }
+
+            void simplify() {
+                simplify(*this);
+            }
+            
 
             Polynomial& operator  =  (const Polynomial& polynomial);
             Polynomial& operator  =  (const Field_Element& element);
@@ -64,6 +75,9 @@ namespace wd_codec
             bool monic() const;
 
             Polynomial derivative() const;
+
+            void long_division(const Polynomial& divisor, Polynomial& remainder, Polynomial& quotient);
+
 
             friend std::ostream& operator << (std::ostream& os, const Polynomial& polynomial);
 

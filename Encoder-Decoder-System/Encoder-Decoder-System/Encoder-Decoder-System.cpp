@@ -11,7 +11,6 @@ int main()
     std::cout << "Hello World!\n";
     wd_codec::Logger::log(wd_codec::INFO, "Program started.");
     wd_codec::galois::Field field(8, 9, wd_codec::galois::primitive_polynomial06);
-    wd_codec::Logger::log(wd_codec::INFO, "Finish generate field.");
 
 
     wd_codec::Logger::close();
