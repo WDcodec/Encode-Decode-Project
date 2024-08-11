@@ -74,6 +74,8 @@ namespace wd_codec
 
             Polynomial derivative() const;
 
+            void long_division(const Polynomial& divisor, Polynomial& remainder, Polynomial& quotient);
+
             friend std::ostream& operator << (std::ostream& os, const Polynomial& polynomial);
 
         private:
