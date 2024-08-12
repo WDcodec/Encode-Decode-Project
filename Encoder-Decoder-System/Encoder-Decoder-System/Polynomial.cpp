@@ -64,7 +64,6 @@ namespace wd_codec
 		}
 
 		// Placing operators: 
-
 		Field_Element& Polynomial::operator[] (const std::size_t& term) {
 			assert(term < poly_.size());
 			return poly_[term];
@@ -81,6 +80,7 @@ namespace wd_codec
 			//Note :  not like schifras imlementation
 			return (*this)(value.poly());
 		}
+    
 		//function that return the placeing of value as X in the polynomial
 		Field_Element Polynomial::operator() (field_symbol    value)
 		{
@@ -460,3 +460,4 @@ namespace wd_codec
 
 	}
 }
+
