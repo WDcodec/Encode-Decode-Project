@@ -109,8 +109,8 @@ namespace wd_codec {
                 return prim_poly_[index];
             }
             friend std::ostream& operator << (std::ostream& os, const Field& gf);
-            inline bool operator==(const Field& field) const;
-            inline bool operator!=(const Field& field) const;
+            bool operator==(const Field& field) const;
+            bool operator!=(const Field& field) const;
 
 		private:
 			//finite field parameters:
