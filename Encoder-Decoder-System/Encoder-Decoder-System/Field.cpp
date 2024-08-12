@@ -6,7 +6,7 @@ namespace wd_codec {
 
         const   field_symbol GFERROR = -1;
 
-        Field::Field(const unsigned int  pwr, const std::size_t primpoly_deg, const unsigned int* primitive_poly)
+         Field::Field(const unsigned int  pwr, const std::size_t primpoly_deg, const unsigned int* primitive_poly)
             :power_(pwr),
             prim_poly_deg_(primpoly_deg),
             //to reach last number in gf(a^power)
@@ -56,11 +56,11 @@ namespace wd_codec {
             if (!buffer_) { delete[] buffer_; buffer_ = 0; }
         }
 
-        inline bool Field::operator==(const Field& field) const {
+        bool Field::operator==(const Field& field) const {
             return this->power_ == field.power_ && this->prim_poly_hash_ == field.prim_poly_hash_;
         }
 
-        inline bool Field::operator!=(const Field& field) const {
+        bool Field::operator!=(const Field& field) const {
             return !operator==(field);
         }
 
@@ -71,7 +71,7 @@ namespace wd_codec {
             return os;
         }
 
-        inline field_symbol Field::gen_mul(const field_symbol& a, const field_symbol& b) const
+        field_symbol Field::gen_mul(const field_symbol& a, const field_symbol& b) const
         {
             if ((a == 0) || (b == 0)) // if either operand is zero, the result is zero.
                 return 0;
@@ -81,7 +81,7 @@ namespace wd_codec {
         }
 
 
-        inline field_symbol Field::gen_div(const field_symbol& a, const field_symbol& b) const
+        field_symbol Field::gen_div(const field_symbol& a, const field_symbol& b) const
         {
             if ((a == 0) || (b == 0)) {// if the numerator or denominator is zero, the result is zero or error(which represnt in the table as zero)
                 return 0;
@@ -93,7 +93,7 @@ namespace wd_codec {
                 return alpha_to_[normalize(index_of_[a] - index_of_[b] + (field_size_ - 1))];
             }
         }
-        inline field_symbol Field::gen_exp(const field_symbol& a, const std::size_t& n) const
+         field_symbol Field::gen_exp(const field_symbol& a, const std::size_t& n) const
         {
             if (a != 0)
             {   // if exponent is zero, return 1 (a^0 = 1)
@@ -106,7 +106,7 @@ namespace wd_codec {
             }
         }
         // computes the multiplicative inverse of a field element 'val'
-        inline field_symbol Field::gen_inverse(const field_symbol& val) const
+         field_symbol Field::gen_inverse(const field_symbol& val) const
         {
             // e = log(val)
             // we want to find b so:
@@ -117,7 +117,7 @@ namespace wd_codec {
         }
 
         //A function that normalizes the values that deviate from the field value range.
-        inline field_symbol Field::normalize(field_symbol x) const {
+         field_symbol Field::normalize(field_symbol x) const {
             while (x < 0) {
                 x += static_cast<field_symbol>(field_size_);
             }
@@ -129,7 +129,7 @@ namespace wd_codec {
             return x;
         }
 
-        inline void Field::generate_field(const unsigned int* prim_poly)
+         void Field::generate_field(const unsigned int* prim_poly)
         {
             field_symbol mask = 1;
 

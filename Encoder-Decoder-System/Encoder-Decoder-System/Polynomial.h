@@ -183,6 +183,12 @@ namespace wd_codec
 			return result;
 		}
 
+		inline Polynomial operator ^ (const Polynomial& a, const int& n) {
+			Polynomial result = a;
+			result ^= n;
+			return result;
+		}
+
 		inline Polynomial gcd(const Polynomial& a, const Polynomial& b)
 		{//calculates the greatest common divisor of two polynomials ,  ensuring both polynomials same Galois Field.
 			if (&a.galois_field() == &b.galois_field())
