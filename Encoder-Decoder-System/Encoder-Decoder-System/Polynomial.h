@@ -3,7 +3,6 @@
 #include <cassert>
 #include <iostream>
 
-#include "Field.h"
 #include "Field_Element.h"
 #include "Polynomial.h"
 
@@ -28,8 +27,8 @@ namespace wd_codec
                 return poly_.size() > 0;
             }
 
-            int deg() const {
-                return poly_.size() - 1;
+            inline int deg() const {
+                return static_cast<int>(poly_.size()) - 1;
             }
 
             const Field& galois_field() const {
@@ -78,10 +77,9 @@ namespace wd_codec
 
             void long_division(const Polynomial& divisor, Polynomial& remainder, Polynomial& quotient);
 
-
             friend std::ostream& operator << (std::ostream& os, const Polynomial& polynomial);
 
-        private:
+      private:
 
             typedef std::vector<Field_Element>::iterator       poly_iter;
             typedef std::vector<Field_Element>::const_iterator const_poly_iter;
@@ -92,6 +90,129 @@ namespace wd_codec
 			std::vector<Field_Element> poly_;
 
 		};
+
+		////non member functions:
+
+		inline Polynomial operator + (const Polynomial& a, const Polynomial& b) {
+			Polynomial result = a;
+			result += b;
+			return result;
+		}
+		inline Polynomial operator + (const Polynomial& a, const Field_Element& b) {
+			Polynomial result = a;
+			result += b;
+			return result;
+		}
+		inline Polynomial operator + (const Field_Element& a, const Polynomial& b) {
+			Polynomial result = b;
+			result += a;
+			return result;
+		}
+		inline Polynomial operator + (const Polynomial& a, const field_symbol& b) {
+			return a + Field_Element(a.galois_field(), b);
+		}
+		inline Polynomial operator + (const field_symbol& a, const Polynomial& b) {
+			return b + Field_Element(b.galois_field(), a);
+		}
+		inline Polynomial operator - (const Polynomial& a, const Polynomial& b) {
+			return a - b;
+		}
+		inline Polynomial operator - (const Polynomial& a, const Field_Element& b) {
+			Polynomial result = a;
+			result -= b;
+			return result;
+		}
+		inline Polynomial operator - (const Field_Element& a, const Polynomial& b) {
+			Polynomial result = b;
+			result -= a;
+			return result;
+		}
+		inline Polynomial operator - (const Polynomial& a, const field_symbol& b) {
+			return a - Field_Element(a.galois_field(), b);
+		}
+		inline Polynomial operator - (const field_symbol& a, const Polynomial& b) {
+			return b - Field_Element(b.galois_field(), a);
+		}
+		inline Polynomial operator * (const Polynomial& a, const Polynomial& b) {
+			Polynomial result = a;
+			result *= b;
+			return result;
+		}
+		inline Polynomial operator * (const Field_Element& a, const Polynomial& b) {
+			Polynomial result = a;
+			result *= b;
+			return result;
+		}
+		inline Polynomial operator * (const Polynomial& a, const Field_Element& b) {
+			Polynomial result = a;
+			result *= b;
+			return result;
+		}
+
+		inline Polynomial operator / (const Polynomial& a, const Polynomial& b) {
+			Polynomial result = a;
+			result /= b;
+			return result;
+		}
+
+		inline Polynomial operator / (const Polynomial& a, const Field_Element& b) {
+			Polynomial result = a;
+			result /= b;
+			return result;
+		}
+
+		inline  Polynomial operator % (const Polynomial& a, const Polynomial& b) {
+			return a % b;
+		}
+
+		inline Polynomial operator % (const Polynomial& a, const unsigned int& power) {
+			Polynomial result = a;
+			result %= power;
+			return result;
+		}
+
+		inline Polynomial operator <<(const Polynomial& a, const unsigned int& n) {
+			Polynomial result = a;
+			result <<= n;
+			return result;
+		}
+
+		inline Polynomial operator >>(const Polynomial& a, const unsigned int& n) {
+			Polynomial result = a;
+			result >>= n;
+			return result;
+		}
+
+		inline Polynomial gcd(const Polynomial& a, const Polynomial& b)
+		{//calculates the greatest common divisor of two polynomials ,  ensuring both polynomials same Galois Field.
+			if (&a.galois_field() == &b.galois_field())
+			{
+				if ((!a.valid()) && (!b.valid()))//not same 
+				{
+					Polynomial error_polynomial(a.galois_field());
+					return error_polynomial;
+				}
+
+				if (!a.valid()) return b;
+				if (!b.valid()) return a;
+
+				Polynomial x = a % b;
+				Polynomial y = b;
+				Polynomial z = x;
+
+				while ((z = (y % x)).valid())
+				{
+					y = x;
+					x = z;
+				}
+				return x;
+			}
+			else
+			{
+				Polynomial error_polynomial(a.galois_field());
+				return error_polynomial;
+			}
+		}
 
 	}
 }
