@@ -33,7 +33,7 @@
     <ClCompile Include="Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Generator_polynomial.cpp">
+    <ClCompile Include="Generator_polynomial.h">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -19,9 +19,9 @@ namespace wd_codec {
         galois::Field_Element alpha(field, 2);//basic for all the root
         generator_polynomial = galois::Field_Element(field, 1);
 
-        for (int i = initial_index; i < (initial_index + num_elements); i++) {
+        for (std::size_t i = initial_index; i < (initial_index + num_elements); i++) {
             //alpha^i is the root
-            generator_polynomial *= (X + alpha ^ static_cast<galois::field_symbol>(i));
+            generator_polynomial *= (X + (alpha ^ static_cast<galois::field_symbol>(i)));
         }
         return true;
     }
