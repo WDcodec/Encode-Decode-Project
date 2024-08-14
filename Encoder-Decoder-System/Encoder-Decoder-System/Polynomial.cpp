@@ -328,12 +328,13 @@ namespace wd_codec
 			return !((*this) == polynomial);
 		}
 
- 
+		//return polynomial that represent X
 		Polynomial generate_X(const Field& gfield) {//create base polynomail
 			const Field_Element xgfe[2] = {
 										Field_Element(gfield, 0),
 										Field_Element(gfield, 1)
 			};
+			//X_ = 0*x^0 + 1*X^1 = x
 			Polynomial X_(gfield, 1, xgfe);//todo fix this creation
 			return X_;
 		}

@@ -219,6 +219,6 @@ namespace wd_codec
 				return error_polynomial;
 			}
 		}
-
+		Polynomial generate_X(const Field& gfield);
 	}
 }
