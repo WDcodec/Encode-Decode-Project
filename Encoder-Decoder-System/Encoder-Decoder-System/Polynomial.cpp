@@ -176,6 +176,7 @@ namespace wd_codec
 
 			for (std::size_t i = 0; i < n; ++i)
 			{
+
 				result *= *this;
 			}
 
@@ -213,23 +214,52 @@ namespace wd_codec
 		}
 
 		// Function that multiply two polynomials
-		Polynomial& Polynomial::operator *=  (const Polynomial& polynomial) {
-			if (&field_ == &(polynomial.field_)) {
+		inline Polynomial& Polynomial::operator *= (const Polynomial& polynomial)
+		{
+			if (&field_ == &(polynomial.field_))
+			{
 				Polynomial product(field_, deg() + polynomial.deg() + 1);
-				poly_iter prod_it = product.poly_.begin();
-				std::size_t A_size = deg();
-				std::size_t B_size = polynomial.deg();
 
-				for (int A_i = 0; A_i < A_size; A_i++) {
-					for (int B_i = 0; B_i < B_size; B_i++) {
-						product.poly_[A_i + B_i] += poly_[A_i] * polynomial.poly_[B_i];
+				poly_iter result_it = product.poly_.begin();
+
+				for (poly_iter it0 = poly_.begin(); it0 != poly_.end(); ++it0)
+				{
+					poly_iter current_result_it = result_it;
+
+					for (const_poly_iter it1 = polynomial.poly_.begin(); it1 != polynomial.poly_.end(); ++it1)
+					{
+						
+						(*current_result_it) += (*it0) * (*it1);
+						++current_result_it;
 					}
+
+					++result_it;
 				}
+
 				simplify(product);
 				poly_ = product.poly_;
 			}
+
 			return *this;
 		}
+
+		//Polynomial& Polynomial::operator *=  (const Polynomial& polynomial) {
+		//	if (&field_ == &(polynomial.field_)) {
+		//		Polynomial product(field_, deg() + polynomial.deg() + 1);
+		//		poly_iter prod_it = product.poly_.begin();
+		//		std::size_t A_size = deg();
+		//		std::size_t B_size = polynomial.deg();
+
+		//		for (int A_i = 0; A_i < A_size; A_i++) {
+		//			for (int B_i = 0; B_i < B_size; B_i++) {
+		//				product.poly_[A_i + B_i] += poly_[A_i] * polynomial.poly_[B_i];
+		//			}
+		//		}
+		//		simplify(product);
+		//		poly_ = product.poly_;
+		//	}
+		//	return *this;
+		//}
 
 		// Function that multiply polynomial by a scalar
 		Polynomial& Polynomial::operator *=  (const Field_Element& element) {
@@ -328,12 +358,13 @@ namespace wd_codec
 			return !((*this) == polynomial);
 		}
 
- 
+		//return polynomial that represent X
 		Polynomial generate_X(const Field& gfield) {//create base polynomail
 			const Field_Element xgfe[2] = {
 										Field_Element(gfield, 0),
 										Field_Element(gfield, 1)
 			};
+			//X_ = 0*x^0 + 1*X^1 = x
 			Polynomial X_(gfield, 1, xgfe);//todo fix this creation
 			return X_;
 		}
