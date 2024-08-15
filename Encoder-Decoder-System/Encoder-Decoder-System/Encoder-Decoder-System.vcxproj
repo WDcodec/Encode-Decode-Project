@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="Decoder.cpp" />
     <ClCompile Include="Encoder-Decoder-System.cpp" />
     <ClCompile Include="Encoder.cpp" />
@@ -137,6 +138,7 @@
     <ClCompile Include="Polynomial.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Block.h" />
     <ClInclude Include="Encoder.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="Field_Element.h" />
