@@ -50,6 +50,24 @@ namespace wd_codec {
                 }
             }
 
+            galois::field_symbol& Block::fec(int index) {
+                return data[index + data_length];
+            }
+
+            // Placing operators:
+
+            galois::field_symbol& Block::operator[](const std::size_t index) {
+                return data[index];
+            }
+
+            const galois::field_symbol& Block::operator[](const std::size_t index) const {
+                return data[index];
+            }
+
+            galois::field_symbol& Block::operator()(const std::size_t index) {
+                return data[index];
+            }
+
         private:
             // Member variables
             std::size_t errors_detected;
