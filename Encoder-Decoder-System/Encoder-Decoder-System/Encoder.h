@@ -30,6 +30,16 @@ namespace wd_codec
 			bool encode(block_type& rsblock) const {
 				return true;
 			}
+
+			bool encode(block_type& rsblock, const galois::Polynomial& data) const {
+				// iterate the data and add it to the rsblock data
+				for (std::size_t i = 0; i < data_length; i++) {
+					//TODO: check if the cast is necessary
+					rsblock[i] = data[i];
+				}
+				return encode(rsblock);
+			}
+
 		private:
 			const bool encoder_valid;
 			const galois::Field& field_;
