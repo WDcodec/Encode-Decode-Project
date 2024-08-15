@@ -27,7 +27,9 @@ namespace wd_codec
 			~Encoder()
 			{}
 			
-			bool encode(block_type& rsblock) const;
+			bool encode(block_type& rsblock) const {
+				return true;
+			}
 		private:
 			const bool encoder_valid;
 			const galois::Field& field_;
