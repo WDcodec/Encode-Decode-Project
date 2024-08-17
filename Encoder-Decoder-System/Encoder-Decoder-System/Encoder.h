@@ -28,8 +28,9 @@ namespace wd_codec
 			{}
 			
 			bool encode(block_type& rsblock) const {
+
 				//remainder = r(x) = p(x)*x^n-k % g(x)
-				const galois::Polynomial remainder = msg_poly(rsblock) % generator_;
+				const galois::Polynomial remainder = place_data_in_codeword(rsblock) % generator_;
 				const galois::field_symbol     mask = field_.mask();
 				//fec_length = n-k
 				if (remainder.deg() == (fec_length - 1))
@@ -57,9 +58,29 @@ namespace wd_codec
 				return true;
 
 			}
+			bool encode(block_type& rsblock, const galois::Polynomial& data) const {
+				const galois::field_symbol  mask = field_.mask();
+				// iterate the data polynomial and add it to the rsblock data
+				for (std::size_t i = 0; i < data_length; i++) {
+					//TODO: check if the cast is necessary
+					rsblock[i] = data[i] & mask;
+				}
+				return encode(rsblock);
+			}
+		private:
 			const bool encoder_valid;
 			const galois::Field& field_;
 			const galois::Polynomial generator_;
+
+			//compute the P(x)*x^(n-k) for making place to the redundancy 
+			inline const galois::Polynomial& place_data_in_codeword(const block_type& rsblock) {
+				galois::Polynomial data(field_,code_length);
+				for (std::size_t i = data_length - 1; i >= fec_length; i--) {
+					data[i] = rsblock[data_length - 1 - i];
+				}
+				return data;
+			}
+
 		};
 	}
 }
