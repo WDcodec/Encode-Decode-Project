@@ -15,7 +15,7 @@ namespace wd_codec
 		template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
 		class Encoder
 		{
-			public:
+		public:
 			typedef Block<code_length, fec_length> block_type;
 
 			Encoder(const galois::Field& gfield, const galois::Polynomial& generator)
@@ -26,7 +26,7 @@ namespace wd_codec
 
 			~Encoder()
 			{}
-			
+
 			bool encode(block_type& rsblock) const {
 
 				//remainder = r(x) = p(x)*x^n-k % g(x)
@@ -74,7 +74,7 @@ namespace wd_codec
 
 			//compute the P(x)*x^(n-k) for making place to the redundancy 
 			inline const galois::Polynomial& place_data_in_codeword(const block_type& rsblock) {
-				galois::Polynomial data(field_,code_length);
+				galois::Polynomial data(field_, code_length);
 				for (std::size_t i = data_length - 1; i >= fec_length; i--) {
 					data[i] = rsblock[data_length - 1 - i];
 				}
@@ -84,6 +84,3 @@ namespace wd_codec
 		};
 	}
 }
-
-
-
