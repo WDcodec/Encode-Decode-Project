@@ -31,9 +31,7 @@ namespace wd_codec
 				galois::Polynomial data(field_, code_length);
 				//remainder = r(x) = p(x)*x^n-k % g(x)
 				place_data_in_codeword(rsblock, data);
-				std::cout << "\data: " << data;
 				const galois::Polynomial remainder = data % generator_;
-				std::cout << "\nremainder: " << remainder;
 				const galois::field_symbol     mask = field_.mask();
 				//fec_length = n-k
 				if (remainder.deg() == (fec_length - 1))
