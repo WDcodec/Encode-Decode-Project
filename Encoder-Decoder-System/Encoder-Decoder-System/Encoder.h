@@ -2,7 +2,7 @@
 #include <cassert>
 #include <iostream>
 #include <vector>
-#include <string>
+
 #include "Field.h"
 #include "Polynomial.h"
 #include "Field_Element.h"
@@ -15,7 +15,7 @@ namespace wd_codec
 		template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
 		class Encoder
 		{
-		public:
+			public:
 			typedef Block<code_length, fec_length> block_type;
 
 			Encoder(const galois::Field& gfield, const galois::Polynomial& generator)
@@ -26,7 +26,7 @@ namespace wd_codec
 
 			~Encoder()
 			{}
-
+			
 			bool encode(block_type& rsblock) const {
 				galois::Polynomial data(field_, code_length);
 				//remainder = r(x) = p(x)*x^n-k % g(x)
@@ -68,6 +68,7 @@ namespace wd_codec
 				}
 				return encode(rsblock);
 			}
+
 		private:
 			const bool encoder_valid;
 			const galois::Field& field_;
@@ -84,3 +85,6 @@ namespace wd_codec
 		};
 	}
 }
+
+
+
