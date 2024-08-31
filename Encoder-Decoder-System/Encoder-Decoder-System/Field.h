@@ -60,14 +60,14 @@ namespace wd_codec {
 
             inline field_symbol div(const field_symbol& a, const field_symbol& b) const
             {
-              #if !defined(NO_GFLUT)
+              /*#if !defined(NO_GFLUT)
                 return div_table_[a][b];
-              #else
+              #else*/
                 if ((a == 0) || (b == 0))
                     return 0;
                 else
                     return alpha_to_[normalize(index_of_[a] - index_of_[b] + field_size_)];
-              #endif
+              //#endif
             }
 
             inline field_symbol exp(const field_symbol& a, int n) const

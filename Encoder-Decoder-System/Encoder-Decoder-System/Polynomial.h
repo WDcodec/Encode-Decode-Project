@@ -162,7 +162,9 @@ namespace wd_codec
 		}
 
 		inline  Polynomial operator % (const Polynomial& a, const Polynomial& b) {
-			return a % b;
+			Polynomial result = a;
+			result %= b;
+			return result;
 		}
 
 		inline Polynomial operator % (const Polynomial& a, const unsigned int& power) {

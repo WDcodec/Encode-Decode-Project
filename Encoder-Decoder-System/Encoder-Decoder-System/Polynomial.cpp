@@ -185,6 +185,7 @@ namespace wd_codec
 			return *this;
 		}
 
+
 		Polynomial& Polynomial::operator %= (const Polynomial& divisor) {
 			if (
 				(field_ == divisor.field_) &&
@@ -192,9 +193,12 @@ namespace wd_codec
 				(divisor.deg() >= 0)
 				)
 			{
-				Polynomial quotient(field_, deg() - divisor.deg() + 1);
 				Polynomial remainder(field_, divisor.deg() - 1);
-				long_division(divisor, quotient, remainder);
+				Polynomial quotient(field_, deg() - divisor.deg() + 1);
+				long_division(divisor, remainder, quotient);
+				std::cout << "\divisor\n: " << divisor;
+				std::cout << "\nremainder: " << remainder;
+				std::cout << "\nquotient\n: " << quotient;
 				poly_ = remainder.poly_;
 			}
 
@@ -280,7 +284,7 @@ namespace wd_codec
 			{
 				Polynomial quotient(field_, deg() - divisor.deg() + 1);
 				Polynomial remainder(field_, divisor.deg() - 1);
-				long_division(divisor, quotient, remainder);
+				long_division(divisor, remainder, quotient);
 				poly_ = quotient.poly_;
 			}
 
@@ -425,7 +429,7 @@ namespace wd_codec
 		void Polynomial::long_division(const Polynomial& divisor, Polynomial& remainder, Polynomial& quotient)
 		{
 			if (
-				(&field_ == &divisor.field_) &&
+				(field_ == divisor.field_) &&
 				(deg() >= divisor.deg()) &&
 				(divisor.deg() >= 0)
 				)

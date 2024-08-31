@@ -3,7 +3,8 @@
 
 #include "Logger.h";
 #include "Field.h";
-#include "Polynomial.h";
+#include "Polynomial.h"
+#include "Encoder.h";
 #include "Generator_polynomial.h"
 int main()
 {
@@ -27,6 +28,30 @@ int main()
         generator_polynomial_index,
         generator_polynomial_root_count,
         generator_polynomial);
+
+    std::cout <<"generator_polynomial: "<< generator_polynomial;
+    typedef wd_codec::reed_solomon::Encoder<code_length, fec_length, data_length> encoder_t;
+    const encoder_t encoder(field, generator_polynomial);
+
+    std::string message = "An expert is someone who knows more and more about less and "
+        "less until they know absolutely everything about nothing";
+
+    message.resize(code_length, 0x00);
+
+    std::cout << "Original Message:  [" << message << "]" << std::endl;
+    wd_codec::reed_solomon::Block<code_length, fec_length> block;
+
+    if (encoder.encode(block, message)) {
+        std::cout << "\n[Encode word: ";
+        for (std::size_t i = 0; i < code_length; ++i)
+        {
+            std::cout << static_cast<char>(block[i]);
+        }
+        std::cout << "]\n";
+    }
+    else {
+        std::cout << "not good";
+    }
     wd_codec::Logger::close();
 }
 
