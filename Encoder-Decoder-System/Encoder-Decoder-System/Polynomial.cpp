@@ -196,9 +196,9 @@ namespace wd_codec
 				Polynomial remainder(field_, divisor.deg() - 1);
 				Polynomial quotient(field_, deg() - divisor.deg() + 1);
 				long_division(divisor, remainder, quotient);
-				std::cout << "\divisor\n: " << divisor;
+				/*std::cout << "\divisor\n: " << divisor;
 				std::cout << "\nremainder: " << remainder;
-				std::cout << "\nquotient\n: " << quotient;
+				std::cout << "\nquotient\n: " << quotient;*/
 				poly_ = remainder.poly_;
 			}
 

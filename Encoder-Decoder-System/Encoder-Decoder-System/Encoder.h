@@ -2,12 +2,11 @@
 #include <cassert>
 #include <iostream>
 #include <vector>
-
+#include <string>
 #include "Field.h"
 #include "Polynomial.h"
 #include "Field_Element.h"
 #include "Block.h"
-#include "string.h"
 namespace wd_codec
 {
 
