@@ -30,7 +30,7 @@ int main()
         generator_polynomial_index,
         generator_polynomial_root_count,
         generator_polynomial);
-    wd_codec::Logger::log(wd_codec::INFO, " G(x)= ",generator_polynomial);
+    wd_codec::Logger::log(wd_codec::INFO, " G(x)= ", generator_polynomial);
     //std::cout <<"generator_polynomial: "<< generator_polynomial;
 
     typedef wd_codec::reed_solomon::Encoder<code_length, fec_length, data_length> encoder_t;

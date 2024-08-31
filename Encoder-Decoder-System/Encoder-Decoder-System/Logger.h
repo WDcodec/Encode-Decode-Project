@@ -36,7 +36,7 @@ namespace wd_codec {
 
         static void log(LogLevel level,const std::string& message, galois::Polynomial& poly) {
             std::string newMessage = message + poly.convertToString();
-            wd_codec::Logger::log(wd_codec::INFO, message);
+            wd_codec::Logger::log(wd_codec::INFO, newMessage);
 
         }
 
