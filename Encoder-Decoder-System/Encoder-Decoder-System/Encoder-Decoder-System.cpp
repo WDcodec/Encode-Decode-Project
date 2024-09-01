@@ -64,7 +64,15 @@ int main()
         std::cout << "not good";
     }
 
-    block[2] = '5';
+    block[4] = '5';
+    block[3] = '5';
+
+    std::cout << "\nCorrupt word: [";
+    for (std::size_t i = 0; i < code_length; ++i)
+    {
+        std::cout << static_cast<char>(block[i]);
+    }
+    std::cout << "]\n";
     if (!decoder.decode(block))
     {
         std::cout << "Error - Critical decoding failure! ";

@@ -74,7 +74,7 @@ namespace wd_codec {
 				if (0 == error_locations.size())
 				{
 					/*
-					  Syndrome is non-zero yet no error locations have
+					  Syndrome is non-zero yet and no error locations have
 					  been obtained, conclusion:
 					  It is possible that there are MORE errrors in the
 					  message than can be detected and corrected for this
@@ -89,7 +89,8 @@ namespace wd_codec {
 
 					return false;
 				}
-
+				else
+					rsblock.errors_detected = error_locations.size();
 				//correct the errors 
 				return forney_algorithm(error_locations, lambda, syndrome, rsblock);
 
@@ -175,9 +176,9 @@ namespace wd_codec {
 				//TODO:ERASSURE BUILT TABLE
 			}
 
-			std::vector<int> chien_sreach(const galois::Polynomial lambda, std::vector<int>error_locations) const {
+			void chien_sreach(const galois::Polynomial& lambda, std::vector<int>& error_locations) const {
 				// Locate the exact positions of the errors
-				error_locations.reserve(fec_length<<1);
+				error_locations.reserve(fec_length << 1);
 				error_locations.resize(0);
 				const std::size_t lambda_degree = lambda.deg();
 				for (int i = 1; i <= static_cast<int>(code_length); ++i) {
@@ -189,7 +190,6 @@ namespace wd_codec {
 					}
 				}
 				wd_codec::Logger::log(wd_codec::INFO, "Decoder - CheainSreach()  completed");
-				return error_locations;
 			}
 
 			void compute_discrepancy(galois::Field_Element& discrepancy,
