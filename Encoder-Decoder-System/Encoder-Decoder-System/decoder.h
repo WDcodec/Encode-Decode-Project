@@ -78,6 +78,69 @@ namespace wd_codec {
 				return forney_algorithm(error_locations, lambda, syndrome, rsblock);
 
 			}
+
+			void compute_discrepancy(galois::field_element& discrepancy,
+				const galois::Polynomial& lambda,
+				const galois::Polynomial& syndrome,
+				const std::size_t& l,
+				const std::size_t& round) const
+			{
+				/*
+				   Compute the lambda discrepancy at the current round of BMA
+				*/
+
+				const std::size_t upper_bound = std::min(static_cast<int>(l), lambda.deg());
+
+				discrepancy = 0;
+
+				for (std::size_t i = 0; i <= upper_bound; ++i)
+				{  //like c(j)*s(i-j)
+					discrepancy += lambda[i] * syndrome[round - i];
+				}
+			}
+
+			void berlekamp_massey_algorithm(galois::Polynomial& lambda,
+				const galois::field_polynomial& syndrome) const
+			{
+				/*
+				   Modified Berlekamp-Massey Algorithm
+				   Identify the shortest length linear feed-back shift register (LFSR)
+				   that will generate the sequence equivalent to the syndrome.
+				*/
+				//f - last faild
+				int i = -1;
+				//|c| - coeffictiont number
+				std::size_t l = 0;
+				//d - the c correcting
+				galois::field_element discrepancy(field_, 0);
+				//b
+				galois::Polynomial previous_lambda = lambda << 1;
+
+				for (std::size_t round = 0; round < fec_length; ++round)
+				{
+					//checking if the current d is good -  discrepancy = 0
+					compute_discrepancy(discrepancy, lambda, syndrome, l, round);
+
+					if (discrepancy != 0)
+					{
+						//computing c+d
+						galois::Polynomial tau = lambda - (discrepancy * previous_lambda);
+
+						if (static_cast<int>(l) < (static_cast<int>(round) - i))
+						{
+							const std::size_t tmp = round - i;
+							i = static_cast<int>(round - l);
+							l = tmp;
+							//d = (old c sequence)/discrepancy count
+							previous_lambda = lambda / discrepancy;
+						}
+
+						lambda = tau;
+					}
+
+					previous_lambda <<= 1;
+				}
+			}
 		protected:
 			bool                                  decoder_valid_;          //if decoder is properly initialized
 			const galois::Field& field_;                  // used in decoding
