@@ -64,7 +64,20 @@ int main()
         std::cout << "not good";
     }
 
-    
+
+    if (!decoder.decode(block))
+    {
+        std::cout << "Error - Critical decoding failure! ";
+        return 1;
+    }
+    std::cout << "Corrected Message: [";
+    std::cout << "\nDecode word: [";
+    for (std::size_t i = 0; i < code_length; ++i)
+    {
+        std::cout << static_cast<char>(block[i]);
+    }
+    std::cout << "]\n"; 
+
 
     wd_codec::Logger::close();
 }
