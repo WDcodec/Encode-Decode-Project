@@ -121,7 +121,140 @@ namespace wd_codec {
 				return error_locations;
 			}
 
+			typedef Block<code_length, fec_length> block_type;                             //n,k
+			Decoder(const galois::Field& field, const unsigned int& gen_initial_index = 0);//get  encoded polynomial.
+			bool decode(Block& rsblock) const {
+				//TODO: handle the erasure_list
+				if (!decoder_valid_) {
+					rsblock.errors_detected = 0;
+					rsblock.errors_corrected = 0;
+					rsblock.zero_numerators = 0;
+					rsblock.unrecoverable = true;
+					rsblock.error = block_type::e_decoder_error0;
+
+					return false;
+				}
+
+				galois::Polynomial received(field_, code_length - 1);
+
+				load_message(received, rsblock);
+				galois::Polynomial syndrome(field_);
+
+				//if the syndrom is zero - no error detected!!
+				if (compute_syndrome(received, syndrome) == 0) {
+					rsblock.errors_detected = 0;
+					rsblock.errors_corrected = 0;
+					rsblock.zero_numerators = 0;
+					rsblock.unrecoverable = false;
+
+					return true;
+				}
+
+				//lamda is the error locator polynomial
+				galois::field_polynomial lambda(galois::field_element(field_, 1));
+				//using the berlekamp_massey_algorithm to compute the error locator polynomial (lamda)
+				berlekamp_massey_algorithm(lambda, syndrome);
+
+				std::vector<int> error_locations;
+				//using the chien sreach to compute the error locations using the lamda polynomial
+				chien_sreach(lambda, error_locations);
+
+				if (0 == error_locations.size())
+				{
+					/*
+					  Syndrome is non-zero yet no error locations have
+					  been obtained, conclusion:
+					  It is possible that there are MORE errrors in the
+					  message than can be detected and corrected for this
+					  particular code.
+					*/
+
+					rsblock.errors_detected = 0;
+					rsblock.errors_corrected = 0;
+					rsblock.zero_numerators = 0;
+					rsblock.unrecoverable = true;
+					rsblock.error = block_type::e_decoder_error1;
+
+					return false;
+				}
+
+				//correct the errors 
+				return forney_algorithm(error_locations, lambda, syndrome, rsblock);
+
+			}
+
+			void compute_discrepancy(galois::field_element& discrepancy,
+				const galois::Polynomial& lambda,
+				const galois::Polynomial& syndrome,
+				const std::size_t& l,
+				const std::size_t& round) const
+			{
+				/*
+				   Compute the lambda discrepancy at the current round of BMA
+				*/
+
+				const std::size_t upper_bound = std::min(static_cast<int>(l), lambda.deg());
+
+				discrepancy = 0;
+
+				for (std::size_t i = 0; i <= upper_bound; ++i)
+				{  //like c(j)*s(i-j)
+					discrepancy += lambda[i] * syndrome[round - i];
+				}
+			}
+
+			void berlekamp_massey_algorithm(galois::Polynomial& lambda,
+				const galois::field_polynomial& syndrome) const
+			{
+				/*
+				   Modified Berlekamp-Massey Algorithm
+				   Identify the shortest length linear feed-back shift register (LFSR)
+				   that will generate the sequence equivalent to the syndrome.
+				*/
+				//f - last faild
+				int i = -1;
+				//|c| - coeffictiont number
+				std::size_t l = 0;
+				//d - the c correcting
+				galois::field_element discrepancy(field_, 0);
+				//b
+				galois::Polynomial previous_lambda = lambda << 1;
+
+				for (std::size_t round = 0; round < fec_length; ++round)
+				{
+					//checking if the current d is good -  discrepancy = 0
+					compute_discrepancy(discrepancy, lambda, syndrome, l, round);
+
+					if (discrepancy != 0)
+					{
+						//computing c+d
+						galois::Polynomial tau = lambda - (discrepancy * previous_lambda);
+
+						if (static_cast<int>(l) < (static_cast<int>(round) - i))
+						{
+							const std::size_t tmp = round - i;
+							i = static_cast<int>(round - l);
+							l = tmp;
+							//d = (old c sequence)/discrepancy count
+							previous_lambda = lambda / discrepancy;
+						}
+
+						lambda = tau;
+					}
+
+					previous_lambda <<= 1;
+				}
+			}
 		protected:
+			void load_message(galois::Polynomial& received, const block_type& rsblock) const
+			{
+
+				//Load message data into received polynomial in reverse order.
+				for (std::size_t i = 0; i < code_length; ++i)
+				{
+					received[code_length - 1 - i] = rsblock[i];
+				}
+			}
 			bool                                  decoder_valid_;          //if decoder is properly initialized
 			const galois::Field&                  field_;                  // used in decoding
 			std::vector<galois::field_symbol>     root_exponent_table_;    // Stores root exponents for error correction
