@@ -19,7 +19,7 @@ namespace wd_codec {
 		public:
 			//typedef Traits::reed_solomon_triat<code_length, fec_length, data_length> trait;//n, k , n-k
 			//typedef Block<code_length, fec_length> block_type;                             //n,k
-			Decoder(const galois::Field& field, const unsigned int& gen_initial_index = 0):
+			decoder(const galois::Field& field, const unsigned int& gen_initial_index = 0):
 				decoder_valid_(field.size() == code_length),
                 field_(field),
 				gen_initial_index_(gen_initial_index),
@@ -35,7 +35,7 @@ namespace wd_codec {
 			std::vector<galois::field_symbol>     root_exponent_table_;    // Stores root exponents for error correction
 			std::vector<galois::field_symbol>     syndrome_exponent_table_;// Holds syndrome exponents for error detection
 			//std::vector<galois::Polynomial>       gamma_table_;            // Contains gamma polynomials for error correction
-			const galois::Polynomial              X_;                      // for error correction calculations in the Error locations
+			const galois::Polynomial               X_;                      // for error correction calculations in the Error locations
 			const unsigned int                    gen_initial_index_;      //index for generator polynomial
 			void create_lookup_tables()
 			{
@@ -54,13 +54,8 @@ namespace wd_codec {
 				wd_codec::Logger::log(wd_codec::INFO, " decoder  - create lookup tables succeeded");
 				//TODO:ERASSURE BUILT TABLE
 			}
-		private:
-			Decoder();//not implemnted
-			Decoder(const Decoder& dec);//not implemnted
-			Decoder& operator=(const Decoder& dec);
-			//~Decoder() {}innecessary 
 
-			std::vector<int> CheainSreach(const wd_codec::galois::Polynomial lambda, std::vector<int>error_locations) {
+			std::vector<int> chien_sreach(const wd_codec::galois::Polynomial lambda, std::vector<int>error_locations) {
 				// Locate the exact positions of the errors
 				error_locations.resize(0);
 				const std::size_t lambda_degree = lambda.deg();
