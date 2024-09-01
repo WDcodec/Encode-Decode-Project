@@ -142,6 +142,15 @@ namespace wd_codec {
 				}
 			}
 		protected:
+			void load_message(galois::Polynomial& received, const block_type& rsblock) const
+			{
+
+				//Load message data into received polynomial in reverse order.
+				for (std::size_t i = 0; i < code_length; ++i)
+				{
+					received[code_length - 1 - i] = rsblock[i];
+				}
+			}
 			bool                                  decoder_valid_;          //if decoder is properly initialized
 			const galois::Field& field_;                  // used in decoding
 			std::vector<galois::field_symbol>     root_exponent_table_;    // Stores root exponents for error correction
