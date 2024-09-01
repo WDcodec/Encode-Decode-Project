@@ -52,8 +52,8 @@ namespace wd_codec {
 				berlekamp_massey_algorithm(lambda, syndrome);
 
 				std::vector<int> error_locations;
-				//using the find_roots to compute the error locations using the lamda polynomial
-				find_roots(lambda, error_locations);
+				//using the chien sreach to compute the error locations using the lamda polynomial
+				chien_sreach(lambda, error_locations);
 
 				if (0 == error_locations.size())
 				{
