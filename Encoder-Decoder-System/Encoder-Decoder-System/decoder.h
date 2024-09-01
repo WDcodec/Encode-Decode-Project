@@ -135,7 +135,9 @@ namespace wd_codec {
 					const galois::field_symbol denominator = lambda_derivative(alpha_inverse).poly();
 					if (numerator != 0) {
 						if (denominator != 0) {
+							std::cout << "\nbefor: " << char(rsblock[error_location - 1]) << " ";
 							rsblock[error_location - 1] ^= field_.div(numerator, denominator);
+							std::cout << "after: " << char(rsblock[error_location - 1]) << " ";
 							rsblock.errors_corrected++;
 						}
 						else {
@@ -192,6 +194,10 @@ namespace wd_codec {
 					}
 				}
 				wd_codec::Logger::log(wd_codec::INFO, "Decoder - CheainSreach()  completed");
+				std::cout << "\nerror_locations: ";
+				for (int x : error_locations) {
+					std::cout << x << " ";
+				}
 			}
 
 			void compute_discrepancy(galois::Field_Element& discrepancy,
@@ -257,6 +263,7 @@ namespace wd_codec {
 
 					previous_lambda <<= 1;
 				}
+				std::cout << "lambda: " << lambda;
 			}
 		protected:
 			void load_message(galois::Polynomial& received, const block_type& rsblock) const
