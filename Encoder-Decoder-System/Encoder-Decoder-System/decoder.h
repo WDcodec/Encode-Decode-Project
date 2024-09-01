@@ -4,6 +4,7 @@
 
 #include "Field.h"
 #include "Polynomial.h"
+#include "Logger.h"
 //#include "Block.h"
 //#include "Traits"
 
@@ -21,18 +22,39 @@ namespace wd_codec {
 			Decoder(const galois::Field& field, const unsigned int& gen_initial_index = 0);//get  encoded polynomial.
 		protected:
 			bool                                  decoder_valid_;          //if decoder is properly initialized
-			const galois::Field& field_;                  // used in decoding
+			const galois::Field& field_;                                  // used in decoding
 			std::vector<galois::field_symbol>     root_exponent_table_;    // Stores root exponents for error correction
 			std::vector<galois::field_symbol>     syndrome_exponent_table_;// Holds syndrome exponents for error detection
-			std::vector<galois::Polynomial> gamma_table_;            // Contains gamma polynomials for error correction
-			const galois::Polynomial        X_;                      // for error correction calculations in the Error locations
+			std::vector<galois::Polynomial>       gamma_table_;            // Contains gamma polynomials for error correction
+			const galois::Polynomial              X_;                      // for error correction calculations in the Error locations
 			const unsigned int                    gen_initial_index_;      //index for generator polynomial
 		private:
 			Decoder();
 			Decoder(const Decoder& dec);
 			Decoder& operator=(const Decoder& dec);
 			~Decoder();
+			//            galois::field_polynomial lambda(galois::field_element(field_,1));
+
+			std::vector<int> CheainSreach(const wd_codec::galois::Polynomial lambda, std::vector<int>error_locations) {
+				// Locate the exact positions of the errors
+				error_locations.resize(0);
+				const std::size_t lambda_degree = lambda.deg();
+
+				for (int i = 1; i < =code_length; ++i) {
+					if (0 == poly(field_.alpha(i)).poly()) {
+						error_locations.push_back(i);
+						if (lambda_degree == error_locations.size()) {
+							break;
+						}
+					}
+				}
+				wd_codec::Logger::log(wd_codec::INFO, "Decoder - CheainSreach()  completed");
+				return error_locations;
+			}
 		};
+		
+		
+		
 	}
 }
 
