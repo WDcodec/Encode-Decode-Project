@@ -64,18 +64,19 @@ int main()
         std::cout << "not good";
     }
 
-
+    block[2] = '5';
     if (!decoder.decode(block))
     {
         std::cout << "Error - Critical decoding failure! ";
         return 1;
     }
-    std::cout << "Corrected Message: [";
+
     std::cout << "\nDecode word: [";
-    for (std::size_t i = 0; i < code_length; ++i)
+    for (std::size_t i = 0; i < data_length; ++i)
     {
         std::cout << static_cast<char>(block[i]);
     }
+
     std::cout << "]\n"; 
 
 

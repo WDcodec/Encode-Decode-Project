@@ -101,11 +101,12 @@ namespace wd_codec {
 			//	Logger::log(wd_codec::INFO, " Start computing syndrome.");
 
 				int error_flag = 0;
+				syndrome = galois::Polynomial(field_, fec_length - 1);
 				for (std::size_t i = 0; i < fec_length; i++)
 				{
 					//syndrome[i] equal to the result of place root_i (syndrome_exponent_table_[i]) in the received data.
 					syndrome[i] = received(syndrome_exponent_table_[i]);
-					//error_flag |= syndrome[i].poly();
+					error_flag |= syndrome[i].poly();
 				}
 
 				return error_flag;
