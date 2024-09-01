@@ -68,6 +68,7 @@ namespace wd_codec {
                 return data[index];
             }
 
+        private:
             // Member variables
             std::size_t errors_detected;
             std::size_t errors_corrected;
