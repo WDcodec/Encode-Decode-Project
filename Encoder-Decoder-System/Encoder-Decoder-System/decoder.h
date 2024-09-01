@@ -21,8 +21,8 @@ namespace wd_codec {
 			Decoder(const galois::Field& field, const unsigned int& gen_initial_index = 0);//get  encoded polynomial.
 			
 			//Function that compute the result of placing all the generate roots in the recieved poly.
-			int compute_syndrome(const galois::field_polynomial& received,
-				galois::field_polynomial& syndrome) const {
+			int compute_syndrome(const galois::Polynomial& received,
+				galois::Polynomial& syndrome) const {
 				int error_flag = 0;
 				for (std::size_t i = 0; i < fec_length; i++) 
 				{
