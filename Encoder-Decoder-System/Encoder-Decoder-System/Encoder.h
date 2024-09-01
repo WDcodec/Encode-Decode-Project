@@ -86,7 +86,21 @@ namespace wd_codec
 					data[i] = rsblock[code_length - 1 - i];
 				}
 			}
-			
+			std::vector<int> CheainSreach(const wd_codec::galois::Polynomial lambda, std::vector<int>error_locations) {
+				// Locate the exact positions of the errors
+				error_locations.resize(0);
+				const std::size_t lambda_degree = lambda.deg();
+				for (int i = 1; i < = code_length; ++i) {
+					if (0 == poly(field_.alpha(i)).poly()) {
+						error_locations.push_back(i);
+						if (lambda_degree == error_locations.size()) {
+							break;
+						}
+					}
+				}
+				wd_codec::Logger::log(wd_codec::INFO, "Decoder - CheainSreach()  completed");
+				return error_locations;
+			}
 		};
 	}
 }
