@@ -409,7 +409,7 @@ namespace wd_codec
 
 			if (field_.size() > 1) {
 				Polynomial deriv(field_, deg());
-				const std::size_t upper_bound = poly_.size();
+				const std::size_t upper_bound = poly_.size() - 1;
 				//i+=2 becuase poly_[i + 1] * 0 = 0.
 				//poly_[i + 1] * 1 = poly_[i + 1];
 				for (std::size_t i = 0; i < upper_bound; i += 2)

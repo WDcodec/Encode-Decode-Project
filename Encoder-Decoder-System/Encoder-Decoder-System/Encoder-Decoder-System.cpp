@@ -64,8 +64,9 @@ int main()
         std::cout << "not good";
     }
 
-    block[4] = '5';
-    block[3] = '5';
+    for (int i = 0; i < 16; i++) {
+        block[i] = i+'0';
+    }
 
     std::cout << "\nCorrupt word: [";
     for (std::size_t i = 0; i < code_length; ++i)

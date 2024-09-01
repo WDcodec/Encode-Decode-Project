@@ -122,6 +122,8 @@ namespace wd_codec {
 				/* the forney algorthim is a formula that find the correct data base on the lambda, syndrom and error_locations*/
 				galois::Polynomial omega = (lambda * syndrome) % fec_length;
 				galois::Polynomial lambda_derivative = lambda.derivative();
+				std::cout << "\nomega: " << omega;
+				std::cout << "\nlambda_derivative: " << lambda_derivative;
 				rsblock.errors_corrected = 0;
 				rsblock.zero_numerators = 0;
 				// pass over all the error_locations in E(x).
