@@ -19,6 +19,21 @@ namespace wd_codec {
 			//typedef Traits::reed_solomon_triat<code_length, fec_length, data_length> trait;//n, k , n-k
 			//typedef Block<code_length, fec_length> block_type;                             //n,k
 			Decoder(const galois::Field& field, const unsigned int& gen_initial_index = 0);//get  encoded polynomial.
+			
+			//Function that compute the result of placing all the generate roots in the recieved poly.
+			int compute_syndrome(const galois::field_polynomial& received,
+				galois::field_polynomial& syndrome) const {
+				int error_flag = 0;
+				for (std::size_t i = 0; i < fec_length; i++) 
+				{
+					//syndrome[i] equal to the result of place root_i (syndrome_exponent_table_[i]) in the received data.
+					syndrome[i] = received(syndrome_exponent_table_[i]);
+					error_flag |= syndrome[i].poly;
+				}
+
+				return error_flag;
+			}
+
 		protected:
 			bool                                  decoder_valid_;          //if decoder is properly initialized
 			const galois::Field& field_;                                   // used in decoding
