@@ -6,6 +6,7 @@
 #include "Polynomial.h"
 #include "Encoder.h";
 #include "Generator_polynomial.h"
+#include "Decoder.h"
 int main()
 {
     wd_codec::Logger::init("logfile.txt");
@@ -34,7 +35,11 @@ int main()
     //std::cout <<"generator_polynomial: "<< generator_polynomial;
 
     typedef wd_codec::reed_solomon::Encoder<code_length, fec_length, data_length> encoder_t;
+    typedef wd_codec::reed_solomon::Decoder<code_length, fec_length, data_length> decoder_t;
+
     const encoder_t encoder(field, generator_polynomial);
+    const decoder_t decoder(field, generator_polynomial_index);
+
 
     std::string message = "An expert is someone who knows more and more about less and "
         "less until they know absolutely everything about nothing";
@@ -57,6 +62,8 @@ int main()
     else {
         std::cout << "not good";
     }
+
+    
 
     wd_codec::Logger::close();
 }
