@@ -47,13 +47,13 @@ namespace wd_codec {
                     return;
                 }
 
-        /*        std::memset(data_buffer_, 0, sizeof(data_buffer_));
-                std::memset(fec_buffer_, 0, sizeof(fec_buffer_));*/
+                       std::memset(data_buffer_, 0, sizeof(data_buffer_));
+                       std::memset(fec_buffer_, 0, sizeof(fec_buffer_));
 
                 if (remaining_bytes >= data_length) {
                     wd_codec::Logger::log(wd_codec::INFO, "INFO: dividing the file to blocks with size k");
                 }
-                 //divide the file to blocks size k
+                //divide the file to blocks size k
                 while (remaining_bytes >= data_length)
                 {
                     //encode each block 
@@ -76,10 +76,10 @@ namespace wd_codec {
                 std::ofstream& out_stream,
                 const std::size_t& read_amount) {
                 in_stream.read(&data_buffer_[0], static_cast<std::streamsize>(read_amount));
-                 //copy k bytes from the buffer to current block
+                //copy k bytes from the buffer to current block
                 for (std::size_t i = 0; i < read_amount; ++i)
                 {
-                //    block_.data[i] = (data_buffer_[i] & 0xFF);
+                    //    block_.data[i] = (data_buffer_[i] & 0xFF);
                 }
 
                 // padding zeros if needed
@@ -87,31 +87,33 @@ namespace wd_codec {
                 {
                     for (std::size_t i = read_amount; i < data_length; ++i)
                     {
-                      //  block_.data[i] = 0x00;
+                        //  block_.data[i] = 0x00;
                     }
                 }
 
-              /*  if (!encoder.encode(block_))
-                {
-                    wd_codec::Logger::log(wd_codec::ERROR, " file_encoder() - Error during encoding of block!");
-                    return;
-                }*/
+                /*  if (!encoder.encode(block_))
+                  {
+                      wd_codec::Logger::log(wd_codec::ERROR, " file_encoder() - Error during encoding of block!");
+                      return;
+                  }*/
 
                 for (std::size_t i = 0; i < fec_length; ++i)
                 {
-                //    fec_buffer_[i] = static_cast<char>(block_.fec(i) & 0xFF);
+                    //    fec_buffer_[i] = static_cast<char>(block_.fec(i) & 0xFF);
                 }
 
-               /* out_stream.write(&data_buffer_[0], static_cast<std::streamsize>(read_amount));
-                out_stream.write(&fec_buffer_[0], fec_length);*/
+                out_stream.write(&data_buffer_[0], static_cast<std::streamsize>(read_amount));
+                 out_stream.write(&fec_buffer_[0], fec_length);
 
-           }
-       };
-//        block_type block_;
-        char data_buffer_[data_length];
-        char fec_buffer_[fec_length];
-       
+            }
+            //        block_type block_;
+            char data_buffer_[data_length];
+            char fec_buffer_[fec_length];
+
+
+        };
     }
+
 }
 
 
