@@ -64,7 +64,6 @@ int main()
         std::cout << "not good";
     }
 
-    //block[4] = '5';
     for (int i = 0; i < 16; i++) {
         block[i] = i+'0';
     }
