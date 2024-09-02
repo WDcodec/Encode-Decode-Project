@@ -186,6 +186,7 @@ namespace wd_codec {
 				error_locations.resize(0);
 				const std::size_t lambda_degree = lambda.deg();
 				for (int i = 1; i <= static_cast<int>(code_length); ++i) {
+					std::cout << "\nlambda(field_.alpha(i))= " << lambda(field_.alpha(i)).poly() << " field_.alpha(i)= " << field_.alpha(i)<<" i= "<<i;
 					if (0 == lambda(field_.alpha(i)).poly()) {
 						error_locations.push_back(i);
 						if (lambda_degree == error_locations.size()) {
@@ -198,6 +199,7 @@ namespace wd_codec {
 				for (int x : error_locations) {
 					std::cout << x << " ";
 				}
+				std::cout << "\n";
 			}
 
 			void compute_discrepancy(galois::Field_Element& discrepancy,
@@ -263,7 +265,7 @@ namespace wd_codec {
 
 					previous_lambda <<= 1;
 				}
-				std::cout << "lambda: " << lambda;
+				std::cout << "lambda: " << lambda<<"\n";
 			}
 		protected:
 			void load_message(galois::Polynomial& received, const block_type& rsblock) const
