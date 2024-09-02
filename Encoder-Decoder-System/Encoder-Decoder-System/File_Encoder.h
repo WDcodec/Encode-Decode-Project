@@ -26,7 +26,7 @@ namespace wd_codec {
             File_Encoder(const encoder_type& encoder,
                 const std::string& input_file_name,
                 const std::string& output_file_name) {
-                std::size_t remaining_bytes = wd_codec::reed_solomon::Fileio::file_size(input_file_name);
+                std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
                 if (remaining_bytes == 0)
                 {
                     wd_codec::Logger::log(wd_codec::ERROR, " file_encoder() - Error: input file has ZERO size..");
