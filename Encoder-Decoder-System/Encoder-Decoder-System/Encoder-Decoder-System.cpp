@@ -3,7 +3,8 @@
 
 #include "Logger.h";
 #include "Field.h";
-#include "Polynomial.h";
+#include "Polynomial.h"
+#include "Encoder.h";
 #include "Generator_polynomial.h"
 #include "Block.h"
 int main()
@@ -21,9 +22,11 @@ int main()
 
     /* Instantiate Finite Field and Generator Polynomials */
     const wd_codec::galois::Field field(field_descriptor,
-        wd_codec::galois::primitive_polynomial_size06,
-        wd_codec::galois::primitive_polynomial06);
+               wd_codec::galois::primitive_polynomial_size06,
+               wd_codec::galois::primitive_polynomial06);
     wd_codec::galois::Polynomial generator_polynomial(field);
+
+    //Generate G(X)
     wd_codec::create_root_generator_polynomial(field,
         generator_polynomial_index,
         generator_polynomial_root_count,

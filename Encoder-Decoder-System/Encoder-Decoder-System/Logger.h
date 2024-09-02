@@ -1,7 +1,3 @@
-#pragma once
-class Logger
-{
-};
 
 #pragma once
 #include <ctime>
@@ -9,6 +5,7 @@ class Logger
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include "Polynomial.h"
 
 namespace wd_codec {
     // Enum to represent log levels 
@@ -35,6 +32,12 @@ namespace wd_codec {
             if (logFile.is_open()) {
                 logFile.close();
             }
+        }
+
+        static void log(LogLevel level,const std::string& message, galois::Polynomial& poly) {
+            std::string newMessage = message + poly.convertToString();
+            wd_codec::Logger::log(wd_codec::INFO, newMessage);
+
         }
 
         // Logs a message with a given log level 
