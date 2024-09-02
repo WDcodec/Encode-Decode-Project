@@ -24,7 +24,7 @@ namespace wd_codec {
 				gen_initial_index_(gen_initial_index),
 				X_(wd_codec::galois::generate_X(field_))
 			{
-				Logger::log(wd_codec::INFO, " Start Generate Decoder.");
+				Logger::log(wd_codec::INFO, "Decoder - generate decoder.");
 
 				if (decoder_valid_) {
 					create_lookup_tables();
@@ -33,7 +33,7 @@ namespace wd_codec {
 
 			//Function that try to detect and correct the errors
 			bool decode(block_type& rsblock) const {
-				Logger::log(wd_codec::INFO, " Start  decode function.");
+				Logger::log(wd_codec::INFO, "Decoder - decoding...");
 
 				//TODO: handle the erasure_list
 				if (!decoder_valid_) {
@@ -99,7 +99,7 @@ namespace wd_codec {
 			//Function that compute the result of placing all the generate roots in the recieved poly.
 			int compute_syndrome(const galois::Polynomial& received,galois::Polynomial& syndrome) const
 			{
-			//	Logger::log(wd_codec::INFO, " Start computing syndrome.");
+				Logger::log(wd_codec::INFO, "Decoder - compute syndrome.");
 
 				int error_flag = 0;
 				syndrome = galois::Polynomial(field_, fec_length - 1);
@@ -117,16 +117,22 @@ namespace wd_codec {
 			bool forney_algorithm(const std::vector<int>& error_locations, const galois::Polynomial& lambda,
 				                  const galois::Polynomial& syndrome, block_type& rsblock) const
 			{
-				Logger::log(wd_codec::INFO, " forney_algorithm.");
+				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+				Logger::log(wd_codec::INFO, "Decoder - forney algorithm.");
 
 				/* the forney algorthim is a formula that find the correct data base on the lambda, syndrom and error_locations*/
 				galois::Polynomial omega = (lambda * syndrome) % fec_length;
 				galois::Polynomial lambda_derivative = lambda.derivative();
-				std::cout << "\nomega: " << omega;
-				std::cout << "\nlambda_derivative: " << lambda_derivative;
+				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+				std::cout << "omega: " << omega<<"\n";
+				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+				std::cout << "lambda_derivative: " << lambda_derivative << " \n";
+				std::cout << "-----------------------------------------------------------------------------------------------------------------------" ;
 				rsblock.errors_corrected = 0;
 				rsblock.zero_numerators = 0;
 				// pass over all the error_locations in E(x).
+				std::cout << " Decoder - correction errors:"<<std::endl;
 				for (const unsigned int error_location : error_locations) {
 					// compute the polynomial expression alpha at the error location (alpha^E[i])
 					// TODO: check how is it inversed
@@ -145,6 +151,7 @@ namespace wd_codec {
 							//TODO: handle error.
 							return false;
 						}
+
 					}
 					else {
 						rsblock.zero_numerators++;
@@ -162,9 +169,8 @@ namespace wd_codec {
 			}
 			void create_lookup_tables()
 			{
-				Logger::log(wd_codec::INFO, " create_lookup_tables.");
-
 				//root Exponent  : used in chien search , forney algo' to find error positionsby evaluating the error locator polynomial
+				wd_codec::Logger::log(wd_codec::INFO, "Decoder - create lookup tables ");
 				root_exponent_table_.reserve(field_.size() + 1);
 				for (int i = 0; i < static_cast<int>(field_.size() + 1); ++i)
 				{
@@ -176,12 +182,13 @@ namespace wd_codec {
 				{
 					syndrome_exponent_table_.push_back(field_.alpha(gen_initial_index_ + i));
 				}
-				wd_codec::Logger::log(wd_codec::INFO, " decoder  - create lookup tables succeeded");
 				//TODO:ERASSURE BUILT TABLE
 			}
 
 			void chien_sreach(const galois::Polynomial& lambda, std::vector<int>& error_locations) const {
 				// Locate the exact positions of the errors
+				wd_codec::Logger::log(wd_codec::INFO, "Decoder - cheain sreach");
+				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
 				error_locations.reserve(fec_length << 1);
 				error_locations.resize(0);
 				const std::size_t lambda_degree = lambda.deg();
@@ -193,11 +200,12 @@ namespace wd_codec {
 						}
 					}
 				}
-				wd_codec::Logger::log(wd_codec::INFO, "Decoder - CheainSreach()  completed");
-				std::cout << "\nerror_locations: ";
+				std::cout << "error_locations: ";
 				for (int x : error_locations) {
 					std::cout << x << " ";
 				}
+				std::cout << std::endl;
+
 			}
 
 			void compute_discrepancy(galois::Field_Element& discrepancy,
@@ -209,11 +217,8 @@ namespace wd_codec {
 				/*
 				   Compute the lambda discrepancy at the current round of BMA
 				*/
-
 				const std::size_t upper_bound = std::min(static_cast<int>(l), lambda.deg());
-
 				discrepancy = 0;
-
 				for (std::size_t i = 0; i <= upper_bound; ++i)
 				{  //like c(j)*s(i-j)
 					discrepancy += lambda[i] * syndrome[round - i];
@@ -223,7 +228,7 @@ namespace wd_codec {
 			void berlekamp_massey_algorithm(galois::Polynomial& lambda,
 				const galois::Polynomial& syndrome) const
 			{
-				Logger::log(wd_codec::INFO, " berlekamp_massey_algorithm.");
+				Logger::log(wd_codec::INFO, "Decoder - berlekamp massey algo'.");
 
 				/*
 				   Modified Berlekamp-Massey Algorithm
@@ -238,12 +243,12 @@ namespace wd_codec {
 				galois::Field_Element discrepancy(field_, 0);
 				//b
 				galois::Polynomial previous_lambda = lambda << 1;
-
+				Logger::log(wd_codec::INFO, "Decoder - compute discrepancy n times.");
 				for (std::size_t round = 0; round < fec_length; ++round)
 				{
 					//checking if the current d is good -  discrepancy = 0
 					compute_discrepancy(discrepancy, lambda, syndrome, l, round);
-
+					
 					if (discrepancy != 0)
 					{
 						//computing c+d
@@ -263,12 +268,15 @@ namespace wd_codec {
 
 					previous_lambda <<= 1;
 				}
-				std::cout << "lambda: " << lambda;
+				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+				std::cout << "lambda: " << lambda<<std::endl;
+				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+
 			}
 		protected:
 			void load_message(galois::Polynomial& received, const block_type& rsblock) const
 			{
-
+				Logger::log(wd_codec::INFO, "Decoder - load message.");
 				//Load message data into received polynomial in reverse order.
 				for (std::size_t i = 0; i < code_length; ++i)
 				{
