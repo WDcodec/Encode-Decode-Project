@@ -133,7 +133,6 @@
     <ClCompile Include="Encoder.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Field_Element.cpp" />
-    <ClCompile Include="Fileio.cpp" />
     <ClCompile Include="File_Encoder.cpp" />
     <ClCompile Include="Generator_polynomial.h" />
     <ClCompile Include="Logger.cpp" />

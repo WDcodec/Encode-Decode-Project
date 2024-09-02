@@ -35,8 +35,7 @@ namespace wd_codec {
 			~Decoder();
 			//            galois::field_polynomial lambda(galois::field_element(field_,1));
 
-		
-		
+			
 		};
 		
 		
