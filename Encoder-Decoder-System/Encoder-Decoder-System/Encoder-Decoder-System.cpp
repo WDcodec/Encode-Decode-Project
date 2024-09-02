@@ -8,10 +8,11 @@
 #include "Generator_polynomial.h"
 #include "Fileio.h"
 #include "File_Encoder.h"
-
+#include "Error_Injection.h"
 
 void create_file(const std::string& file_name, const std::size_t file_size)
 {
+    //TODO: reading file from exiting files instead of create new file
     std::string buffer = std::string(file_size, 0x00);
 
     for (std::size_t i = 0; i < buffer.size(); ++i)
@@ -72,6 +73,7 @@ int main()
             rsencoded_output_file_name
         );
 
+    wd_codec::error_injection::inject_random_errors<code_length, fec_length>(rsencoded_output_file_name);
    
     wd_codec::Logger::close();
 }
