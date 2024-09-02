@@ -5,6 +5,7 @@
 #include "Field.h";
 #include "Polynomial.h";
 #include "Generator_polynomial.h"
+#include "Block.h"
 int main()
 {
     wd_codec::Logger::init("logfile.txt");
@@ -27,6 +28,70 @@ int main()
         generator_polynomial_index,
         generator_polynomial_root_count,
         generator_polynomial);
+    std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+    std::cout <<"G(x)=: "<< generator_polynomial << std::endl;
+    std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+    typedef wd_codec::reed_solomon::Encoder<code_length, fec_length, data_length> encoder_t;
+    typedef wd_codec::reed_solomon::Decoder<code_length, fec_length, data_length> decoder_t;
+
+    const encoder_t encoder(field, generator_polynomial);
+    const decoder_t decoder(field, generator_polynomial_index);
+
+
+    std::string message = "An expert is someone who knows more and more about less and ""less until they know absolutely everything about nothing";
+
+    message.resize(code_length, 0x00);
+    std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "Original Message:  [" << message << "]" << std::endl;
+    std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+    wd_codec::reed_solomon::Block<code_length, fec_length> block;
+
+    //Encoding the message
+    if (encoder.encode(block, message)) {
+        std::cout << "Encode word: [";
+        for (std::size_t i = 0; i < code_length; ++i)
+        {
+            std::cout << static_cast<char>(block[i]);
+        }
+        std::cout << "]\n";
+    }
+
+    else {
+        //TODO: handle error.
+        std::cout << "not good";
+    }
+
+    for (int i = 0; i < 32; i+=2) {
+        block[i] = i+'0';
+    }
+    std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "Corrupt word: [";
+    for (std::size_t i = 0; i < code_length; ++i)
+    {
+        std::cout << static_cast<char>(block[i]);
+    }
+    std::cout << "]\n";
+    std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+    if (!decoder.decode(block))
+    {
+        std::cout << "Error - Critical decoding failure! ";
+        return 1;
+    }
+    std::cout << "\n-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+    std::cout << "Decode word: [";
+    for (std::size_t i = 0; i < data_length; ++i)
+    {
+        std::cout << static_cast<char>(block[i]);
+    }
+
+    std::cout << "]\n"; 
+    std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+
     wd_codec::Logger::close();
 }
 

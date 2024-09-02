@@ -1,0 +1,10 @@
+[2024-09-02 12:45:41] INFO:  Start generate field.
+[2024-09-02 12:45:48] INFO: Decoder - generate decoder.
+[2024-09-02 12:45:48] INFO: Decoder - create lookup tables 
+[2024-09-02 12:45:48] INFO: Decoder - decoding...
+[2024-09-02 12:45:48] INFO: Decoder - load message.
+[2024-09-02 12:45:48] INFO: Decoder - compute syndrome.
+[2024-09-02 12:45:48] INFO: Decoder - berlekamp massey algo'.
+[2024-09-02 12:45:48] INFO: Decoder - compute discrepancy n times.
+[2024-09-02 12:45:48] INFO: Decoder - cheain sreach
+[2024-09-02 12:45:49] INFO: Decoder - forney algorithm.
