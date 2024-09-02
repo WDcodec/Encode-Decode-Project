@@ -2,7 +2,7 @@
 #include <vector>
 #include <cassert>
 #include <iostream>
-
+#include <string>
 #include "Field_Element.h"
 
 
@@ -35,6 +35,7 @@ namespace wd_codec
                 return field_;
             }
 
+			
             void set_degree(const unsigned int& x) {
                 poly_.resize(x - 1,Field_Element(field_,0));
             }
@@ -42,7 +43,20 @@ namespace wd_codec
             void simplify() {
                 simplify(*this);
             }
-            
+
+			std::string convertToString() {
+				std::string polyStr;
+				if (deg() >= 0) {
+					for (unsigned int i = 0; i < poly_.size(); ++i) {
+						polyStr += std::to_string(poly_[i].poly()) // Convert the coefficient to a string
+							+ " x^"
+							+ std::to_string(i)               // Convert the exponent to a string
+							+ ((static_cast<int>(i) != deg()) ? " + " : "");
+					}
+				}
+				return polyStr;
+			}
+
 
             Polynomial& operator  =  (const Polynomial& polynomial);
             Polynomial& operator  =  (const Field_Element& element);
@@ -162,7 +176,9 @@ namespace wd_codec
 		}
 
 		inline  Polynomial operator % (const Polynomial& a, const Polynomial& b) {
-			return a % b;
+			Polynomial result = a;
+			result %= b;
+			return result;
 		}
 
 		inline Polynomial operator % (const Polynomial& a, const unsigned int& power) {

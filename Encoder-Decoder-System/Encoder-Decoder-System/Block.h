@@ -41,12 +41,12 @@ namespace wd_codec {
                 // Copy data into the array
                 for (std::size_t i = 0; i < data_length; ++i)
                 {
-                    data[i] = static_cast<galois::field_symbol>(_data[i]);
+                   data[i] = static_cast<galois::field_symbol>(_data[i]);
                 }
-
+                    
                 for (std::size_t i = 0; i < fec_length; ++i)
                 {
-                    data[i + data_length] = static_cast<galois::field_symbol>(_fec[i]);
+                   data[i + data_length] = static_cast<galois::field_symbol>(_fec[i]);
                 }
             }
 
@@ -78,3 +78,4 @@ namespace wd_codec {
         };
     }
 }
+

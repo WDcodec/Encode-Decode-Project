@@ -47,8 +47,8 @@ namespace wd_codec {
                     return;
                 }
 
-        /*        std::memset(data_buffer_, 0, sizeof(data_buffer_));
-                std::memset(fec_buffer_, 0, sizeof(fec_buffer_));*/
+                std::memset(data_buffer_, 0, sizeof(data_buffer_));
+                std::memset(fec_buffer_, 0, sizeof(fec_buffer_));
 
                 if (remaining_bytes >= data_length) {
                     wd_codec::Logger::log(wd_codec::INFO, "INFO: dividing the file to blocks with size k");
@@ -79,7 +79,7 @@ namespace wd_codec {
                  //copy k bytes from the buffer to current block
                 for (std::size_t i = 0; i < read_amount; ++i)
                 {
-                //    block_.data[i] = (data_buffer_[i] & 0xFF);
+                    block_.data[i] = (data_buffer_[i] & 0xFF);
                 }
 
                 // padding zeros if needed
@@ -106,11 +106,12 @@ namespace wd_codec {
                 out_stream.write(&fec_buffer_[0], fec_length);*/
 
            }
+            //        block_type block_;
+            char data_buffer_[data_length];
+            char fec_buffer_[fec_length];
+
        };
-//        block_type block_;
-        char data_buffer_[data_length];
-        char fec_buffer_[fec_length];
-       
+
     }
 }
 
