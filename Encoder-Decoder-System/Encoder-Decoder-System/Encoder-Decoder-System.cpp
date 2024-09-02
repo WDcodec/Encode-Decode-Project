@@ -6,6 +6,7 @@
 #include "Polynomial.h"
 #include "Encoder.h";
 #include "Generator_polynomial.h"
+#include "Decoder.h"
 #include "Block.h"
 int main()
 {
@@ -65,6 +66,7 @@ int main()
         //TODO: handle error.
         std::cout << "not good";
     }
+
 
     for (int i = 0; i < 32; i+=2) {
         block[i] = i+'0';
