@@ -64,7 +64,30 @@ int main()
         std::cout << "not good";
     }
 
-    
+    for (int i = 0; i < 16; i++) {
+        block[i] = i+'0';
+    }
+
+    std::cout << "\nCorrupted message: [";
+    for (std::size_t i = 0; i < code_length; ++i)
+    {
+        std::cout << static_cast<char>(block[i]);
+    }
+    std::cout << "]\n";
+    if (!decoder.decode(block))
+    {
+        std::cout << "Error - Critical decoding failure! ";
+        return 1;
+    }
+
+    std::cout << "\nDecode word: [";
+    for (std::size_t i = 0; i < data_length; ++i)
+    {
+        std::cout << static_cast<char>(block[i]);
+    }
+
+    std::cout << "]\n"; 
+
 
     wd_codec::Logger::close();
 }
