@@ -7,6 +7,7 @@
 #include "Encoder.h";
 #include "Generator_polynomial.h"
 #include "Decoder.h"
+#include "Block.h"
 int main()
 {
     wd_codec::Logger::init("logfile.txt");
@@ -66,7 +67,8 @@ int main()
         std::cout << "not good";
     }
 
-    for (int i = 0; i < 16; i++) {
+
+    for (int i = 0; i < 32; i+=2) {
         block[i] = i+'0';
     }
     std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
