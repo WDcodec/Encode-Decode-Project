@@ -76,55 +76,6 @@ namespace wd_codec {
             bool unrecoverable;
             galois::field_symbol data[code_length];
         };
-
-        template <typename T, std::size_t block_length>
-        struct data_block
-        {
-        public:
-
-            typedef T value_type;
-
-            T& operator[](const std::size_t index) { return data[index]; }
-            const T& operator[](const std::size_t index) const { return data[index]; }
-
-            T* begin() { return data; }
-            const T* begin() const { return data; }
-
-            T* end() { return data + block_length; }
-            const T* end()   const { return data + block_length; }
-
-            void clear(T value = 0)
-            {
-                for (std::size_t i = 0; i < block_length; ++i)
-                {
-                    data[i] = value;
-                }
-            }
-
-        private:
-
-            T data[block_length];
-        };
-
-        template <typename T, std::size_t block_length>
-        inline void copy(const data_block<T, block_length>& src_block, data_block<T, block_length>& dest_block)
-        {
-            for (std::size_t index = 0; index < block_length; ++index)
-            {
-                dest_block[index] = src_block[index];
-            }
-        }
-
-        template <typename T, std::size_t block_length, std::size_t stack_size>
-        inline void copy(const data_block<T, block_length>  src_block_stack[stack_size],
-            data_block<T, block_length> dest_block_stack[stack_size])
-        {
-            for (std::size_t row = 0; row < stack_size; ++row)
-            {
-                copy(src_block_stack[row], dest_block_stack[row]);
-            }
-        }
-
     }
 }
 
