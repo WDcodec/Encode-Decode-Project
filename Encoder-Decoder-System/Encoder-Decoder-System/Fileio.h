@@ -16,6 +16,12 @@ namespace wd_codec {
             return static_cast<std::size_t>(file.tellg());
         }
 
+        inline bool file_exists(const std::string& file_name)
+        {
+            std::ifstream file(file_name.c_str(), std::ios::binary);
+            return ((!file) ? false : true);
+        }
+
         inline void write_file(const std::string& file_name, const std::string& buffer) {
             std::ofstream file(file_name, std::ios::binary);
             if (!file) return;
