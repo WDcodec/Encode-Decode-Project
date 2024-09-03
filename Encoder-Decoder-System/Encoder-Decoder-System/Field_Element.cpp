@@ -80,7 +80,7 @@ namespace wd_codec {
 
 
 	    Field_Element& Field_Element::operator= (const field_symbol& value) {
-			this->poly_value_ = value;
+			poly_value_ = value & field_.size();
 			return *this;
 		}
 

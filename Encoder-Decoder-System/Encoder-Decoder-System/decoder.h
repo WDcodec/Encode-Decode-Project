@@ -193,7 +193,7 @@ namespace wd_codec {
 				error_locations.resize(0);
 				const std::size_t lambda_degree = lambda.deg();
 				for (int i = 1; i <= static_cast<int>(code_length); ++i) {
-					std::cout << "\nlambda(field_.alpha(i))= " << lambda(field_.alpha(i)).poly() << " field_.alpha(i)= " << field_.alpha(i)<<" i= "<<i;
+					//std::cout << "\nlambda(field_.alpha(i))= " << lambda(field_.alpha(i)).poly() << " field_.alpha(i)= " << field_.alpha(i)<<" i= "<<i;
 					if (0 == lambda(field_.alpha(i)).poly()) {
 						error_locations.push_back(i);
 						if (lambda_degree == error_locations.size()) {

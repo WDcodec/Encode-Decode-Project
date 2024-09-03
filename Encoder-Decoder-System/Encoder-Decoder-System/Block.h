@@ -74,7 +74,19 @@ namespace wd_codec {
             std::size_t zero_numerators;
             bool unrecoverable;
             galois::field_symbol data[code_length];
+
         };
+        template <typename T, std::size_t code_length, std::size_t fec_length>
+        inline void copy(const T src_data[],
+            const std::size_t& src_length,
+            Block<code_length, fec_length>& dest_block)
+        {
+            for (std::size_t index = 0; index < src_length; ++index)
+            {
+                dest_block.data[index] = static_cast<typename Block<code_length, fec_length>::symbol_type>(src_data[index]);
+                std::cout << dest_block.data[index] ;
+            }
+        }
     }
 }
 
