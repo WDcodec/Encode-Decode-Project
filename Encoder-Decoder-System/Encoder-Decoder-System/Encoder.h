@@ -86,7 +86,7 @@ namespace wd_codec
 					data[i] = rsblock[code_length - 1 - i];
 				}
 			}
-			
+
 		};
 	}
 }

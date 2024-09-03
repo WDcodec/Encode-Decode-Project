@@ -119,16 +119,7 @@ namespace wd_codec {
             //        dest_block.data[index] = static_cast<typename Block<code_length, fec_length>::symbol_type>(*src_data);
             //    }
             //}
-            template <typename T, std::size_t code_length, std::size_t fec_length>
-            inline void copy(const T src_data[],
-                const std::size_t& src_length,
-                Block<code_length, fec_length>& dest_block)
-            {
-                for (std::size_t index = 0; index < src_length; ++index)
-                {
-                    dest_block.data[index] = static_cast<typename Block<code_length, fec_length>::symbol_type>(src_data[index]);
-                }
-            }
+      
 
             //template <std::size_t code_length, std::size_t fec_length, std::size_t stack_size>
             //inline void copy(const block<code_length, fec_length>  src_block_stack[stack_size],
@@ -214,6 +205,16 @@ namespace wd_codec {
                 }
             }*/
         };
+        template <typename T, std::size_t code_length, std::size_t fec_length>
+        inline void copy(const T src_data[],
+            const std::size_t& src_length,
+            Block<code_length, fec_length>& dest_block)
+        {
+            for (std::size_t index = 0; index < src_length; ++index)
+            {
+                dest_block.data[index] = static_cast<typename Block<code_length, fec_length>::symbol_type>(src_data[index]);
+            }
+        }
     }
 }
 

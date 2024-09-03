@@ -11,27 +11,21 @@ namespace wd_codec
 		Polynomial::Polynomial(const Field& gfield)
 			: field_(const_cast<Field&>(gfield))
 		{
-			wd_codec::Logger::log(wd_codec::INFO, " Start Generate Polynomial.");
 			poly_.clear();
 			poly_.reserve(256);//set the capacity to 256
-			wd_codec::Logger::log(wd_codec::INFO, " Finish Generate Polynomial.");
-
 		}
 
 		Polynomial::Polynomial(const Field& gfield, const unsigned int& degree)
 			: field_(const_cast<Field&>(gfield))
 		{
-			wd_codec::Logger::log(wd_codec::INFO, " Start Generate Polynomial.");
 			poly_.reserve(256);//set the capacity to 256
 			//resize the poly_ to degree+1 size, and peds the poly_ with  Field_Element(field_, 0)
 			poly_.resize(degree + 1, Field_Element(field_, 0));
-			wd_codec::Logger::log(wd_codec::INFO, " Finish Generate Polynomial.");
 		}
 
 		Polynomial::Polynomial(const Field& gfield, const unsigned int& degree, const Field_Element element[])
 			: field_(const_cast<Field&>(gfield))
 		{
-			wd_codec::Logger::log(wd_codec::INFO, " Start Generate Polynomial.");
 			poly_.reserve(256);
 
 			if (element != NULL)
@@ -47,7 +41,6 @@ namespace wd_codec
 			}
 			else
 				poly_.resize(degree + 1, Field_Element(field_, 0));
-			wd_codec::Logger::log(wd_codec::INFO, " Finish Generate Polynomial.");
 		}
 
 		Polynomial::Polynomial(const Polynomial& polynomial)
@@ -58,9 +51,7 @@ namespace wd_codec
 		Polynomial::Polynomial(const Field_Element& element)
 			: field_(const_cast<Field&>(element.galois_field()))
 		{
-			wd_codec::Logger::log(wd_codec::INFO, " Start Generate Polynomial.");
 			poly_.resize(1, element);
-			wd_codec::Logger::log(wd_codec::INFO, " Finish Generate Polynomial.");
 		}
 
 		// Placing operators: 
@@ -409,7 +400,7 @@ namespace wd_codec
 
 			if (field_.size() > 1) {
 				Polynomial deriv(field_, deg());
-				const std::size_t upper_bound = poly_.size();
+				const std::size_t upper_bound = poly_.size() - 1;
 				//i+=2 becuase poly_[i + 1] * 0 = 0.
 				//poly_[i + 1] * 1 = poly_[i + 1];
 				for (std::size_t i = 0; i < upper_bound; i += 2)

@@ -86,15 +86,15 @@ int main()
     wd_codec::reed_solomon::File_Encoder<code_length, fec_length>
         (
             encoder,
-            input_file_name,
-            rsencoded_output_file_name
+            input_file_name,//the original file
+            rsencoded_output_file_name//the encoded file
         );
 
    wd_codec::error_injection::inject_random_errors<code_length, fec_length>(rsencoded_output_file_name);
    wd_codec::reed_solomon::File_Decoder<code_length, fec_length>
        (
            decoder,
-           deinterleaved_output_file_name,
+           rsencoded_output_file_name,
            rsdecoded_file_name
        );
 

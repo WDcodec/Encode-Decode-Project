@@ -66,8 +66,7 @@ namespace wd_codec {
                     std::ofstream& out_stream)
                 {
                     in_stream.read(&buffer_[0], static_cast<std::streamsize>(code_length));
-                    //copy<char, code_length, fec_length>(buffer_, code_length, block_);
-                    Block<code_length, fec_length>::copy(buffer_, code_length, block_);
+                    copy<char, code_length, fec_length>(buffer_, code_length, block_);
 
                     if (!decoder.decode(block_))
                     {

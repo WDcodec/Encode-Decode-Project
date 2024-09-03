@@ -129,7 +129,9 @@ namespace wd_codec
 			return b + Field_Element(b.galois_field(), a);
 		}
 		inline Polynomial operator - (const Polynomial& a, const Polynomial& b) {
-			return a - b;
+			Polynomial result = a;
+			result -= b;
+			return result;
 		}
 		inline Polynomial operator - (const Polynomial& a, const Field_Element& b) {
 			Polynomial result = a;
