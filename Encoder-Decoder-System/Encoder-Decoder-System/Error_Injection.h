@@ -44,8 +44,8 @@ namespace wd_codec {
                 // Inject random errors
                 std::set<std::size_t> error_indices;
                 int counter_errors = 0;
-                /*while (counter_errors < fec_length / 2)
-                {*/
+                while (counter_errors < fec_length / 2)
+                {
                     std::size_t random_index = byte_dis(gen);
                     // Valid condition
                     if (random_index < current_chunk_size)
@@ -53,7 +53,7 @@ namespace wd_codec {
                         error_indices.insert(random_index);
                         counter_errors++;
                     }
-                //}
+                }
 
                 for (std::size_t index : error_indices)
                 {
