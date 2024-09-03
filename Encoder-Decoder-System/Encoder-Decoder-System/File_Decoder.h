@@ -3,7 +3,7 @@
 #include <fstream>
 #include "Block.h"
 #include "Decoder.h"
-//#include "Fileio.h"
+#include "Fileio.h"
 namespace wd_codec {
 	namespace reed_solomon {
             template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
@@ -66,7 +66,8 @@ namespace wd_codec {
                     std::ofstream& out_stream)
                 {
                     in_stream.read(&buffer_[0], static_cast<std::streamsize>(code_length));
-                    copy<char, code_length, fec_length>(buffer_, code_length, block_);
+                    //copy<char, code_length, fec_length>(buffer_, code_length, block_);
+                    Block<code_length, fec_length>::copy(buffer_, code_length, block_);
 
                     if (!decoder.decode(block_))
                     {
@@ -134,4 +135,5 @@ namespace wd_codec {
 
 	}
 }
+
 

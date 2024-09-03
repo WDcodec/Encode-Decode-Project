@@ -11,7 +11,8 @@
 #include "Fileio.h"
 #include "File_Encoder.h"
 #include "Error_Injection.h"
-
+#include "Decoder.h"
+#include "File_Decoder.h"
 void create_file(const std::string& file_name, const std::size_t file_size)
 {
     //TODO: reading file from exiting files instead of create new file
@@ -52,7 +53,10 @@ int main()
 
     const std::string input_file_name = "input.dat";
     const std::string rsencoded_output_file_name = "output.rsenc";
+    const std::string deinterleaved_output_file_name = "output.deintr";
+
     const std::string rsdecoded_file_name = "output.rsdec";
+    const std::size_t gen_poly_index = 120;
 
     /* Instantiate Finite Field and Generator Polynomials */
     const wd_codec::galois::Field field(field_descriptor,
@@ -72,7 +76,10 @@ int main()
     wd_codec::Logger::log(wd_codec::INFO, " G(x)= ", generator_polynomial);
 
     typedef wd_codec::reed_solomon::Encoder<code_length, fec_length, data_length> encoder_t;
+    typedef wd_codec::reed_solomon::Decoder<code_length, fec_length, data_length> decoder_t;
+
     const encoder_t encoder(field, generator_polynomial);
+    const decoder_t decoder(field, gen_poly_index);
 
     create_file(input_file_name, data_length * stack_size - 3);
 
@@ -84,7 +91,13 @@ int main()
         );
 
    wd_codec::error_injection::inject_random_errors<code_length, fec_length>(rsencoded_output_file_name);
-   
+   wd_codec::reed_solomon::File_Decoder<code_length, fec_length>
+       (
+           decoder,
+           deinterleaved_output_file_name,
+           rsdecoded_file_name
+       );
+
     wd_codec::Logger::close();
 }
 
