@@ -15,12 +15,12 @@ namespace wd_codec {
 
     namespace reed_solomon {
         template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
-
         class File_Encoder
         {
 
         public:
             typedef Encoder<code_length, fec_length> encoder_type;
+            typedef typename encoder_type::block_type block_type;
 
 
             File_Encoder(const encoder_type& encoder,
@@ -71,7 +71,7 @@ namespace wd_codec {
             }
         private:
 
-            void process_block(const encoder_type& encoder,
+             void process_block(const encoder_type& encoder,
                 std::ifstream& in_stream,
                 std::ofstream& out_stream,
                 const std::size_t& read_amount) {
@@ -79,7 +79,7 @@ namespace wd_codec {
                 //copy k bytes from the buffer to current block
                 for (std::size_t i = 0; i < read_amount; ++i)
                 {
-                    //    block_.data[i] = (data_buffer_[i] & 0xFF);
+                      block_.data[i] = (data_buffer_[i] & 0xFF);
                 }
 
                 // padding zeros if needed
@@ -87,26 +87,37 @@ namespace wd_codec {
                 {
                     for (std::size_t i = read_amount; i < data_length; ++i)
                     {
-                        //  block_.data[i] = 0x00;
+                          block_.data[i] = 0x00;
                     }
                 }
 
-                /*  if (!encoder.encode(block_))
+                  if (!encoder.encode(block_))
                   {
                       wd_codec::Logger::log(wd_codec::ERROR, " file_encoder() - Error during encoding of block!");
                       return;
-                  }*/
+                  }
+
+                  std::cout << "\nEncode word: [";
+                  for (std::size_t i = 0; i < code_length; ++i)
+                  {
+                      if (i == data_length)
+                          std::cout << " ++ ";
+                      std::cout << static_cast<char>(block_[i]);
+                  }
+                  std::cout << "]\n";
+
 
                 for (std::size_t i = 0; i < fec_length; ++i)
                 {
-                    //    fec_buffer_[i] = static_cast<char>(block_.fec(i) & 0xFF);
+                       fec_buffer_[i] = static_cast<char>(block_.fec(i) & 0xFF);
                 }
 
                 out_stream.write(&data_buffer_[0], static_cast<std::streamsize>(read_amount));
-                 out_stream.write(&fec_buffer_[0], fec_length);
+                out_stream.write(&fec_buffer_[0], fec_length);
 
             }
-            //        block_type block_;
+            
+            block_type block_;
             char data_buffer_[data_length];
             char fec_buffer_[fec_length];
 

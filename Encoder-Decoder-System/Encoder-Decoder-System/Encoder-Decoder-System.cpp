@@ -1,6 +1,8 @@
 // Encoder-Decoder-System.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+#include <sstream>
+#include <ctime>
 #include "Logger.h";
 #include "Field.h";
 #include "Polynomial.h"
@@ -15,11 +17,11 @@ void create_file(const std::string& file_name, const std::size_t file_size)
     //TODO: reading file from exiting files instead of create new file
     std::string buffer = std::string(file_size, 0x00);
 
-    for (std::size_t i = 0; i < buffer.size(); ++i)
+    for (std::size_t i = 0; i < buffer.size() - 1; i += 2)
     {
         //buffer[i] = static_cast<unsigned char>(i & 0xFF);
-        buffer[i] = 'p';
-        //std::cout<< static_cast<unsigned char>(i & 0xFF);
+        buffer[i] = 'o';
+        buffer[i + 1] = 'z';
     }
 
     wd_codec::fileio::write_file(file_name, buffer);
@@ -27,7 +29,15 @@ void create_file(const std::string& file_name, const std::size_t file_size)
 
 int main()
 {
+    /*time_t now = time(0);
+    tm timeinfo;
+    localtime_s(&timeinfo, &now);
+    char timestamp[20];
+    strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", &timeinfo);
+    std::string time = timestamp;
+    wd_codec::Logger::init("logfile"+time+".txt");*/
     wd_codec::Logger::init("logfile.txt");
+
     /* Finite Field Parameters */
     const std::size_t field_descriptor = 8;
     const std::size_t generator_polynomial_index = 120;
@@ -73,7 +83,7 @@ int main()
             rsencoded_output_file_name
         );
 
-    wd_codec::error_injection::inject_random_errors<code_length, fec_length>(rsencoded_output_file_name);
+   wd_codec::error_injection::inject_random_errors<code_length, fec_length>(rsencoded_output_file_name);
    
     wd_codec::Logger::close();
 }
