@@ -116,7 +116,6 @@
   <ItemGroup>
     <ClCompile Include="..\Encoder-Decoder-System\Block.cpp" />
     <ClCompile Include="..\Encoder-Decoder-System\decoder.cpp" />
-    <ClCompile Include="..\Encoder-Decoder-System\Encoder-Decoder-System.cpp" />
     <ClCompile Include="..\Encoder-Decoder-System\Encoder.cpp" />
     <ClCompile Include="..\Encoder-Decoder-System\Field.cpp" />
     <ClCompile Include="..\Encoder-Decoder-System\Field_Element.cpp" />
