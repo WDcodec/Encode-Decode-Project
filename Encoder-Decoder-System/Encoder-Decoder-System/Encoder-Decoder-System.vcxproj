@@ -150,6 +150,7 @@
     <ClInclude Include="File_Encoder.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Polynomial.h" />
+    <ClInclude Include="setup_utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Decoder.h" />
