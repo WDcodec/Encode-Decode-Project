@@ -10,7 +10,7 @@ namespace wd_codec {
 	namespace error_injection {
 
         template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
-        inline void inject_random_errors(const std::string& file_name)        {
+        inline void inject_random_errors(const std::string& file_name,int errors_number = 1)        {
             if (!wd_codec::fileio::file_exists(file_name))
             {
                 std::cout << "Error: " << file_name << " does not exist!" << std::endl;
@@ -44,7 +44,7 @@ namespace wd_codec {
                 // Inject random errors
                 std::set<std::size_t> error_indices;
                 int counter_errors = 0;
-                while (counter_errors < fec_length / 2)
+                while (counter_errors <= fec_length / 2 + errors_number)
                 {
                     std::size_t random_index = byte_dis(gen);
                     // Valid condition

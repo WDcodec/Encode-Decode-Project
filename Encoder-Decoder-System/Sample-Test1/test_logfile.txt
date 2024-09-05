@@ -1,4 +1,4 @@
-[2024-09-04 16:28:26] INFO:  Start generate field.
-[2024-09-04 16:28:26] INFO: Decoder - generate decoder.
-[2024-09-04 16:28:26] INFO: Decoder - create lookup tables 
-[2024-09-04 16:28:26] ERROR:  file_encoder() - Error: input file has ZERO size..
+[2024-09-05 10:57:57] INFO:  Start generate field.
+[2024-09-05 10:57:57] INFO: Decoder - generate decoder.
+[2024-09-05 10:57:57] INFO: Decoder - create lookup tables 
+[2024-09-05 10:57:57] ERROR:  file_encoder() - Error: input file has ZERO size..

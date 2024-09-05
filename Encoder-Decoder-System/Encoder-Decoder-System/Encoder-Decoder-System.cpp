@@ -18,12 +18,12 @@ void create_file(const std::string& file_name, const std::size_t file_size)
     //TODO: reading file from exiting files instead of create new file
     std::string buffer = std::string(file_size, 0x00);
 
-    //for (std::size_t i = 0; i < buffer.size() - 1; i += 2)
-    //{
-    //    //buffer[i] = static_cast<unsigned char>(i & 0xFF);
-    //    buffer[i] = 'o';
-    //    buffer[i + 1] = 'z';
-    //}
+    for (std::size_t i = 0; i < buffer.size() - 1; i += 2)
+    {
+        //buffer[i] = static_cast<unsigned char>(i & 0xFF);
+        buffer[i] = 'o';
+        buffer[i + 1] = 'z';
+    }
 
     wd_codec::fileio::write_file(file_name, buffer);
 }

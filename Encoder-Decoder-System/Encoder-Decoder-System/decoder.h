@@ -66,12 +66,13 @@ namespace wd_codec {
 				galois::Polynomial lambda(galois::Field_Element(field_, 1));
 				//using the berlekamp_massey_algorithm to compute the error locator polynomial (lamda)
 				berlekamp_massey_algorithm(lambda, syndrome);
-
+				if(lambda.deg() >= fec_length / 2)
+					return false;
 				std::vector<int> error_locations;
 				//using the chien sreach to compute the error locations using the lamda polynomial
 				chien_sreach(lambda, error_locations);
 
-				if (0 == error_locations.size())
+				if (0 == error_locations.size() ||  error_locations.size() > fec_length/2)
 				{
 					/*
 					  Syndrome is non-zero yet and no error locations have
@@ -201,6 +202,7 @@ namespace wd_codec {
 						}
 					}
 				}
+				std::cout <<"---------------*************************"<< error_locations.size();
 				std::cout << "error_locations: ";
 				for (int x : error_locations) {
 					std::cout << x << " ";
@@ -269,9 +271,9 @@ namespace wd_codec {
 
 					previous_lambda <<= 1;
 				}
-				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
-				std::cout << "lambda: " << lambda<<std::endl;
-				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+				//std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+				//std::cout << "lambda: " << lambda<<std::endl;
+				//std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
 
 			}
 		protected:
