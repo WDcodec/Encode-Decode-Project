@@ -83,21 +83,23 @@ int main()
 
     create_file(input_file_name, data_length * stack_size - 3);
 
-    wd_codec::reed_solomon::File_Encoder<code_length, fec_length>
-        (
-            encoder,
-            input_file_name,//the original file
-            rsencoded_output_file_name//the encoded file
-        );
+    //wd_codec::reed_solomon::File_Encoder<code_length, fec_length>file1();
+    //file1.
+    wd_codec::reed_solomon::File_Encoder<code_length, fec_length> file_encoder(encoder);
 
-   wd_codec::error_injection::inject_random_errors<code_length, fec_length>(rsencoded_output_file_name);
-   wd_codec::reed_solomon::File_Decoder<code_length, fec_length>
-       (
-           decoder,
-           rsencoded_output_file_name,
-           rsdecoded_file_name
-       );
+    // Call the encode function
+    if (!file_encoder.encode( input_file_name, rsencoded_output_file_name)) {
+        std::cout << "Encoding failed." << std::endl;
+        return 1;
+    }
 
+    wd_codec::error_injection::inject_random_errors<code_length, fec_length>(rsencoded_output_file_name);
+    wd_codec::reed_solomon::File_Decoder<code_length, fec_length>
+       file_decoder(decoder);
+    if (!file_decoder.decode(rsencoded_output_file_name,rsdecoded_file_name)) {
+        std::cout << "Encoding failed." << std::endl;
+        return 1;
+    }
     wd_codec::Logger::close();
 }
 

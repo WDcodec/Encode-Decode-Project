@@ -14,54 +14,57 @@ namespace wd_codec {
                 typedef Decoder<code_length, fec_length> decoder_type;
                 typedef typename decoder_type::block_type block_type;
 
-                File_Decoder(const decoder_type& decoder,
-                    const std::string& input_file_name,
+                File_Decoder(const decoder_type& decoder) : decoder(decoder) , current_block_index_(0) {};
+                    
+                bool decode(const std::string& input_file_name,
                     const std::string& output_file_name)
-                    : current_block_index_(0)
+                    
                 {
                     std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
 
                     if (remaining_bytes == 0)
                     {
                         std::cout << "reed_solomon::file_decoder() - Error: input file has ZERO size." << std::endl;
-                        return;
+                        return false;
                     }
 
                     std::ifstream in_stream(input_file_name.c_str(), std::ios::binary);
                     if (!in_stream)
                     {
                         std::cout << "reed_solomon::file_decoder() - Error: input file could not be opened." << std::endl;
-                        return;
+                        return false;
                     }
 
                     std::ofstream out_stream(output_file_name.c_str(), std::ios::binary);
                     if (!out_stream)
                     {
                         std::cout << "reed_solomon::file_decoder() - Error: output file could not be created." << std::endl;
-                        return;
+                        return false;
                     }
 
                     current_block_index_ = 0;
 
                     while (remaining_bytes >= code_length)
                     {
-                        process_complete_block(decoder, in_stream, out_stream);
+                        process_complete_block(in_stream, out_stream);
                         remaining_bytes -= code_length;
                         current_block_index_++;
                     }
                      
                     if (remaining_bytes > 0)
                     {
-                        process_partial_block(decoder, in_stream, out_stream, remaining_bytes);
+                        process_partial_block(in_stream, out_stream, remaining_bytes);
                     }
 
                     in_stream.close();
                     out_stream.close();
+
+                    return true;
                 }
 
             private:
 
-                inline void process_complete_block(const decoder_type& decoder,
+                inline bool process_complete_block(
                     std::ifstream& in_stream,
                     std::ofstream& out_stream)
                 {
@@ -71,7 +74,7 @@ namespace wd_codec {
                     if (!decoder.decode(block_))
                     {
                         std::cout << "reed_solomon::file_decoder.process_complete_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
-                        return;
+                        return false;
                     }
 
                     for (std::size_t i = 0; i < data_length; ++i)
@@ -80,9 +83,10 @@ namespace wd_codec {
                     }
 
                     out_stream.write(&buffer_[0], static_cast<std::streamsize>(data_length));
+                    return true;
                 }
 
-                inline void process_partial_block(const decoder_type& decoder,
+                inline bool process_partial_block(
                     std::ifstream& in_stream,
                     std::ofstream& out_stream,
                     const std::size_t& read_amount)
@@ -90,7 +94,7 @@ namespace wd_codec {
                     if (read_amount <= fec_length)
                     {
                         std::cout << "reed_solomon::file_decoder.process_partial_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
-                        return;
+                        return false;
                     }
 
                     in_stream.read(&buffer_[0], static_cast<std::streamsize>(read_amount));
@@ -116,7 +120,7 @@ namespace wd_codec {
                     if (!decoder.decode(block_))
                     {
                         std::cout << "reed_solomon::file_decoder.process_partial_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
-                        return;
+                        return false;
                     }
 
                     for (std::size_t i = 0; i < (read_amount - fec_length); ++i)
@@ -125,8 +129,9 @@ namespace wd_codec {
                     }
 
                     out_stream.write(&buffer_[0], static_cast<std::streamsize>(read_amount - fec_length));
+                    return true;
                 }
-
+                const decoder_type& decoder;
                 block_type block_;
                 std::size_t current_block_index_;
                 char buffer_[code_length];  
