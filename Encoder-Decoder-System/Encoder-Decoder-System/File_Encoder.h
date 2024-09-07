@@ -154,11 +154,14 @@ namespace wd_codec {
             typedef Encoder<code_length, fec_length> encoder_type;
             typedef typename encoder_type::block_type block_type;
 
-
             File_Encoder(const encoder_type& encoder) :encoder(encoder){};
             bool encode(const std::string& input_file_name,
                 const std::string& output_file_name) 
             {
+                if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
+                    const std::string binaryFilePath = "binary_image_data.bin";
+                    fileio::convertImageToBinary(input_file_name, binaryFilePath);
+                }
                 std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
                 if (remaining_bytes == 0)
                 {
@@ -231,14 +234,14 @@ namespace wd_codec {
                     return false;
                 }
 
-                std::cout << "\nEncode word: [";
+             /*   std::cout << "\nEncode word: [";
                 for (std::size_t i = 0; i < code_length; ++i)
                 {
                     if (i == data_length)
                         std::cout << " ++ ";
                     std::cout << static_cast<char>(block_[i]);
                 }
-                std::cout << "]\n";
+                std::cout << "]\n";*/
 
 
                 for (std::size_t i = 0; i < fec_length; ++i)

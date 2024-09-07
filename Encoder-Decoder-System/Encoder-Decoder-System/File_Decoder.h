@@ -20,6 +20,7 @@ namespace wd_codec {
                     const std::string& output_file_name)
                     
                 {
+    
                     std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
 
                     if (remaining_bytes == 0)
@@ -58,7 +59,10 @@ namespace wd_codec {
 
                     in_stream.close();
                     out_stream.close();
-
+                    if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
+                        const std::string imageFilePath = "binary_image_data.bmp";
+                        fileio::convertBinaryToImage(output_file_name, imageFilePath);
+                    }
                     return true;
                 }
 
