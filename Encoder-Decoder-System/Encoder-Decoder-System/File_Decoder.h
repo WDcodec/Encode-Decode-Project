@@ -5,14 +5,14 @@
 #include "Decoder.h"
 #include "Fileio.h"
 namespace wd_codec {
-	namespace reed_solomon {
-            template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
-            class File_Decoder
-            {
-            public:
+    namespace reed_solomon {
+        template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
+        class File_Decoder
+        {
+        public:
 
-                typedef Decoder<code_length, fec_length> decoder_type;
-                typedef typename decoder_type::block_type block_type;
+            typedef Decoder<code_length, fec_length> decoder_type;
+            typedef typename decoder_type::block_type block_type;
 
                 File_Decoder(const decoder_type& decoder) : decoder(decoder) , current_block_index_(0) {};
                     
@@ -43,7 +43,7 @@ namespace wd_codec {
                         return false;
                     }
 
-                    current_block_index_ = 0;
+                current_block_index_ = 0;
 
                     while (remaining_bytes >= code_length)
                     {
@@ -66,7 +66,7 @@ namespace wd_codec {
                     return true;
                 }
 
-            private:
+        private:
 
                 inline bool process_complete_block(
                     std::ifstream& in_stream,
@@ -81,10 +81,10 @@ namespace wd_codec {
                         return false;
                     }
 
-                    for (std::size_t i = 0; i < data_length; ++i)
-                    {
-                        buffer_[i] = static_cast<char>(block_[i]);
-                    }
+                for (std::size_t i = 0; i < data_length; ++i)
+                {
+                    buffer_[i] = static_cast<char>(block_[i]);
+                }
 
                     out_stream.write(&buffer_[0], static_cast<std::streamsize>(data_length));
                     return true;
@@ -101,25 +101,25 @@ namespace wd_codec {
                         return false;
                     }
 
-                    in_stream.read(&buffer_[0], static_cast<std::streamsize>(read_amount));
+                in_stream.read(&buffer_[0], static_cast<std::streamsize>(read_amount));
 
-                    for (std::size_t i = 0; i < (read_amount - fec_length); ++i)
-                    {
-                        block_.data[i] = static_cast<typename block_type::symbol_type>(buffer_[i]);
-                    }
-                     
-                    if ((read_amount - fec_length) < data_length)
-                    {
-                        for (std::size_t i = (read_amount - fec_length); i < data_length; ++i)
-                        {
-                            block_.data[i] = 0;
-                        }
-                    }
+                for (std::size_t i = 0; i < (read_amount - fec_length); ++i)
+                {
+                    block_.data[i] = static_cast<typename block_type::symbol_type>(buffer_[i]);
+                }
 
-                    for (std::size_t i = 0; i < fec_length; ++i)
+                if ((read_amount - fec_length) < data_length)
+                {
+                    for (std::size_t i = (read_amount - fec_length); i < data_length; ++i)
                     {
-                        block_.fec(i) = static_cast<typename block_type::symbol_type>(buffer_[(read_amount - fec_length) + i]);
+                        block_.data[i] = 0;
                     }
+                }
+
+                for (std::size_t i = 0; i < fec_length; ++i)
+                {
+                    block_.fec(i) = static_cast<typename block_type::symbol_type>(buffer_[(read_amount - fec_length) + i]);
+                }
 
                     if (!decoder.decode(block_))
                     {
@@ -127,10 +127,10 @@ namespace wd_codec {
                         return false;
                     }
 
-                    for (std::size_t i = 0; i < (read_amount - fec_length); ++i)
-                    {
-                        buffer_[i] = static_cast<char>(block_.data[i]);
-                    }
+                for (std::size_t i = 0; i < (read_amount - fec_length); ++i)
+                {
+                    buffer_[i] = static_cast<char>(block_.data[i]);
+                }
 
                     out_stream.write(&buffer_[0], static_cast<std::streamsize>(read_amount - fec_length));
                     return true;
@@ -141,7 +141,5 @@ namespace wd_codec {
                 char buffer_[code_length];  
 		};
 
-	}
+    }
 }
-
-

@@ -56,7 +56,7 @@
 //                //divide the file to blocks size k
 //                while (remaining_bytes >= data_length)
 //                {
-//                    //encode each block 
+//                    //encode each block
 //                    process_block(encoder, in_stream, out_stream, data_length);
 //                    remaining_bytes -= data_length;
 //                }
@@ -264,3 +264,4 @@ namespace wd_codec {
     }
 
 }
+
