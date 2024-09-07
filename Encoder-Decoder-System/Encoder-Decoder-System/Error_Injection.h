@@ -35,7 +35,7 @@ namespace wd_codec {
             std::uniform_int_distribution<> byte_dis(0, data_length - 1);  // Uniform distribution [0, data_length]
 
             // Process the file in chunks
-            for (std::streamoff offset = 0; offset < file_size; offset += code_length)
+            for (std::streamoff offset = code_length; offset < file_size; offset += code_length)
             {
                 std::streamsize current_chunk_size = (data_length< file_size - offset)? data_length: (file_size - offset);
                 file.seekg(offset);
@@ -59,7 +59,7 @@ namespace wd_codec {
                 {
                     //TODO: change to operator ~
                     buffer[index] = char(buffer[index] + 2); // Corrupt the byte
-                    std::cout << "index= " << index << " buffer[index]= " << (char)buffer[index] << " ~buffer[index]= " << (char)(buffer[index]-2) << "\n";
+                    //std::cout << "index= " << index << " buffer[index]= " << (char)buffer[index] << " ~buffer[index]= " << (char)(buffer[index]-2) << "\n";
                 }
 
                 // Write the corrupted chunk back to the file
