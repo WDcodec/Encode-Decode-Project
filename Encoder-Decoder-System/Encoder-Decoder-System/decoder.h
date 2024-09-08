@@ -141,9 +141,9 @@ namespace wd_codec {
 					const galois::field_symbol denominator = lambda_derivative(alpha_inverse).poly();
 					if (numerator != 0) {
 						if (denominator != 0) {
-							std::cout << "\nbefor: " << char(rsblock[error_location - 1]) << " ";
+							//std::cout << "\nbefor: " << char(rsblock[error_location - 1]) << " ";
 							rsblock[error_location - 1] ^= field_.div(numerator, denominator);
-							std::cout << "after: " << char(rsblock[error_location - 1]) << " ";
+							//std::cout << "after: " << char(rsblock[error_location - 1]) << " ";
 							rsblock.errors_corrected++;
 						}
 						else {
@@ -201,10 +201,10 @@ namespace wd_codec {
 						}
 					}
 				}
-				std::cout << "error_locations: ";
+			/*	std::cout << "error_locations: ";
 				for (int x : error_locations) {
 					std::cout << x << " ";
-				}
+				}*/
 				std::cout << std::endl;
 
 			}

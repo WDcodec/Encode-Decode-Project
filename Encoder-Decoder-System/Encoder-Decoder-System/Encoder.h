@@ -36,7 +36,11 @@ namespace wd_codec
 				//remainder = r(x) = p(x)*x^n-k % g(x).
 				const galois::Polynomial remainder = data % generator_;
 				const galois::field_symbol     mask = field_.mask();
-				//fec_length = n-k, to make sure the remainder is valid. 
+				std::cout << "h";
+				//fec_length = n-k, to make sure the remainder is valid.
+				std::cout << "fec " << fec_length;
+				std::cout << "remainder.deg() " << remainder.deg();
+
 				if (remainder.deg() == (fec_length - 1))
 				{
 					//make rsblock = (reversed) s(x) =  p(x)*x^n-k - r(x)
