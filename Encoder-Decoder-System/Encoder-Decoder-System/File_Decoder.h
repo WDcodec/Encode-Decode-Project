@@ -14,88 +14,92 @@ namespace wd_codec {
             typedef Decoder<code_length, fec_length> decoder_type;
             typedef typename decoder_type::block_type block_type;
 
-            File_Decoder(const decoder_type& decoder) : decoder(decoder), current_block_index_(0) {};
-
-            bool decode(const std::string& input_file_name,
-                const std::string& output_file_name)
-
-            {
-                std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
-
-                if (remaining_bytes == 0)
+                File_Decoder(const decoder_type& decoder) : decoder(decoder) , current_block_index_(0) {};
+                    
+                bool decode(const std::string& input_file_name,
+                    const std::string& output_file_name)
+                    
                 {
-                    std::cout << "reed_solomon::file_decoder() - Error: input file has ZERO size." << std::endl;
-                    return false;
-                }
+    
+                    std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
 
-                std::ifstream in_stream(input_file_name.c_str(), std::ios::binary);
-                if (!in_stream)
-                {
-                    std::cout << "reed_solomon::file_decoder() - Error: input file could not be opened." << std::endl;
-                    return false;
-                }
+                    if (remaining_bytes == 0)
+                    {
+                        std::cout << "reed_solomon::file_decoder() - Error: input file has ZERO size." << std::endl;
+                        return false;
+                    }
 
-                std::ofstream out_stream(output_file_name.c_str(), std::ios::binary);
-                if (!out_stream)
-                {
-                    std::cout << "reed_solomon::file_decoder() - Error: output file could not be created." << std::endl;
-                    return false;
-                }
+                    std::ifstream in_stream(input_file_name.c_str(), std::ios::binary);
+                    if (!in_stream)
+                    {
+                        std::cout << "reed_solomon::file_decoder() - Error: input file could not be opened." << std::endl;
+                        return false;
+                    }
+
+                    std::ofstream out_stream(output_file_name.c_str(), std::ios::binary);
+                    if (!out_stream)
+                    {
+                        std::cout << "reed_solomon::file_decoder() - Error: output file could not be created." << std::endl;
+                        return false;
+                    }
 
                 current_block_index_ = 0;
 
-                while (remaining_bytes >= code_length)
-                {
-                    process_complete_block(in_stream, out_stream);
-                    remaining_bytes -= code_length;
-                    current_block_index_++;
+                    while (remaining_bytes >= code_length)
+                    {
+                        process_complete_block(in_stream, out_stream);
+                        remaining_bytes -= code_length;
+                        current_block_index_++;
+                    }
+                     
+                    if (remaining_bytes > 0)
+                    {
+                        process_partial_block(in_stream, out_stream, remaining_bytes);
+                    }
+
+                    in_stream.close();
+                    out_stream.close();
+                    if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
+                        const std::string imageFilePath = "binary_image_data.bmp";
+                        fileio::convertBinaryToImage(output_file_name, imageFilePath);
+                    }
+                    return true;
                 }
-
-                if (remaining_bytes > 0)
-                {
-                    process_partial_block(in_stream, out_stream, remaining_bytes);
-                }
-
-                in_stream.close();
-                out_stream.close();
-
-                return true;
-            }
 
         private:
 
-            inline bool process_complete_block(
-                std::ifstream& in_stream,
-                std::ofstream& out_stream)
-            {
-                in_stream.read(&buffer_[0], static_cast<std::streamsize>(code_length));
-                copy<char, code_length, fec_length>(buffer_, code_length, block_);
-
-                if (!decoder.decode(block_))
+                inline bool process_complete_block(
+                    std::ifstream& in_stream,
+                    std::ofstream& out_stream)
                 {
-                    std::cout << "reed_solomon::file_decoder.process_complete_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
-                    return false;
-                }
+                    in_stream.read(&buffer_[0], static_cast<std::streamsize>(code_length));
+                    copy<char, code_length, fec_length>(buffer_, code_length, block_);
+
+                    if (!decoder.decode(block_))
+                    {
+                        std::cout << "reed_solomon::file_decoder.process_complete_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
+                        return false;
+                    }
 
                 for (std::size_t i = 0; i < data_length; ++i)
                 {
                     buffer_[i] = static_cast<char>(block_[i]);
                 }
 
-                out_stream.write(&buffer_[0], static_cast<std::streamsize>(data_length));
-                return true;
-            }
-
-            inline bool process_partial_block(
-                std::ifstream& in_stream,
-                std::ofstream& out_stream,
-                const std::size_t& read_amount)
-            {
-                if (read_amount <= fec_length)
-                {
-                    std::cout << "reed_solomon::file_decoder.process_partial_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
-                    return false;
+                    out_stream.write(&buffer_[0], static_cast<std::streamsize>(data_length));
+                    return true;
                 }
+
+                inline bool process_partial_block(
+                    std::ifstream& in_stream,
+                    std::ofstream& out_stream,
+                    const std::size_t& read_amount)
+                {
+                    if (read_amount <= fec_length)
+                    {
+                        std::cout << "reed_solomon::file_decoder.process_partial_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
+                        return false;
+                    }
 
                 in_stream.read(&buffer_[0], static_cast<std::streamsize>(read_amount));
 
@@ -117,25 +121,25 @@ namespace wd_codec {
                     block_.fec(i) = static_cast<typename block_type::symbol_type>(buffer_[(read_amount - fec_length) + i]);
                 }
 
-                if (!decoder.decode(block_))
-                {
-                    std::cout << "reed_solomon::file_decoder.process_partial_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
-                    return false;
-                }
+                    if (!decoder.decode(block_))
+                    {
+                        std::cout << "reed_solomon::file_decoder.process_partial_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
+                        return false;
+                    }
 
                 for (std::size_t i = 0; i < (read_amount - fec_length); ++i)
                 {
                     buffer_[i] = static_cast<char>(block_.data[i]);
                 }
 
-                out_stream.write(&buffer_[0], static_cast<std::streamsize>(read_amount - fec_length));
-                return true;
-            }
-            const decoder_type& decoder;
-            block_type block_;
-            std::size_t current_block_index_;
-            char buffer_[code_length];
-        };
+                    out_stream.write(&buffer_[0], static_cast<std::streamsize>(read_amount - fec_length));
+                    return true;
+                }
+                const decoder_type& decoder;
+                block_type block_;
+                std::size_t current_block_index_;
+                char buffer_[code_length];  
+		};
 
     }
 }
