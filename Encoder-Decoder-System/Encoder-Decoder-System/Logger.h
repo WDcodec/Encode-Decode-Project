@@ -71,6 +71,18 @@ namespace wd_codec {
                 logFile << logEntry.str();
                 logFile.flush(); // Ensure immediate write to file 
             }
+            // Handle critical errors by exiting the program
+            if (level == CRITICAL) {
+                handleCriticalError(message);
+            }
+        }
+        // Handles critical errors by logging and terminating the program
+        static void handleCriticalError(const std::string& message) {
+            std::cerr << "Terminating program..." << std::endl;
+            logFile << "Terminating program..."  << std::endl;
+            logFile.flush(); // Ensure the message is written to the file before exiting
+            close(); // Close the log file properly before exiting
+            std::exit(1); // Graceful exit with a critical error code
         }
 
     private:

@@ -1,6 +1,7 @@
 #include "Field.h"
 #include "Field_Element.h"
 #include "Polynomial.h"
+#include "Logger.h"
 //#include "Polynomial.cpp"
 namespace wd_codec {
     inline bool create_root_generator_polynomial(const galois::Field& field,
@@ -13,6 +14,7 @@ namespace wd_codec {
             ((initial_index + num_elements) > field.size())
             )
         {
+            wd_codec::Logger::log(wd_codec::CRITICAL, "Generator Polynomial - creation faild!");
             return false;
         }
         galois::Polynomial X = galois::generate_X(field);//polynomial X
@@ -23,6 +25,7 @@ namespace wd_codec {
             //alpha^i is the root
             generator_polynomial *= (X + (alpha ^ static_cast<galois::field_symbol>(i)));
         }
+        wd_codec::Logger::log(wd_codec::INFO, "Generator Polynomial - creation succeeded!, G(x)= ", generator_polynomial);
         return true;
     }
 

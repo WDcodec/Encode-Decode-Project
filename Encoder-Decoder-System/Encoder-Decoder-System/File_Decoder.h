@@ -19,57 +19,59 @@ namespace wd_codec {
                 const std::string imageFilePath = "binary_image_corrected.bmp";
                 wd_codec::fileio::convertBinaryToImage(output_file_name, imageFilePath);
             }
-                File_Decoder(const decoder_type& decoder) : decoder(decoder) , current_block_index_(0) {};
-                    
-                bool decode(const std::string& input_file_name,
-                    const std::string& output_file_name)
-                    
+            File_Decoder(const decoder_type& decoder) : decoder(decoder), current_block_index_(0) {};
+
+            bool decode(const std::string& input_file_name,
+                const std::string& output_file_name)
+
+            {//todo:add success decode IS NESSECARY?
+
+                std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
+
+                if (remaining_bytes == 0)
                 {
-    
-                    std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
+                    wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder: input file has ZERO size.");
+                    return false;
+                }
 
-                    if (remaining_bytes == 0)
-                    {
-                        std::cout << "reed_solomon::file_decoder() - Error: input file has ZERO size." << std::endl;
-                        return false;
-                    }
+                std::ifstream in_stream(input_file_name.c_str(), std::ios::binary);
+                if (!in_stream)
+                {
+                    wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder: input file could not be opened.");
+                    return false;
+                }
 
-                    std::ifstream in_stream(input_file_name.c_str(), std::ios::binary);
-                    if (!in_stream)
-                    {
-                        std::cout << "reed_solomon::file_decoder() - Error: input file could not be opened." << std::endl;
-                        return false;
-                    }
-
-                    std::ofstream out_stream(output_file_name.c_str(), std::ios::binary);
-                    if (!out_stream)
-                    {
-                        std::cout << "reed_solomon::file_decoder() - Error: output file could not be created." << std::endl;
-                        return false;
-                    }
+                std::ofstream out_stream(output_file_name.c_str(), std::ios::binary);
+                if (!out_stream)
+                {
+                    wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder: output file could not be created.");
+                    return false;
+                }
 
                 current_block_index_ = 0;
 
-                    while (remaining_bytes >= code_length)
-                    {
-                        process_complete_block(in_stream, out_stream);
-                        remaining_bytes -= code_length;
-                        current_block_index_++;
-                    }
-                     
-                    if (remaining_bytes > 0)
-                    {
-                        process_partial_block(in_stream, out_stream, remaining_bytes);
-                    }
-
-                    in_stream.close();
-                    out_stream.close();
-              /*      if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
-                        const std::string imageFilePath = "binary_image_data.bmp";
-                        fileio::convertBinaryToImage(output_file_name, imageFilePath);
-                    }*/
-                    return true;
+                while (remaining_bytes >= code_length)
+                {
+                    process_complete_block(in_stream, out_stream);
+                    remaining_bytes -= code_length;
+                    current_block_index_++;
                 }
+
+                if (remaining_bytes > 0)
+                {
+                    process_partial_block(in_stream, out_stream, remaining_bytes);
+                }
+
+                in_stream.close();
+                out_stream.close();
+                /*      if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
+                          const std::string imageFilePath = "binary_image_data.bmp";
+                          fileio::convertBinaryToImage(output_file_name, imageFilePath);
+                      }*/
+                wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder succeeded" );
+                return true;
+            }
+               
 
         private:
 
@@ -82,15 +84,13 @@ namespace wd_codec {
 
                     if (!decoder.decode(block_))
                     {
-                        std::cout << "reed_solomon::file_decoder.process_complete_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
+                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_complete_block(): Error during decoding of block"<< current_block_index_ );
                         return false;
                     }
-
-                for (std::size_t i = 0; i < data_length; ++i)
-                {
-                    buffer_[i] = static_cast<char>(block_[i]);
-                }
-
+                    for (std::size_t i = 0; i < data_length; ++i)
+                    {
+                        buffer_[i] = static_cast<char>(block_[i]);
+                    }    
                     out_stream.write(&buffer_[0], static_cast<std::streamsize>(data_length));
                     return true;
                 }
@@ -102,7 +102,7 @@ namespace wd_codec {
                 {
                     if (read_amount <= fec_length)
                     {
-                        std::cout << "reed_solomon::file_decoder.process_partial_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
+                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_partial_block(): Error during decoding of block" << current_block_index_);
                         return false;
                     }
 
@@ -128,7 +128,7 @@ namespace wd_codec {
 
                     if (!decoder.decode(block_))
                     {
-                        std::cout << "reed_solomon::file_decoder.process_partial_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
+                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_partial_block(): Error during decoding of block" << current_block_index_);
                         return false;
                     }
 

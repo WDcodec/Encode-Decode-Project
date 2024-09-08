@@ -15,14 +15,14 @@ namespace wd_codec {
             
             if (!wd_codec::fileio::file_exists(file_name))
             {
-                std::cout << "Error: " << file_name << " does not exist!" << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR,"Error Injection: file does not exist!");
                 return;
             }
 
             std::ifstream file(file_name.c_str(), std::ios::in | std::ios::binary);
             if (!file)
             {
-                std::cout << "Error: Unable to open file for reading!" << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR,"Error Injection: Unable to open file for reading!");
                 return;
             }
 
@@ -59,16 +59,14 @@ namespace wd_codec {
 
                 for (std::size_t index : error_indices)
                 {
-                    //TODO: change to operator ~
                     buffer[index] = char(buffer[index] + 2); // Corrupt the byte
-                    //std::cout << "index= " << index << " buffer[index]= " << (char)buffer[index] << " ~buffer[index]= " << (char)(buffer[index]-2) << "\n";
                 }
 
                 // Write the corrupted chunk back to the file
                 std::ofstream file_out(file_name.c_str(), std::ios::in | std::ios::out | std::ios::binary);
                 if (!file_out)
                 {
-                    std::cout << "Error: Unable to open file for writing!" << std::endl;
+                    wd_codec::Logger::log(wd_codec::ERROR, "Error Injection: Unable to open file for writing!");
                     return;
                 }
 
@@ -87,13 +85,14 @@ namespace wd_codec {
         {
             if (!wd_codec::fileio::file_exists(file_name))
             {
-                std::cout << "corrupt_file() - Error: " << file_name << " does not exist!" << std::endl;
+
+                wd_codec::Logger::log(wd_codec::ERROR, "Error Injection file: file does not exist!");
                 return;
             }
 
             if (static_cast<std::size_t>(start_position + burst_length) >= wd_codec::fileio::file_size(file_name))
             {
-                std::cout << "corrupt_file() - Error: Burst error out of bounds." << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR, "Error Injection file: Burst error out of bounds!");
                 return;
             }
 
@@ -103,6 +102,7 @@ namespace wd_codec {
 
             if (!ifile)
             {
+                wd_codec::Logger::log(wd_codec::ERROR, "Error Injection file: Cannot open file for reading!");
                 return;
             }
 
@@ -119,6 +119,8 @@ namespace wd_codec {
 
             if (!ofile)
             {
+                wd_codec::Logger::log(wd_codec::ERROR, "Error Injection file: Cannot open file for writing!");
+
                 return;
             }
 

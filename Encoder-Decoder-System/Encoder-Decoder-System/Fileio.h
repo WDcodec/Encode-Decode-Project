@@ -18,21 +18,28 @@ namespace wd_codec {
             return static_cast<std::size_t>(file.tellg());
         }
 
-        inline bool file_exists(const std::string& file_name)
+        inline bool file_exists(const std::string& file_name)//errors handle in call
         {
             std::ifstream file(file_name.c_str(), std::ios::binary);
             return ((!file) ? false : true);
         }
 
-        inline void write_file(const std::string& file_name, const std::string& buffer) {
+        inline void write_file(const std::string& file_name, const std::string& buffer) {//todo:handle
             std::ofstream file(file_name, std::ios::binary);
-            if (!file) return;
+            if (!file) {
+                wd_codec::Logger::log(wd_codec::CRITICAL, "Fileio: open file failed!");
+                return;
+            }
+  
             file.write(buffer.data(), static_cast<std::streamsize>(buffer.size()));
         }
 
-        inline void write_file(const std::string& file_name, const char* buffer, std::size_t buffer_size) {
+        inline void write_file(const std::string& file_name, const char* buffer, std::size_t buffer_size) {//todo:handle
             std::ofstream file(file_name, std::ios::binary);
-            if (!file) return;
+            if (!file) {
+                wd_codec::Logger::log(wd_codec::CRITICAL, "Fileio: open file failed!");
+                return;
+            }
             file.write(buffer, static_cast<std::streamsize>(buffer_size));
         }
 

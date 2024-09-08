@@ -24,16 +24,19 @@ namespace wd_codec {
 				gen_initial_index_(gen_initial_index),
 				X_(wd_codec::galois::generate_X(field_))
 			{
-				Logger::log(wd_codec::INFO, "Decoder - generate decoder.");
+				Logger::log(wd_codec::INFO, "Decoder: generate decoder.");
 
 				if (decoder_valid_) {
 					create_lookup_tables();
+				}
+				else {
+					wd_codec::Logger::log(wd_codec::CRITICAL, "Decode:  Decoder not valid!");
 				}
 			}
 
 			//Function that try to detect and correct the errors
 			bool decode(block_type& rsblock) const {
-				Logger::log(wd_codec::INFO, "Decoder - decoding...");
+				Logger::log(wd_codec::INFO, "Decoder: decoding...");
 
 				//TODO: handle the erasure_list
 				if (!decoder_valid_) {
@@ -42,6 +45,7 @@ namespace wd_codec {
 					rsblock.zero_numerators = 0;
 					rsblock.unrecoverable = true;
 					//rsblock.error = block_type::e_decoder_error0;
+					wd_codec::Logger::log(wd_codec::CRITICAL, "Decode:  Decoder not valid!");
 
 					return false;
 				}
@@ -86,13 +90,13 @@ namespace wd_codec {
 					rsblock.zero_numerators = 0;
 					rsblock.unrecoverable = true;
 					//rsblock.error = block_type::e_decoder_error1;
-
+					wd_codec::Logger::log(wd_codec::CRITICAL, "Decode: Decode failed!");
 					return false;
 				}
 				else
 					rsblock.errors_detected = error_locations.size();
 				//correct the errors 
-				return forney_algorithm(error_locations, lambda, syndrome, rsblock);
+				return forney_algorithm(error_locations, lambda, syndrome, rsblock);//handle error in forny
 
 			}
 
@@ -148,7 +152,7 @@ namespace wd_codec {
 						}
 						else {
 							//if the denominator equal to 0, cannot evaluate
-							//TODO: handle error.
+							wd_codec::Logger::log(wd_codec::CRITICAL, "Decode: correction errors failed!");
 							return false;
 						}
 
@@ -163,7 +167,7 @@ namespace wd_codec {
 					return true;
 				else
 				{
-					//TODO: handle error.
+					wd_codec::Logger::log(wd_codec::ERROR, "Decode:  correction errors failed!");
 					return false;
 				}
 			}

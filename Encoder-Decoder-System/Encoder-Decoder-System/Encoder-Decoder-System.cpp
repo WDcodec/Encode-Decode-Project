@@ -4,8 +4,9 @@
 
 #include "setup_utilities.h"
 int main()
-{
+{//todo : insted of if encode return 1 just call encode function
     wd_codec::setup();
+  
     const wd_codec::Encoder encoder(wd_codec::field, wd_codec::generator_polynomial);
     const wd_codec::Decoder decoder(wd_codec::field, wd_codec::generator_polynomial_index);
 
@@ -16,13 +17,11 @@ int main()
     int choice;
     std::cin >> choice;
     if (choice == 1) {
-        //TODO: handle string input;
         std::string message = "An expert is someone who knows more and more about less and "
             "less until they know absolutely everything about nothing";
         message.resize(wd_codec::code_length, 0x00);
         if (!encoder.encode(wd_codec::block, message))
         {
-            std::cout << "Error - Critical encoding failure! ";
             return 1;
         }
         else {
@@ -33,7 +32,6 @@ int main()
             }
             std::cout << "]\n";
         }
-
     }
     if(choice == 2) {        //TODO: handle the files names will be input from the client
         const std::string input_file_name = "input.dat";
@@ -42,9 +40,8 @@ int main()
         const std::string rsdecoded_file_name = "output.rsdec";
         wd_codec::fileio::create_file(input_file_name, wd_codec::data_length * wd_codec::stack_size - 3);
         // Call the encode function
-        wd_codec::Logger::log(wd_codec::INFO, " G(x)= ", wd_codec::generator_polynomial);
+     //   wd_codec::Logger::log(wd_codec::INFO, " G(x)= ", wd_codec::generator_polynomial);
         if (!file_encoder.encode(input_file_name, rsencoded_output_file_name)) {
-            std::cout << "Encoding failed." << std::endl;
             return 1;
         }
         wd_codec::error_injection::inject_random_errors<wd_codec::code_length, wd_codec::fec_length>(rsencoded_output_file_name);
@@ -60,7 +57,6 @@ int main()
         // Call the encode function
         wd_codec::Logger::log(wd_codec::INFO, " G(x)= ", wd_codec::generator_polynomial);
         if (!file_encoder.encode_image(input_file_name, rsencoded_output_file_name)) {
-            std::cout << "Encoding failed." << std::endl;
             return 1;
         }
         wd_codec::error_injection::inject_random_errors_for_image<wd_codec::code_length, wd_codec::fec_length>(rsencoded_output_file_name);

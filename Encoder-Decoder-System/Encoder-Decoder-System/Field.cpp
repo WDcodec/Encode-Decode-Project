@@ -11,7 +11,7 @@ namespace wd_codec {
             prim_poly_deg_(primpoly_deg),
             //to reach last number in gf(a^power)
             field_size_((1 << power_) - 1)
-        {
+           {
             wd_codec::Logger::log(wd_codec::INFO, " Start generate field.");
             alpha_to_ = new field_symbol[field_size_ + 1];
             index_of_ = new field_symbol[field_size_ + 1];
