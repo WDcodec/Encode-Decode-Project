@@ -6,7 +6,7 @@
 #include <sstream>
 #include <iomanip>
 #include "Polynomial.h"
-
+#define POSTFIX ".txt"
 namespace wd_codec {
     // Enum to represent log levels 
     enum LogLevel { DEBUG, INFO, WARNING, ERROR, CRITICAL };
@@ -14,13 +14,41 @@ namespace wd_codec {
     class Logger {
     public:
 
-        // Initializes the logger, Opens the log file in append mode 
-        static void init(const std::string& filename) {
+        // Creates a timestamp string in the format "YYYY-MM-DD HH:MM:SS"
+        static void create_timestamp(char* timestamp) {
+            // Get current timestamp 
+            time_t now = time(0);
+            tm timeinfo;
+
+            // Use localtime_s or localtime_r based on the platform
+#ifdef _WIN32
+            localtime_s(&timeinfo, &now);
+#else
+            localtime_r(&now, &timeinfo);
+#endif
+
+            // Format the timestamp
+            strftime(timestamp, 20, "%Y-%m-%d %H:%M:%S", &timeinfo);
+        }
+
+        // Initializes the logger, opens the log file in append mode 
+        static void init() {
+            char timestamp[20];
+            create_timestamp(timestamp);
+
+            // Convert C-style timestamp to std::string for concatenation
+            std::string filename = std::string("logfile_") + timestamp + POSTFIX;
+
+            // Replace spaces and colons in the filename to avoid file system issues
+            for (char& c : filename) {
+                if (c == ' ' || c == ':') {
+                    c = '_';  // Replace spaces and colons with underscores
+                }
+            }
+
             if (!logFile.is_open()) {
-                //TODO: check how is better, keeping the logs from previous running or clean it each start of running
+                // Open the log file in append mode
                 logFile.open(filename, std::ios::out | std::ios::trunc);
-                //without deleteing the logs from previous running:
-                //logFile.open(filename, std::ios::out);
                 if (!logFile.is_open()) {
                     std::cerr << "Error opening log file." << std::endl;
                 }
@@ -43,19 +71,9 @@ namespace wd_codec {
         // Logs a message with a given log level 
         static void log(LogLevel level, const std::string& message)
         {
-            // Get current timestamp 
-            time_t now = time(0);
-            tm timeinfo;
-
-            // Use localtime_s or localtime_r based on the platform
-#ifdef _WIN32
-            localtime_s(&timeinfo, &now);
-#else
-            localtime_r(&now, &timeinfo);
-#endif
-
+           
             char timestamp[20];
-            strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", &timeinfo);
+            create_timestamp(timestamp);
 
             // Create log entry 
             std::ostringstream logEntry;
