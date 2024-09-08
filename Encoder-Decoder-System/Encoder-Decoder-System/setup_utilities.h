@@ -44,7 +44,9 @@ namespace wd_codec {
     typedef wd_codec::reed_solomon::File_Encoder<code_length, fec_length> file_encoder_t;
     typedef wd_codec::reed_solomon::File_Decoder<code_length, fec_length> file_decoder_t;
 
-
+    void close() {
+        wd_codec::Logger::close();
+    }
 
     void setup() {
 
@@ -61,9 +63,7 @@ namespace wd_codec {
 
     }
 
-    void close() {
-        wd_codec::Logger::close();
-    }
+    
 
    
 
