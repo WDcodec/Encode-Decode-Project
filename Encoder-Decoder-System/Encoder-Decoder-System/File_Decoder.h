@@ -16,6 +16,12 @@ namespace wd_codec {
 
                 File_Decoder(const decoder_type& decoder) : decoder(decoder) , current_block_index_(0) {};
                     
+                bool decode_image(const std::string& input_file_name,
+                    const std::string& output_file_name) {
+                    decode(input_file_name, output_file_name);
+                    const std::string imageFilePath = "binary_image_corrected.bmp";
+                    wd_codec::fileio::convertBinaryToImage(output_file_name, imageFilePath);
+                }
                 bool decode(const std::string& input_file_name,
                     const std::string& output_file_name)
                     
