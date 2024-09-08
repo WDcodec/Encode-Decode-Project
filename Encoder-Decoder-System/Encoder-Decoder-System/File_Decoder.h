@@ -13,7 +13,12 @@ namespace wd_codec {
 
             typedef Decoder<code_length, fec_length> decoder_type;
             typedef typename decoder_type::block_type block_type;
-
+            bool decode_image(const std::string& input_file_name,
+                const std::string& output_file_name) {
+                decode(input_file_name, output_file_name);
+                const std::string imageFilePath = "binary_image_corrected.bmp";
+                wd_codec::fileio::convertBinaryToImage(output_file_name, imageFilePath);
+            }
                 File_Decoder(const decoder_type& decoder) : decoder(decoder) , current_block_index_(0) {};
                     
                 bool decode(const std::string& input_file_name,
@@ -59,10 +64,10 @@ namespace wd_codec {
 
                     in_stream.close();
                     out_stream.close();
-                    if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
+              /*      if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
                         const std::string imageFilePath = "binary_image_data.bmp";
                         fileio::convertBinaryToImage(output_file_name, imageFilePath);
-                    }
+                    }*/
                     return true;
                 }
 

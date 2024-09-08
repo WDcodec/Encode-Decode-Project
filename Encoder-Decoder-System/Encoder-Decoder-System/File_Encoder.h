@@ -155,13 +155,20 @@ namespace wd_codec {
             typedef typename encoder_type::block_type block_type;
 
             File_Encoder(const encoder_type& encoder) :encoder(encoder){};
+
+            bool encode_image(const std::string& input_file_name,
+                const std::string& output_file_name) {
+                const std::string binaryFilePath = "binary_image_data.bin";
+                fileio::convertImageToBinary(input_file_name, binaryFilePath);
+                return encode(binaryFilePath, output_file_name);
+            }
             bool encode(const std::string& input_file_name,
                 const std::string& output_file_name) 
             {
-                if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
+               /* if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
                     const std::string binaryFilePath = "binary_image_data.bin";
                     fileio::convertImageToBinary(input_file_name, binaryFilePath);
-                }
+                }*/
                 std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
                 if (remaining_bytes == 0)
                 {

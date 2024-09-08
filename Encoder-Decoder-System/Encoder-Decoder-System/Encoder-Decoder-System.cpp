@@ -40,7 +40,7 @@ int main()
         const std::string rsencoded_output_file_name = "output.rsenc";
         const std::string deinterleaved_output_file_name = "output.deintr";
         const std::string rsdecoded_file_name = "output.rsdec";
-        //wd_codec::fileio::create_file(input_file_name, wd_codec::data_length * wd_codec::stack_size - 3);
+        wd_codec::fileio::create_file(input_file_name, wd_codec::data_length * wd_codec::stack_size - 3);
         // Call the encode function
         wd_codec::Logger::log(wd_codec::INFO, " G(x)= ", wd_codec::generator_polynomial);
         if (!file_encoder.encode(input_file_name, rsencoded_output_file_name)) {
@@ -59,13 +59,13 @@ int main()
         //wd_codec::fileio::create_file(input_file_name, wd_codec::data_length * wd_codec::stack_size - 3);
         // Call the encode function
         wd_codec::Logger::log(wd_codec::INFO, " G(x)= ", wd_codec::generator_polynomial);
-        if (!file_encoder.encode(input_file_name, rsencoded_output_file_name)) {
+        if (!file_encoder.encode_image(input_file_name, rsencoded_output_file_name)) {
             std::cout << "Encoding failed." << std::endl;
             return 1;
         }
-        wd_codec::error_injection::inject_random_errors<wd_codec::code_length, wd_codec::fec_length>(rsencoded_output_file_name);
-        const std::string imageFilePath = "binary_image_data.bmp";
-        wd_codec::fileio::convertBinaryToImage(rsencoded_output_file_name, imageFilePath);
+        wd_codec::error_injection::inject_random_errors_for_image<wd_codec::code_length, wd_codec::fec_length>(rsencoded_output_file_name);
+       // const std::string imageFilePath = "binary_image_data.bmp";
+       // wd_codec::fileio::convertBinaryToImage(rsencoded_output_file_name, imageFilePath);
     }
 
     wd_codec::close();
