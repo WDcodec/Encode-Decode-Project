@@ -250,7 +250,12 @@ namespace wd_codec {
             }
 
             block_type block_;
-            char data_buffer_[data_length];
+            if (data_length > 0) {
+                char data_buffer_[data_length];
+            }
+            else {
+                wd_codec::Logger::log(wd_codec::CRITICAL, "Encoder FAILED");
+            }
             char fec_buffer_[fec_length];
 
 

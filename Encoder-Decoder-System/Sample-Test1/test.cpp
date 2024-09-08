@@ -398,3 +398,70 @@ TEST(EncoderDecoderTests, HandleEmptyFile) {
 //    // Close the logger
 //    wd_codec::Logger::close();
 //}
+
+
+// Test case for handling invalid Reed-Solomon parameters
+TEST(EncoderDecoderTests, HandleInvalidRSParameters) {
+    setupTestEnvironment();
+
+    const std::string input_file_name = "input.dat";
+    const std::string rsencoded_output_file_name = "output.rsenc";
+    const std::string rsdecoded_file_name = "output.rsdec";
+
+    // Create a simple input file
+    createEmptyFile(input_file_name);
+
+    // Define Reed-Solomon parameters with an invalid setup
+    const std::size_t field_descriptor = 8;
+    const std::size_t generator_polynomial_index = 999;  // Invalid index (typically out of range)
+    const std::size_t generator_polynomial_root_count = 32;
+    const std::size_t code_length = 255;
+    const std::size_t fec_length = 260; // Invalid FEC length, exceeds code length
+    const std::size_t data_length = code_length - fec_length;
+
+    // Instantiate Finite Field and Generator Polynomials
+    const wd_codec::galois::Field field(field_descriptor,
+        wd_codec::galois::primitive_polynomial_size06,
+        wd_codec::galois::primitive_polynomial06);
+    wd_codec::galois::Polynomial generator_polynomial(field);
+
+    // Attempt to generate G(X) and expect failure
+    bool generator_polynomial_success = wd_codec::create_root_generator_polynomial(field,
+        generator_polynomial_index,
+        generator_polynomial_root_count,
+        generator_polynomial);
+
+    EXPECT_FALSE(generator_polynomial_success) << "Generator polynomial creation should fail with invalid parameters.";
+
+    if (generator_polynomial_success) {
+        // If the generator polynomial was created (unexpectedly), proceed to test encoder/decoder creation
+        try {
+            typedef wd_codec::reed_solomon::Encoder<code_length, fec_length, data_length> encoder_t;
+            typedef wd_codec::reed_solomon::Decoder<code_length, fec_length, data_length> decoder_t;
+
+            const encoder_t encoder(field, generator_polynomial);
+            const decoder_t decoder(field, generator_polynomial_index);
+
+            // Attempt to perform encoding and decoding
+            wd_codec::reed_solomon::File_Encoder<code_length, fec_length>(
+                encoder,
+                input_file_name,
+                rsencoded_output_file_name
+            );
+
+            wd_codec::reed_solomon::File_Decoder<code_length, fec_length>(
+                decoder,
+                rsencoded_output_file_name,
+                rsdecoded_file_name
+            );
+
+            FAIL() << "Encoder/decoder creation should fail with invalid parameters.";
+        }
+        catch (const std::exception& e) {
+            // Expect an exception to be thrown due to invalid parameters
+            SUCCEED() << "Caught expected exception: " << e.what();
+        }
+    }
+
+    teardownTestEnvironment();
+}
