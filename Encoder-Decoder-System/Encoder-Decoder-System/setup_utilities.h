@@ -1,5 +1,3 @@
-
-
 #pragma once
 
 #include "Logger.h";
@@ -12,6 +10,7 @@
 #include "Error_Injection.h"
 #include "Decoder.h"
 #include "File_Decoder.h"
+
 namespace wd_codec {
 
     /* Finite Field Parameters */
@@ -50,7 +49,7 @@ namespace wd_codec {
 
     void setup() {
 
-        Logger::init("logfile.txt");
+        Logger::init();
         //Generate G(X)
         if (!wd_codec::create_root_generator_polynomial(field,
             generator_polynomial_index,
