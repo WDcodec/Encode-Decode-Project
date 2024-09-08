@@ -56,7 +56,7 @@
 //                //divide the file to blocks size k
 //                while (remaining_bytes >= data_length)
 //                {
-//                    //encode each block 
+//                    //encode each block
 //                    process_block(encoder, in_stream, out_stream, data_length);
 //                    remaining_bytes -= data_length;
 //                }
@@ -154,29 +154,40 @@ namespace wd_codec {
             typedef Encoder<code_length, fec_length> encoder_type;
             typedef typename encoder_type::block_type block_type;
 
+            File_Encoder(const encoder_type& encoder) :encoder(encoder){};
 
-            File_Encoder(const encoder_type& encoder,
-                const std::string& input_file_name,
+            bool encode_image(const std::string& input_file_name,
                 const std::string& output_file_name) {
+                const std::string binaryFilePath = "binary_image_data.bin";
+                fileio::convertImageToBinary(input_file_name, binaryFilePath);
+                return encode(binaryFilePath, output_file_name);
+            }
+            bool encode(const std::string& input_file_name,
+                const std::string& output_file_name) 
+            {
+               /* if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
+                    const std::string binaryFilePath = "binary_image_data.bin";
+                    fileio::convertImageToBinary(input_file_name, binaryFilePath);
+                }*/
                 std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
                 if (remaining_bytes == 0)
                 {
                     wd_codec::Logger::log(wd_codec::ERROR, " file_encoder() - Error: input file has ZERO size..");
-                    return;
+                    return false;
                 }
                 //open input file to read
                 std::ifstream in_stream(input_file_name.c_str(), std::ios::binary);
                 if (!in_stream)
                 {
                     wd_codec::Logger::log(wd_codec::ERROR, " Error: input file could not be opened");
-                    return;
+                    return false;
                 }
                 //open output file to write
                 std::ofstream out_stream(output_file_name.c_str(), std::ios::binary);
                 if (!out_stream)
                 {
                     wd_codec::Logger::log(wd_codec::ERROR, " Error: output file could not be created.");
-                    return;
+                    return false;
                 }
 
                 std::memset(data_buffer_, 0, sizeof(data_buffer_));
@@ -189,24 +200,25 @@ namespace wd_codec {
                 while (remaining_bytes >= data_length)
                 {
                     //encode each block
-                    process_block(encoder, in_stream, out_stream, data_length);
+                    process_block(in_stream, out_stream, data_length);
                     remaining_bytes -= data_length;
                 }
                 //last block
                 if (remaining_bytes > 0)
                 {
-                    process_block(encoder, in_stream, out_stream, remaining_bytes);
+                    process_block(in_stream, out_stream, remaining_bytes);
                 }
                 wd_codec::Logger::log(wd_codec::INFO, " Encode process successed");
                 in_stream.close();
                 out_stream.close();
+
+                return true;
             }
         private:
 
-            void process_block(const encoder_type& encoder,
-                std::ifstream& in_stream,
-                std::ofstream& out_stream,
-                const std::size_t& read_amount) {
+            bool process_block(std::ifstream& in_stream,
+                               std::ofstream& out_stream,
+                               const std::size_t& read_amount) {
                 in_stream.read(&data_buffer_[0], static_cast<std::streamsize>(read_amount));
                 //copy k bytes from the buffer to current block
                 for (std::size_t i = 0; i < read_amount; ++i)
@@ -226,17 +238,17 @@ namespace wd_codec {
                 if (!encoder.encode(block_))
                 {
                     wd_codec::Logger::log(wd_codec::ERROR, " file_encoder() - Error during encoding of block!");
-                    return;
+                    return false;
                 }
 
-                std::cout << "\nEncode word: [";
+             /*   std::cout << "\nEncode word: [";
                 for (std::size_t i = 0; i < code_length; ++i)
                 {
                     if (i == data_length)
                         std::cout << " ++ ";
                     std::cout << static_cast<char>(block_[i]);
                 }
-                std::cout << "]\n";
+                std::cout << "]\n";*/
 
 
                 for (std::size_t i = 0; i < fec_length; ++i)
@@ -247,8 +259,9 @@ namespace wd_codec {
                 out_stream.write(&data_buffer_[0], static_cast<std::streamsize>(read_amount));
                 out_stream.write(&fec_buffer_[0], fec_length);
 
+                return true;
             }
-
+            const encoder_type& encoder;
             block_type block_;
             if (data_length > 0) {
                 char data_buffer_[data_length];
@@ -263,3 +276,4 @@ namespace wd_codec {
     }
 
 }
+
