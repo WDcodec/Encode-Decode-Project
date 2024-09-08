@@ -1,0 +1,3 @@
+[2024-09-08 16:54:35] INFO: Generator Polynomial - creation succeeded!, G(x)= 2 x^0 + 155 x^1 + 135 x^2 + 52 x^3 + 206 x^4 + 88 x^5 + 178 x^6 + 231 x^7 + 217 x^8 + 195 x^9 + 48 x^10 + 145 x^11 + 244 x^12 + 47 x^13 + 184 x^14 + 34 x^15 + 236 x^16 + 13 x^17 + 163 x^18 + 78 x^19 + 18 x^20 + 199 x^21 + 128 x^22 + 34 x^23 + 206 x^24 + 27 x^25 + 238 x^26 + 244 x^27 + 224 x^28 + 175 x^29 + 49 x^30 + 104 x^31 + 1 x^32
+[2024-09-08 16:54:35] INFO: Decoder: generate decoder.
+[2024-09-08 16:54:35] INFO: Decoder - create lookup tables 

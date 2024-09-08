@@ -60,14 +60,10 @@ namespace wd_codec {
 
             inline field_symbol div(const field_symbol& a, const field_symbol& b) const
             {
-              /*#if !defined(NO_GFLUT)
-                return div_table_[a][b];
-              #else*/
                 if ((a == 0) || (b == 0))
                     return 0;
                 else
                     return alpha_to_[normalize(index_of_[a] - index_of_[b] + field_size_)];
-              //#endif
             }
 
             inline field_symbol exp(const field_symbol& a, int n) const
@@ -100,7 +96,6 @@ namespace wd_codec {
             }
 
             inline field_symbol inverse(const field_symbol& val) const {
-                //todo #if
                 return mul_inverse_[val];
             }
 

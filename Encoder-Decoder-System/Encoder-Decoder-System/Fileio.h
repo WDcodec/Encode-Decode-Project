@@ -24,7 +24,7 @@ namespace wd_codec {
             return ((!file) ? false : true);
         }
 
-        inline void write_file(const std::string& file_name, const std::string& buffer) {//todo:handle
+        inline void write_file(const std::string& file_name, const std::string& buffer) {
             std::ofstream file(file_name, std::ios::binary);
             if (!file) {
                 wd_codec::Logger::log(wd_codec::CRITICAL, "Fileio: open file failed!");
@@ -34,7 +34,7 @@ namespace wd_codec {
             file.write(buffer.data(), static_cast<std::streamsize>(buffer.size()));
         }
 
-        inline void write_file(const std::string& file_name, const char* buffer, std::size_t buffer_size) {//todo:handle
+        inline void write_file(const std::string& file_name, const char* buffer, std::size_t buffer_size) {
             std::ofstream file(file_name, std::ios::binary);
             if (!file) {
                 wd_codec::Logger::log(wd_codec::CRITICAL, "Fileio: open file failed!");
@@ -45,12 +45,12 @@ namespace wd_codec {
 
        inline void create_file(const std::string& file_name, const std::size_t file_size)
         {
-            //TODO: reading file from exiting files instead of create new file
             std::string buffer = std::string(file_size, 0x00);
 
             for (std::size_t i = 0; i < buffer.size() - 1; i += 2)
             {
-                //buffer[i] = static_cast<unsigned char>(i & 0xFF);
+                //buffer[i] = static_cast<unsigned char>(i & 0xFF);//example 1
+                //example 2
                 buffer[i] = 'o';
                 buffer[i + 1] = 'z';
             }
@@ -60,7 +60,7 @@ namespace wd_codec {
 
 
 
-       inline bool convertImageToBinary(const std::string& imageFilePath, const std::string& binaryFilePath)
+       inline bool convert……_image_to_binary(const std::string& imageFilePath, const std::string& binaryFilePath)
         {
             std::ifstream image(imageFilePath, std::ios::in | std::ios::binary);
             if (!image)
@@ -85,7 +85,7 @@ namespace wd_codec {
             return true;
         }
 
-       inline bool convertBinaryToImage(const std::string& binaryFilePath, const std::string& imageFilePath)
+       inline bool convert_binary_to_image(const std::string& binaryFilePath, const std::string& imageFilePath)
         {
             std::ifstream binary(binaryFilePath, std::ios::in | std::ios::binary);
             if (!binary)

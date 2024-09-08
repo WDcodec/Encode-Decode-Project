@@ -14,7 +14,7 @@ namespace wd_codec {
             ((initial_index + num_elements) > field.size())
             )
         {
-            wd_codec::Logger::log(wd_codec::CRITICAL, "Generator Polynomial - creation faild!");
+            wd_codec::Logger::log(wd_codec::ERROR, "Generator Polynomial - creation faild!");
             return false;
         }
         galois::Polynomial X = galois::generate_X(field);//polynomial X

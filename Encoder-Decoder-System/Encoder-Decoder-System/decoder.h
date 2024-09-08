@@ -16,7 +16,6 @@ namespace wd_codec {
 		{
 
 		public:
-			//typedef Traits::reed_solomon_triat<code_length, fec_length, data_length> trait;//n, k , n-k
 			typedef Block<code_length, fec_length> block_type;                             //n,k
 			Decoder(const galois::Field& field, const unsigned int& gen_initial_index = 0):
 				decoder_valid_(field.size() == code_length),
@@ -44,9 +43,7 @@ namespace wd_codec {
 					rsblock.errors_corrected = 0;
 					rsblock.zero_numerators = 0;
 					rsblock.unrecoverable = true;
-					//rsblock.error = block_type::e_decoder_error0;
-					wd_codec::Logger::log(wd_codec::CRITICAL, "Decode:  Decoder not valid!");
-
+					wd_codec::Logger::log(wd_codec::ERROR, "Decode:  Decoder not valid!");
 					return false;
 				}
 
@@ -96,7 +93,7 @@ namespace wd_codec {
 				else
 					rsblock.errors_detected = error_locations.size();
 				//correct the errors 
-				return forney_algorithm(error_locations, lambda, syndrome, rsblock);//handle error in forny
+				return forney_algorithm(error_locations, lambda, syndrome, rsblock);
 
 			}
 
@@ -104,7 +101,6 @@ namespace wd_codec {
 			int compute_syndrome(const galois::Polynomial& received,galois::Polynomial& syndrome) const
 			{
 				Logger::log(wd_codec::INFO, "Decoder - compute syndrome.");
-
 				int error_flag = 0;
 				syndrome = galois::Polynomial(field_, fec_length - 1);
 				for (std::size_t i = 0; i < fec_length; i++)
@@ -113,7 +109,6 @@ namespace wd_codec {
 					syndrome[i] = received(syndrome_exponent_table_[i]);
 					error_flag |= syndrome[i].poly();
 				}
-
 				return error_flag;
 			}
 
@@ -139,7 +134,6 @@ namespace wd_codec {
 				std::cout << " Decoder - correction errors:"<<std::endl;
 				for (const unsigned int error_location : error_locations) {
 					// compute the polynomial expression alpha at the error location (alpha^E[i])
-					// TODO: check how is it inversed
 					const galois::field_symbol alpha_inverse = field_.alpha(error_location);
 					const galois::field_symbol numerator = (omega(alpha_inverse) * root_exponent_table_[error_location]).poly();
 					const galois::field_symbol denominator = lambda_derivative(alpha_inverse).poly();
@@ -160,21 +154,19 @@ namespace wd_codec {
 					else {
 						rsblock.zero_numerators++;
 					}
-
 				}
-
 				if (lambda.deg() == static_cast<int>(rsblock.errors_detected))
 					return true;
 				else
 				{
-					wd_codec::Logger::log(wd_codec::ERROR, "Decode:  correction errors failed!");
+					wd_codec::Logger::log(wd_codec::ERROR, "Decode: correction errors failed!");
 					return false;
 				}
 			}
 			void create_lookup_tables()
 			{
 				//root Exponent  : used in chien search , forney algo' to find error positionsby evaluating the error locator polynomial
-				wd_codec::Logger::log(wd_codec::INFO, "Decoder - create lookup tables ");
+				wd_codec::Logger::log(wd_codec::INFO, "Decoder: create lookup tables ");
 				root_exponent_table_.reserve(field_.size() + 1);
 				for (int i = 0; i < static_cast<int>(field_.size() + 1); ++i)
 				{
@@ -197,7 +189,6 @@ namespace wd_codec {
 				error_locations.resize(0);
 				const std::size_t lambda_degree = lambda.deg();
 				for (int i = 1; i <= static_cast<int>(code_length); ++i) {
-					//std::cout << "\nlambda(field_.alpha(i))= " << lambda(field_.alpha(i)).poly() << " field_.alpha(i)= " << field_.alpha(i)<<" i= "<<i;
 					if (0 == lambda(field_.alpha(i)).poly()) {
 						error_locations.push_back(i);
 						if (lambda_degree == error_locations.size()) {
@@ -205,12 +196,6 @@ namespace wd_codec {
 						}
 					}
 				}
-			/*	std::cout << "error_locations: ";
-				for (int x : error_locations) {
-					std::cout << x << " ";
-				}*/
-				std::cout << std::endl;
-
 			}
 
 			void compute_discrepancy(galois::Field_Element& discrepancy,
@@ -225,7 +210,7 @@ namespace wd_codec {
 				const std::size_t upper_bound = std::min(static_cast<int>(l), lambda.deg());
 				discrepancy = 0;
 				for (std::size_t i = 0; i <= upper_bound; ++i)
-				{  //like c(j)*s(i-j)
+				{  // c(j)*s(i-j)
 					discrepancy += lambda[i] * syndrome[round - i];
 				}
 			}
@@ -234,12 +219,6 @@ namespace wd_codec {
 				const galois::Polynomial& syndrome) const
 			{
 				Logger::log(wd_codec::INFO, "Decoder - berlekamp massey algo'.");
-
-				/*
-				   Modified Berlekamp-Massey Algorithm
-				   Identify the shortest length linear feed-back shift register (LFSR)
-				   that will generate the sequence equivalent to the syndrome.
-				*/
 				//f - last faild
 				int i = -1;
 				//|c| - coeffictiont number
@@ -252,8 +231,7 @@ namespace wd_codec {
 				for (std::size_t round = 0; round < fec_length; ++round)
 				{
 					//checking if the current d is good -  discrepancy = 0
-					compute_discrepancy(discrepancy, lambda, syndrome, l, round);
-					
+					compute_discrepancy(discrepancy, lambda, syndrome, l, round);		
 					if (discrepancy != 0)
 					{
 						//computing c+d
@@ -267,16 +245,19 @@ namespace wd_codec {
 							//d = (old c sequence)/discrepancy count
 							previous_lambda = lambda / discrepancy;
 						}
-
 						lambda = tau;
+
 					}
 
 					previous_lambda <<= 1;
 				}
+                #ifdef DEBUG
 				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
-				std::cout << "lambda: " << lambda<<std::endl;
+				std::cout << "lambda: " << lambda << std::endl;
 				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+				#endif // DEBUG
 
+				
 			}
 		protected:
 			void load_message(galois::Polynomial& received, const block_type& rsblock) const
@@ -292,9 +273,10 @@ namespace wd_codec {
 			const galois::Field&                  field_;                  // used in decoding
 			std::vector<galois::field_symbol>     root_exponent_table_;    // Stores root exponents for error correction
 			std::vector<galois::field_symbol>     syndrome_exponent_table_;// Holds syndrome exponents for error detection
-			//std::vector<galois::Polynomial>       gamma_table_;            // Contains gamma polynomials for error correction
 			const galois::Polynomial               X_;                      // for error correction calculations in the Error locations
 			const unsigned int                    gen_initial_index_;      //index for generator polynomial
+			//std::vector<galois::Polynomial>       gamma_table_;            // Contains gamma polynomials for error correction-ERASURES
+
 			
 		};
 

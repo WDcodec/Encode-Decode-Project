@@ -15,16 +15,18 @@ namespace wd_codec {
             typedef typename decoder_type::block_type block_type;
             bool decode_image(const std::string& input_file_name,
                 const std::string& output_file_name) {
-                decode(input_file_name, output_file_name);
+                bool result = decode(input_file_name, output_file_name);
                 const std::string imageFilePath = "binary_image_corrected.bmp";
                 wd_codec::fileio::convertBinaryToImage(output_file_name, imageFilePath);
+                return result;
+                
             }
             File_Decoder(const decoder_type& decoder) : decoder(decoder), current_block_index_(0) {};
 
             bool decode(const std::string& input_file_name,
                 const std::string& output_file_name)
 
-            {//todo:add success decode IS NESSECARY?
+            {
 
                 std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
 
@@ -64,10 +66,6 @@ namespace wd_codec {
 
                 in_stream.close();
                 out_stream.close();
-                /*      if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
-                          const std::string imageFilePath = "binary_image_data.bmp";
-                          fileio::convertBinaryToImage(output_file_name, imageFilePath);
-                      }*/
                 wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder succeeded" );
                 return true;
             }
@@ -84,7 +82,7 @@ namespace wd_codec {
 
                     if (!decoder.decode(block_))
                     {
-                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_complete_block(): Error during decoding of block"<< current_block_index_ );
+                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_complete_block(): Error during decoding of block"/*<< current_block_index_ */);
                         return false;
                     }
                     for (std::size_t i = 0; i < data_length; ++i)
@@ -102,7 +100,7 @@ namespace wd_codec {
                 {
                     if (read_amount <= fec_length)
                     {
-                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_partial_block(): Error during decoding of block" << current_block_index_);
+                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_partial_block(): Error during decoding of block" /*<< current_block_index_ << "!"*/);
                         return false;
                     }
 
@@ -128,7 +126,7 @@ namespace wd_codec {
 
                     if (!decoder.decode(block_))
                     {
-                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_partial_block(): Error during decoding of block" << current_block_index_);
+                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_partial_block(): Error during decoding of block" /*<< current_block_index_<<"!"*/);
                         return false;
                     }
 

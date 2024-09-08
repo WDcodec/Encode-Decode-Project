@@ -62,7 +62,7 @@ namespace wd_codec {
         }
 
         static void log(LogLevel level, const std::string& message, galois::Polynomial& poly) {
-            std::string newMessage = message + poly.convertToString();
+            std::string newMessage = message + poly.convert_to_string();
             wd_codec::Logger::log(wd_codec::INFO, newMessage);
 
         }
@@ -77,7 +77,7 @@ namespace wd_codec {
             // Create log entry 
             std::ostringstream logEntry;
             logEntry << "[" << timestamp << "] "
-                << levelToString(level) << ": " << message
+                << level_to_string(level) << ": " << message
                 << std::endl;
 
             // Output to console 
@@ -90,11 +90,11 @@ namespace wd_codec {
             }
             // Handle critical errors by exiting the program
             if (level == CRITICAL) {
-                handleCriticalError(message);
+                handle_critical_error(message);
             }
         }
         // Handles critical errors by logging and terminating the program
-        static void handleCriticalError(const std::string& message) {
+        static void handle_critical_error(const std::string& message) {
             std::cerr << "Terminating program..." << std::endl;
             logFile << "Terminating program..." << std::endl;
             logFile.flush(); // Ensure the message is written to the file before exiting
@@ -106,7 +106,7 @@ namespace wd_codec {
         static std::ofstream logFile; // File stream for the log file 
 
         // Converts log level to a string for output 
-        static std::string levelToString(LogLevel level)
+        static std::string level_to_string(LogLevel level)
         {
             switch (level) {
             case DEBUG:
