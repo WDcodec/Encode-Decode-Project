@@ -19,6 +19,9 @@ int main()
         //TODO: handle string input;
         std::string message = "An expert is someone who knows more and more about less and "
             "less until they know absolutely everything about nothing";
+#ifdef DEBUG_MODE
+        std::cout << "ggg";
+#endif
         message.resize(wd_codec::code_length, 0x00);
         if (!encoder.encode(wd_codec::block, message))
         {
@@ -37,7 +40,7 @@ int main()
     }
     if(choice == 2) {        //TODO: handle the files names will be input from the client
         const std::string input_file_name = "input.dat";
-        const std::string rsencoded_output_file_name = "output.rsenc";
+        const std::string rsencoded_output_file_name = "output.txt";
         const std::string deinterleaved_output_file_name = "output.deintr";
         const std::string rsdecoded_file_name = "output.rsdec";
         wd_codec::fileio::create_file(input_file_name, wd_codec::data_length * wd_codec::stack_size - 3);
@@ -64,31 +67,15 @@ int main()
             return 1;
         }
         wd_codec::error_injection::inject_random_errors_for_image<wd_codec::code_length, wd_codec::fec_length>(rsencoded_output_file_name);
-       // const std::string imageFilePath = "binary_image_data.bmp";
+        if (!file_decoder.decode_image(rsencoded_output_file_name, rsdecoded_file_name)) {
+            std::cout << "Encoding failed." << std::endl;
+            return 1;
+        }
+        // const std::string imageFilePath = "binary_image_data.bmp";
        // wd_codec::fileio::convertBinaryToImage(rsencoded_output_file_name, imageFilePath);
     }
-
     wd_codec::close();
-
 }
-//#include <sstream>
-//#include <ctime>
-//#include <fstream>
-//#include <vector>
-//#include "Logger.h"
-//#include "Field.h"
-//#include "Polynomial.h"
-//#include "Encoder.h"
-//#include "Generator_polynomial.h"
-//#include "Fileio.h"
-//#include "File_Encoder.h"
-//#include "Error_Injection.h"
-//#include "Decoder.h"
-//#include "File_Decoder.h"
-//
-//void create_file(const std::string& file_name, const std::size_t file_size)
-//{
-//    //TODO: reading file from existing files instead of creating a new file
-//    std::string buffer = std::string(file_size, 0x00);
+
 
 

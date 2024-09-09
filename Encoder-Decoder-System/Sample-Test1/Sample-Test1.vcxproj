@@ -111,6 +111,7 @@
     <ClInclude Include="..\Encoder-Decoder-System\Generator_polynomial.h" />
     <ClInclude Include="..\Encoder-Decoder-System\Logger.h" />
     <ClInclude Include="..\Encoder-Decoder-System\Polynomial.h" />
+    <ClInclude Include="..\Encoder-Decoder-System\setup_utilities.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

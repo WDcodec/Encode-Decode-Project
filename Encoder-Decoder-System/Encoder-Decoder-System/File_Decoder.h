@@ -18,6 +18,7 @@ namespace wd_codec {
                 decode(input_file_name, output_file_name);
                 const std::string imageFilePath = "binary_image_corrected.bmp";
                 wd_codec::fileio::convertBinaryToImage(output_file_name, imageFilePath);
+                return true;
             }
                 File_Decoder(const decoder_type& decoder) : decoder(decoder) , current_block_index_(0) {};
                     

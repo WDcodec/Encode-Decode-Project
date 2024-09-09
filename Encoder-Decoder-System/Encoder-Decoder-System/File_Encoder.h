@@ -154,7 +154,13 @@ namespace wd_codec {
             typedef Encoder<code_length, fec_length> encoder_type;
             typedef typename encoder_type::block_type block_type;
 
-            File_Encoder(const encoder_type& encoder) :encoder(encoder){};
+            File_Encoder(const encoder_type& encoder) :encoder(encoder), blocks_number(0){
+                static_assert(data_length > 0, "data_length must be greater than 0");
+                if (data_length <= 0) {
+                    wd_codec::Logger::log(wd_codec::CRITICAL, "Encoder FAILED: data_length is non-positive");
+                    throw std::invalid_argument("data_length must be greater than 0");
+                }
+            };
 
             bool encode_image(const std::string& input_file_name,
                 const std::string& output_file_name) {
@@ -201,18 +207,32 @@ namespace wd_codec {
                 {
                     //encode each block
                     process_block(in_stream, out_stream, data_length);
+                    inc_blocks_number();
                     remaining_bytes -= data_length;
                 }
                 //last block
                 if (remaining_bytes > 0)
                 {
                     process_block(in_stream, out_stream, remaining_bytes);
+                    
                 }
                 wd_codec::Logger::log(wd_codec::INFO, " Encode process successed");
                 in_stream.close();
                 out_stream.close();
 
                 return true;
+            }
+
+            std::size_t get_blocks_number() {
+                return blocks_number;
+            }
+
+            void set_blocks_number(std::size_t number) {
+                blocks_number = number;
+            }
+
+            void inc_blocks_number() {
+                blocks_number++;
             }
         private:
 
@@ -263,12 +283,9 @@ namespace wd_codec {
             }
             const encoder_type& encoder;
             block_type block_;
-            if (data_length > 0) {
-                char data_buffer_[data_length];
-            }
-            else {
-                wd_codec::Logger::log(wd_codec::CRITICAL, "Encoder FAILED");
-            }
+            std::size_t blocks_number;
+            char data_buffer_[data_length];
+
             char fec_buffer_[fec_length];
 
 
