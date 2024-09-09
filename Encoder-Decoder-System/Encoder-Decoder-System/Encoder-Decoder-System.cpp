@@ -58,7 +58,7 @@ int main()
         const std::string rsdecoded_file_name = "output.rsdec";
         //wd_codec::fileio::create_file(input_file_name, wd_codec::data_length * wd_codec::stack_size - 3);
         // Call the encode function
-        wd_codec::Logger::log(wd_codec::INFO, " G(x)= ", wd_codec::generator_polynomial);
+        //wd_codec::Logger::log(wd_codec::INFO, " G(x)= ", wd_codec::generator_polynomial);
         if (!file_encoder.encode_image(input_file_name, rsencoded_output_file_name)) {
             return 1;
         }

@@ -12,7 +12,9 @@ namespace wd_codec {
             //to reach last number in gf(a^power)
             field_size_((1 << power_) - 1)
            {
-            wd_codec::Logger::log(wd_codec::INFO, " Start generate field.");
+             #ifdef DEBUG
+             wd_codec::Logger::log(wd_codec::INFO, " Start generate field.");
+             #endif // DEBUG
             alpha_to_ = new field_symbol[field_size_ + 1];
             index_of_ = new field_symbol[field_size_ + 1];
 

@@ -25,7 +25,10 @@ namespace wd_codec {
             //alpha^i is the root
             generator_polynomial *= (X + (alpha ^ static_cast<galois::field_symbol>(i)));
         }
+        #ifdef DEBUG
         wd_codec::Logger::log(wd_codec::INFO, "Generator Polynomial - creation succeeded!, G(x)= ", generator_polynomial);
+        #endif // DEBUG
+
         return true;
     }
 

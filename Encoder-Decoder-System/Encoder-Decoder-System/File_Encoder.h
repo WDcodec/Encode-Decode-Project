@@ -28,7 +28,7 @@ namespace wd_codec {
             bool encode_image(const std::string& input_file_name,
                 const std::string& output_file_name) {
                 const std::string binaryFilePath = "binary_image_data.bin";
-                fileio::convertImageToBinary(input_file_name, binaryFilePath);
+                fileio::convertÉÉ_image_to_binary(input_file_name, binaryFilePath);
                 return encode(binaryFilePath, output_file_name);
             }
             bool encode(const std::string& input_file_name,
@@ -59,7 +59,9 @@ namespace wd_codec {
                 std::memset(fec_buffer_, 0, sizeof(fec_buffer_));
 
                 if (remaining_bytes >= data_length) {
+                #ifdef DEBUG
                     wd_codec::Logger::log(wd_codec::INFO, "INFO: dividing the file to blocks with size k");
+                 #endif // DEBUG
                 }
                 //divide the file to blocks size k
                 while (remaining_bytes >= data_length)
@@ -73,7 +75,10 @@ namespace wd_codec {
                 {
                     process_block(in_stream, out_stream, remaining_bytes);
                 }
-                wd_codec::Logger::log(wd_codec::INFO, "File Encoder: Encode process successed");
+                #ifdef DEBUG
+                wd_codec::Logger::log(wd_codec::INFO, "File Encoder: Encode process successed"); 
+                #endif // DEBUG
+              
                 in_stream.close();
                 out_stream.close();
 

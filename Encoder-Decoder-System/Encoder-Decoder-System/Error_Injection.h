@@ -132,7 +132,7 @@ namespace wd_codec {
         inline void inject_random_errors_for_image(const std::string& file_name) {
             inject_random_errors<code_length, fec_length>(file_name, 0, code_length);
             const std::string imageFilePath = "binary_image_corrupted.bmp";
-            wd_codec::fileio::convertBinaryToImage(file_name, imageFilePath);
+            wd_codec::fileio::convert_binary_to_image(file_name, imageFilePath);
         }
 	}
 }

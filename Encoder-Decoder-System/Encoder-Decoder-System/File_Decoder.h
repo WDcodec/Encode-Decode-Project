@@ -17,7 +17,7 @@ namespace wd_codec {
                 const std::string& output_file_name) {
                 bool result = decode(input_file_name, output_file_name);
                 const std::string imageFilePath = "binary_image_corrected.bmp";
-                wd_codec::fileio::convertBinaryToImage(output_file_name, imageFilePath);
+                wd_codec::fileio::convert_binary_to_image(output_file_name, imageFilePath);
                 return result;
                 
             }
@@ -66,7 +66,9 @@ namespace wd_codec {
 
                 in_stream.close();
                 out_stream.close();
+                #ifdef DEBUG
                 wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder succeeded" );
+                #endif // DEBUG
                 return true;
             }
                
