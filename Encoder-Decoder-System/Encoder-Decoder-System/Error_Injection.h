@@ -1,18 +1,30 @@
 #pragma once
 #include "Fileio.h"
+#include "Block.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
 #include <random>
 #include <string>
 #include <set>
-namespace wd_codec {
-	namespace error_injection {
+#include <cstdlib> // For rand()
+#include <ctime>   // For time()
 
+namespace wd_codec {
+    namespace error_injection {
+
+        // Function that inject random errors for primitive input types
+       /* template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
+        inline void inject_random_errors(Block<code_length, fec_length>& rsblock) {
+            for (int i = 0; i < data_length; i += 20) {
+                rsblock[i] = rsblock[i];
+            }
+        }*/
+
+        // Function that inject a lot of random errors for files input
         template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
-       // inline void inject_random_errors(const std::string& file_name)        {
         inline void inject_random_errors(const std::string& file_name, int errors_number = 0, std::size_t start = 0) {
-            
+
             if (!wd_codec::fileio::file_exists(file_name))
             {
                 std::cout << "Error: " << file_name << " does not exist!" << std::endl;
@@ -37,16 +49,17 @@ namespace wd_codec {
             std::uniform_int_distribution<> byte_dis(0, data_length - 1);  // Uniform distribution [0, data_length]
 
             // Process the file in chunks
-            for (std::streamoff offset = code_length; offset < file_size; offset += code_length)
+            for (std::streamoff offset = start; offset < file_size; offset += code_length)
             {
-                std::streamsize current_chunk_size = (data_length< file_size - offset)? data_length: (file_size - offset);
+                std::streamsize current_chunk_size = (data_length < file_size - offset) ? data_length : (file_size - offset);
                 file.seekg(offset);
                 file.read(buffer.data(), current_chunk_size);
 
                 // Inject random errors
                 std::set<std::size_t> error_indices;
                 int counter_errors = 0;
-                while (counter_errors < fec_length / 2)
+                while (counter_errors < fec_length / 2 + errors_number)
+                    //while (counter_errors < 1)
                 {
                     std::size_t random_index = byte_dis(gen);
                     // Valid condition
@@ -60,7 +73,8 @@ namespace wd_codec {
                 for (std::size_t index : error_indices)
                 {
                     //TODO: change to operator ~
-                    buffer[index] = char(buffer[index] + 2); // Corrupt the byte
+                    buffer[index] = char(~buffer[index]); // Corrupt the byte
+                    //buffer[index] = char(buffer[index]+2); // Corrupt the byte
                     //std::cout << "index= " << index << " buffer[index]= " << (char)buffer[index] << " ~buffer[index]= " << (char)(buffer[index]-2) << "\n";
                 }
 
@@ -80,6 +94,55 @@ namespace wd_codec {
             file.close();
         }
 
+
+        // Function that inject little bit random errors
+        void inject_random_errors(const std::string& binaryFilename) {
+            // Open the binary file for reading
+            std::ifstream binaryFile(binaryFilename, std::ios::binary);
+            if (!binaryFile) {
+                std::cerr << "Error opening binary file for reading." << std::endl;
+                return;
+            }
+
+            // Read the binary file into a buffer
+            std::vector<char> buffer((std::istreambuf_iterator<char>(binaryFile)), std::istreambuf_iterator<char>());
+            binaryFile.close();
+
+            // Seed the random number generator
+            std::srand(std::time(nullptr));
+
+            // Number of errors to inject
+            const size_t numErrors = 10; // Adjust the number of errors as needed
+
+            // Inject random errors
+            for (size_t i = 0; i < numErrors; ++i) {
+                size_t index = std::rand() % buffer.size(); // Random index in the buffer
+                buffer[index] = static_cast<char>(std::rand() % 256); // Random byte value
+            }
+
+            // Open the binary file for writing
+            std::ofstream outFile(binaryFilename, std::ios::binary);
+            if (!outFile) {
+                std::cerr << "Error opening binary file for writing." << std::endl;
+                return;
+            }
+
+            // Write the corrupted buffer back to the binary file
+            outFile.write(buffer.data(), buffer.size());
+            outFile.close();
+        }
+
+        template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
+        inline void inject_random_errors_for_image(const std::string& file_name, const std::string& imageFilePath) {
+            inject_random_errors<code_length, fec_length>(file_name, 0, code_length);
+            wd_codec::fileio::convertBinaryToImage<code_length, fec_length>(file_name, imageFilePath);
+        }
+
+        template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
+        inline void inject_random_errors_for_audio(const std::string& file_name, const std::string& audioFilePath) {
+            inject_random_errors(file_name);
+            wd_codec::fileio::convertBinaryToAudio(file_name, audioFilePath);
+        }
 
         inline void corrupt_file_with_burst_errors(const std::string& file_name,
             const long& start_position,
@@ -126,11 +189,5 @@ namespace wd_codec {
             ofile.write(&data[0], burst_length);
             ofile.close();
         }
-        template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
-        inline void inject_random_errors_for_image(const std::string& file_name) {
-            inject_random_errors<code_length, fec_length>(file_name, 0, code_length);
-            const std::string imageFilePath = "binary_image_corrupted.bmp";
-            wd_codec::fileio::convertBinaryToImage(file_name, imageFilePath);
-        }
-	}
+    }
 }

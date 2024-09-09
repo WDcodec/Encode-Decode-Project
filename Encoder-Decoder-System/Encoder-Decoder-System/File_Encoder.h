@@ -154,7 +154,7 @@ namespace wd_codec {
             typedef Encoder<code_length, fec_length> encoder_type;
             typedef typename encoder_type::block_type block_type;
 
-            File_Encoder(const encoder_type& encoder) :encoder(encoder){};
+            File_Encoder(const encoder_type& encoder) :encoder(encoder) {};
 
             bool encode_image(const std::string& input_file_name,
                 const std::string& output_file_name) {
@@ -162,13 +162,21 @@ namespace wd_codec {
                 fileio::convertImageToBinary(input_file_name, binaryFilePath);
                 return encode(binaryFilePath, output_file_name);
             }
+
+            bool encode_audio(const std::string& input_file_name,
+                const std::string& output_file_name) {
+                const std::string binaryFilePath = "binary_audio_data.bin";
+                fileio::converAudioToBinary(input_file_name, binaryFilePath);
+                return encode(binaryFilePath, output_file_name);
+            }
+
             bool encode(const std::string& input_file_name,
-                const std::string& output_file_name) 
+                const std::string& output_file_name)
             {
-               /* if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
-                    const std::string binaryFilePath = "binary_image_data.bin";
-                    fileio::convertImageToBinary(input_file_name, binaryFilePath);
-                }*/
+                /* if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
+                     const std::string binaryFilePath = "binary_image_data.bin";
+                     fileio::convertImageToBinary(input_file_name, binaryFilePath);
+                 }*/
                 std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
                 if (remaining_bytes == 0)
                 {
@@ -208,7 +216,6 @@ namespace wd_codec {
                 {
                     process_block(in_stream, out_stream, remaining_bytes);
                 }
-                wd_codec::Logger::log(wd_codec::INFO, " Encode process successed");
                 in_stream.close();
                 out_stream.close();
 
@@ -217,8 +224,8 @@ namespace wd_codec {
         private:
 
             bool process_block(std::ifstream& in_stream,
-                               std::ofstream& out_stream,
-                               const std::size_t& read_amount) {
+                std::ofstream& out_stream,
+                const std::size_t& read_amount) {
                 in_stream.read(&data_buffer_[0], static_cast<std::streamsize>(read_amount));
                 //copy k bytes from the buffer to current block
                 for (std::size_t i = 0; i < read_amount; ++i)
@@ -241,14 +248,14 @@ namespace wd_codec {
                     return false;
                 }
 
-             /*   std::cout << "\nEncode word: [";
-                for (std::size_t i = 0; i < code_length; ++i)
-                {
-                    if (i == data_length)
-                        std::cout << " ++ ";
-                    std::cout << static_cast<char>(block_[i]);
-                }
-                std::cout << "]\n";*/
+                /*   std::cout << "\nEncode word: [";
+                   for (std::size_t i = 0; i < code_length; ++i)
+                   {
+                       if (i == data_length)
+                           std::cout << " ++ ";
+                       std::cout << static_cast<char>(block_[i]);
+                   }
+                   std::cout << "]\n";*/
 
 
                 for (std::size_t i = 0; i < fec_length; ++i)
