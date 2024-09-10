@@ -28,7 +28,7 @@ namespace wd_codec {
             bool encode_image(const std::string& input_file_name,
                 const std::string& output_file_name) {
                 const std::string binaryFilePath = "binary_image_data.bin";
-                fileio::convertÉÉ_image_to_binary(input_file_name, binaryFilePath);
+                fileio::convert_image_to_binary(input_file_name, binaryFilePath);
                 return encode(binaryFilePath, output_file_name);
             }
 
@@ -41,7 +41,7 @@ namespace wd_codec {
 
             bool encode(const std::string& input_file_name,
                 const std::string& output_file_name)
-            {
+            {//todo:efrat
                 /* if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
                      const std::string binaryFilePath = "binary_image_data.bin";
                      fileio::convertImageToBinary(input_file_name, binaryFilePath);

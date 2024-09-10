@@ -1,24 +1,17 @@
 
 // Encoder-Decoder-System.cpp : This file contains the 'main' function. Program execution begins and ends there.
-
-
-
 #include "setup_utilities.h"
 int main()
 {//todo : insted of if encode return 1 just call encode function
     //FLSE OR TRUE FOR THE DECIDE OF THE DEVELOPER
     wd_codec::setup();
-#ifdef _DEBUG
-    wd_codec::Logger::log(wd_codec::ERROR, "CHEK ");
-#endif // _DEBUG
-
     const wd_codec::Encoder encoder(wd_codec::field, wd_codec::generator_polynomial);
     const wd_codec::Decoder decoder(wd_codec::field, wd_codec::generator_polynomial_index);
 
     wd_codec::file_encoder_t file_encoder(encoder);
     wd_codec::file_decoder_t file_decoder(decoder);
 
-    std::cout << "Enter 1 for primitive input-\n 2 for file input\n 3 for image file";
+    std::cout << "Enter 1 for primitive input-\n 2 for file input\n 3 for image file\n 4  for audio file\n";
     int choice;
     std::cin >> choice;
     if (choice == 1) {
@@ -79,7 +72,7 @@ int main()
         const std::string rsdecoded_file_name = "output.rsdec";
         // Call the encode function
         const std::string binaryFilePath = "binary_image_data.bin";
-        wd_codec::fileio::convertImageToBinary(input_file_name, binaryFilePath);
+        wd_codec::fileio::convert_image_to_binary(input_file_name, binaryFilePath);
         wd_codec::error_injection::inject_random_errors_for_image<wd_codec::code_length, wd_codec::fec_length>(binaryFilePath, "binary_image_corrupted.bmp");
         if (!file_encoder.encode_image(input_file_name, rsencoded_output_file_name)) {
             std::cout << "Encoding failed." << std::endl;
@@ -123,8 +116,6 @@ int main()
             std::cout << "Decoding succeed." << std::endl;
         }
         std::cout << "num blocks " << file_decoder.current_block_index_;
-
-
     }
 
     wd_codec::close();

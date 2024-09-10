@@ -18,11 +18,13 @@ namespace wd_codec {
                 const std::string& output_file_name) {
                 bool result = decode(input_file_name, output_file_name);
                 const std::string imageFilePath = "binary_image_corrected.bmp";
-                if (wd_codec::fileio::convertBinaryToImage<code_length, fec_length>(output_file_name, imageFilePath)) {
-                    std::cout << "Binary to image conversion complete!" << std::endl;
+                if (wd_codec::fileio::convert_binary_to_image<code_length, fec_length>(output_file_name, imageFilePath)) {
+#ifdef DEBUG
+                    wd_codec::Logger::log(wd_codec::INFO, "Binary to image conversion complete!");
+#endif // DEBUG
                 }
                 else {
-                    std::cerr << "Binary to image conversion failed!" << std::endl;
+                    wd_codec::Logger::log(wd_codec::ERROR, "Binary to image conversion failed!");
                 }
                 return result;
             }
@@ -31,7 +33,7 @@ namespace wd_codec {
                 const std::string& output_file_name) {
                 bool result = decode(input_file_name, output_file_name);
                 const std::string imageFilePath = "binary_audio_corrected.opus";
-                wd_codec::fileio::convertBinaryToAudio(output_file_name, imageFilePath);
+                wd_codec::fileio::convert_binary_to_audio(output_file_name, imageFilePath);
                 return result;
             }
 
@@ -39,7 +41,6 @@ namespace wd_codec {
 
             bool decode(const std::string& input_file_name,
                 const std::string& output_file_name)
-
             {
 
                 std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
