@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include<iostream>
 
@@ -57,8 +58,9 @@ namespace wd_codec {
 					rsblock.errors_detected = 0;
 					rsblock.errors_corrected = 0;
 					rsblock.zero_numerators = 0;
-					rsblock.unrecoverable = false;
-
+					rsblock.unrecoverable = false;	
+						out_in_syndrom = true;
+					
 					return true;
 				}
 
@@ -277,6 +279,8 @@ namespace wd_codec {
 				//std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
 
 			}
+			mutable bool out_in_syndrom = false; 
+
 		protected:
 			void load_message(galois::Polynomial& received, const block_type& rsblock) const
 			{

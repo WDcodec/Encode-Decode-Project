@@ -5,7 +5,8 @@
 ////  EXPECT_TRUE(true);
 ////}
 #include <gtest/gtest.h>
-#include "setup_utilities.h"
+#include "Test_Utility.h"
+
 // Helper function to create an empty file
 void createEmptyFile(const std::string& file_name) {
     std::ofstream file(file_name, std::ios::out | std::ios::binary);
@@ -139,33 +140,74 @@ TEST(EncoderDecoderTests, BiggerThanK) {
 	}
 	// Compare the decoded file with the original input file
 	std::size_t expected_block_count = wd_codec::fileio::file_size(input_file_name) / wd_codec::data_length;
-	EXPECT_EQ(expected_block_count, file_encoder.get_blocks_number()) << "Decoded output does not match the original input.";
+	EXPECT_EQ(expected_block_count, file_encoder.get_blocks_number()) << "expected block count is different than the actual blocks number.";
 	// Close the logger
 	wd_codec::Logger::close();
 }
+TEST(EncoderDecoderTests, UnCorruptedEncodeDecodeCycle) {
+#define VALID_TEST 
 
-TEST(EncoderDecoderTests, BiggerThanK2) {
 	wd_codec::setup();
+
 	const std::string input_file_name = "input.dat";
 	const std::string rsencoded_output_file_name = "output_encode.txt";
 	const std::string rsdecoded_file_name = "output_decode.txt";
-	// Create a valid input file bigger than k
+
+	// Create a valid input file
 	wd_codec::fileio::create_file(input_file_name, wd_codec::data_length * wd_codec::stack_size - 3);
-	const wd_codec::Decoder Decoder(wd_codec::field, wd_codec::generator_polynomial);
+	wd_codec::Encoder encoder(wd_codec::field, wd_codec::generator_polynomial);
+	wd_codec::Decoder decoder(wd_codec::field, wd_codec::generator_polynomial_index);
 
 	// Perform encoding
 	wd_codec::file_encoder_t file_encoder(encoder);
+	wd_codec::file_decoder_t file_decoder(decoder);
 
 	if (!file_encoder.encode(input_file_name, rsencoded_output_file_name)) {
 		std::cout << "Encoding failed." << std::endl;
 		return;
 	}
-	// Compare the decoded file with the original input file
-	std::size_t expected_block_count = wd_codec::fileio::file_size(input_file_name) / wd_codec::data_length;
-	EXPECT_EQ(expected_block_count, file_encoder.get_blocks_number()) << "Decoded output does not match the original input.";
+
+	bool decode_success = file_decoder.decode(rsencoded_output_file_name, rsdecoded_file_name);
+
+	// Check if the decoding was successful
+	EXPECT_TRUE(decode_success) << "Decoding failed or syndrome is non-zero.";
+	EXPECT_TRUE(decoder.out_in_syndrom) << "Syndrome check in decode process was not triggered as expected.";
 	// Close the logger
 	wd_codec::Logger::close();
 }
+
+//TEST(EncoderDecoderTests, UnCorruptedEncodeDecodeCycle) {
+//#define VALID_TEST
+//	wd_codec::setup();
+//
+//	const std::string input_file_name = "input.dat";
+//	const std::string rsencoded_output_file_name = "output_encode.txt";
+//	const std::string rsdecoded_file_name = "output_decode.txt";
+//	// Create a valid input file
+//	wd_codec::fileio::create_file(input_file_name, wd_codec::data_length * wd_codec::stack_size - 3);
+//	const wd_codec::Encoder encoder(wd_codec::field, wd_codec::generator_polynomial);
+//	const wd_codec::Decoder decoder(wd_codec::field, wd_codec::generator_polynomial_index);
+//
+//	// Perform encoding
+//	wd_codec::file_encoder_t file_encoder(encoder);
+//	wd_codec::file_decoder_t file_decoder(decoder);
+//	if (!file_encoder.encode(input_file_name, rsencoded_output_file_name)) {
+//		std::cout << "Encoding failed." << std::endl;
+//		return;
+//	}
+//	bool x = file_decoder.decode(rsencoded_output_file_name, rsdecoded_file_name);
+//
+//	// Compare the decoded file with the original input file
+//	EXPECT_TRUE(x) << "Decoded output does not match the original input.";
+//#ifdef VALID_TEST
+//	EXPECT_TRUE(decoder.out_in_syndrom) << "Decoded output does not match the original input.";
+//
+//#endif // 
+//
+//
+//	// Close the logger
+//	wd_codec::Logger::close();
+//}
 
 //TEST(EncoderDecoderTests, FullEncodeDecodeCycle) {
 //

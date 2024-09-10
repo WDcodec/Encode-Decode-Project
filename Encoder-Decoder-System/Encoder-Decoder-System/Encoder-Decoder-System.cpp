@@ -19,9 +19,7 @@ int main()
         //TODO: handle string input;
         std::string message = "An expert is someone who knows more and more about less and "
             "less until they know absolutely everything about nothing";
-#ifdef DEBUG_MODE
-        std::cout << "ggg";
-#endif
+
         message.resize(wd_codec::code_length, 0x00);
         if (!encoder.encode(wd_codec::block, message))
         {
