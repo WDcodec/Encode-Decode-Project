@@ -68,8 +68,7 @@ namespace wd_codec {
 				galois::Polynomial lambda(galois::Field_Element(field_, 1));
 				//using the berlekamp_massey_algorithm to compute the error locator polynomial (lamda)
 				berlekamp_massey_algorithm(lambda, syndrome);
-				if(lambda.deg() > fec_length / 2)
-					return false;
+
 				std::cout << lambda;
 				std::cout <<"lambda.deg() "<< lambda.deg()<<"\n";
 				std::vector<int> error_locations;

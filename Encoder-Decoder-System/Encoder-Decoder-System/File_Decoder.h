@@ -53,14 +53,16 @@ namespace wd_codec {
 
                     while (remaining_bytes >= code_length)
                     {
-                        process_complete_block(in_stream, out_stream);
+                        if(!process_complete_block(in_stream, out_stream))
+                            return false;
                         remaining_bytes -= code_length;
                         current_block_index_++;
                     }
                      
                     if (remaining_bytes > 0)
                     {
-                        process_partial_block(in_stream, out_stream, remaining_bytes);
+                        if (!process_partial_block(in_stream, out_stream, remaining_bytes))
+                            return false;
                     }
 
                     in_stream.close();
