@@ -1,4 +1,3 @@
-
 #pragma once
 #include <ctime>
 #include <fstream>
@@ -62,8 +61,8 @@ namespace wd_codec {
             }
         }
 
-        static void log(LogLevel level,const std::string& message, galois::Polynomial& poly) {
-            std::string newMessage = message + poly.convertToString();
+        static void log(LogLevel level, const std::string& message, galois::Polynomial& poly) {
+            std::string newMessage = message + poly.convert_to_string();
             wd_codec::Logger::log(wd_codec::INFO, newMessage);
 
         }
@@ -78,7 +77,7 @@ namespace wd_codec {
             // Create log entry 
             std::ostringstream logEntry;
             logEntry << "[" << timestamp << "] "
-                << levelToString(level) << ": " << message
+                << level_to_string(level) << ": " << message
                 << std::endl;
 
             // Output to console 
@@ -89,13 +88,25 @@ namespace wd_codec {
                 logFile << logEntry.str();
                 logFile.flush(); // Ensure immediate write to file 
             }
+            // Handle critical errors by exiting the program
+            if (level == CRITICAL) {
+                handle_critical_error(message);
+            }
+        }
+        // Handles critical errors by logging and terminating the program
+        static void handle_critical_error(const std::string& message) {
+            std::cerr << "Terminating program..." << std::endl;
+            logFile << "Terminating program..." << std::endl;
+            logFile.flush(); // Ensure the message is written to the file before exiting
+            close(); // Close the log file properly before exiting
+            std::exit(1); // Graceful exit with a critical error code
         }
 
     private:
         static std::ofstream logFile; // File stream for the log file 
 
         // Converts log level to a string for output 
-        static std::string levelToString(LogLevel level)
+        static std::string level_to_string(LogLevel level)
         {
             switch (level) {
             case DEBUG:
@@ -113,5 +124,17 @@ namespace wd_codec {
             }
         }
     };
+
+
+
+
+
+
+
+
+
+       
+           
+
 
 }

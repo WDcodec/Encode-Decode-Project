@@ -1,5 +1,3 @@
-
-
 #pragma once
 
 #include "Logger.h";
@@ -12,6 +10,7 @@
 #include "Error_Injection.h"
 #include "Decoder.h"
 #include "File_Decoder.h"
+
 namespace wd_codec {
 
     /* Finite Field Parameters */
@@ -35,8 +34,6 @@ namespace wd_codec {
     wd_codec::galois::Polynomial generator_polynomial(field);
     /* Instantiate RS Block For Codec */
     wd_codec::reed_solomon::Block<code_length, fec_length> block;
-        /* Instantiate RS Block For Codec */
-
     /* Instantiate Encoder and Decoder */
     typedef wd_codec::reed_solomon::Encoder<code_length, fec_length, data_length> Encoder;
     typedef wd_codec::reed_solomon::Decoder<code_length, fec_length, data_length> Decoder;
@@ -55,11 +52,8 @@ namespace wd_codec {
         if (!wd_codec::create_root_generator_polynomial(field,
             generator_polynomial_index,
             generator_polynomial_root_count,
-            generator_polynomial)) {
-            //TODO: handle error.
-            std::cout << "not good";
+            generator_polynomial)) {//todo:deledte if 
         }
-        wd_codec::Logger::log(wd_codec::INFO, " G(x)= ", generator_polynomial);
 
     }
 
