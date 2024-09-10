@@ -38,6 +38,7 @@ TEST(EncoderDecoderTests, HandleEmptyFile) {
 }
 
 
+
 //test end to end
 TEST(EncoderDecoderTests, FullEncodeDecodeCycle) {
 	wd_codec::setup();
@@ -119,48 +120,7 @@ TEST(EncoderDecoderTests, UnCorruptedEncodeDecodeCycle) {
 	wd_codec::Logger::close();
 }
 
-//TODO: seperate all the UT to diffrent file
-//TODO: extract all the defentions and function outsize the test to test utility
-//TODO: add unit test for picture.
-const std::string rsencoded_output_file_name_with_residue = "output_encode.txt";
 
-TEST(EncoderDecoderTests, NonDivisibleInputByK) {
-	wd_codec::setup();
-	const std::string input_file_name = "input.dat";
-	// Create a valid input file bigger than k
-	wd_codec::fileio::create_file(input_file_name, wd_codec::data_length * (wd_codec::stack_size - 1) + 200);
-	const wd_codec::Encoder encoder(wd_codec::field, wd_codec::generator_polynomial);
-
-	// Perform encoding
-	wd_codec::file_encoder_t file_encoder(encoder);
-
-	file_encoder.encode(input_file_name, rsencoded_output_file_name_with_residue);
-
-	bool is_residue_handled = file_encoder.get_is_residue_handled();
-	EXPECT_TRUE(is_residue_handled) << "Encode does not handle the last smaller than k block.";
-
-
-	// Close the logger
-	wd_codec::Logger::close();
-}
-
-TEST(EncoderDecoderTests, NonDivisibleInputByN) {
-	wd_codec::setup();
-	const std::string rsdecoded_file_name = "output_decode.txt";
-	const wd_codec::Decoder decoder(wd_codec::field, wd_codec::generator_polynomial_index);
-
-	// Perform encoding
-	wd_codec::file_decoder_t file_decoder(decoder);
-
-	file_decoder.decode(rsencoded_output_file_name_with_residue, rsdecoded_file_name);
-
-	bool is_residue_handled = file_decoder.get_is_residue_handled();
-	EXPECT_TRUE(is_residue_handled) << "Decode does not handle the last smaller than n block.";
-
-
-	// Close the logger
-	wd_codec::Logger::close();
-}
 
 
 TEST(EncoderDecoderTests, HandleTooManyErrors) {

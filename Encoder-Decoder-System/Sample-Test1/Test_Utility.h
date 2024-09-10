@@ -1,18 +1,19 @@
 #pragma once
 #include "setup_utilities.h"
+
 // Helper function to create an empty file
-void createEmptyFile(const std::string& file_name) {
+static inline void createEmptyFile(const std::string& file_name) {
     std::ofstream file(file_name, std::ios::out | std::ios::binary);
     // The file is created empty
 }
-//
-//// Setup and teardown functions for logging
-void setupTestEnvironment() {
+
+// Setup and teardown functions for logging
+static inline void setupTestEnvironment() {
     wd_codec::Logger::init();
 }
 
-//// Helper function to compare files
-bool compare_files(const std::string& file1, const std::string& file2) {
+// Helper function to compare files
+static inline bool compare_files(const std::string& file1, const std::string& file2) {
 	std::ifstream f1(file1, std::ios::binary | std::ios::ate);
 	std::ifstream f2(file2, std::ios::binary | std::ios::ate);
 
