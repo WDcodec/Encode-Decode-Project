@@ -234,6 +234,9 @@ namespace wd_codec {
             void inc_blocks_number() {
                 blocks_number++;
             }
+            bool get_is_residue_handled() {
+                return is_residue_handled;
+            }
         private:
 
             bool process_block(std::ifstream& in_stream,
@@ -253,6 +256,7 @@ namespace wd_codec {
                     {
                         block_.data[i] = 0x00;
                     }
+                    is_residue_handled = true;
                 }
 
                 if (!encoder.encode(block_))
@@ -281,13 +285,14 @@ namespace wd_codec {
 
                 return true;
             }
+
             const encoder_type& encoder;
             block_type block_;
             std::size_t blocks_number;
             char data_buffer_[data_length];
 
             char fec_buffer_[fec_length];
-
+            bool is_residue_handled = false;
 
         };
     }

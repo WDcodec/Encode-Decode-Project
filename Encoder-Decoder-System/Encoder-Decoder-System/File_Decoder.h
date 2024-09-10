@@ -71,7 +71,9 @@ namespace wd_codec {
                     }*/
                     return true;
                 }
-
+                bool get_is_residue_handled() {
+                    return is_residue_handled;
+                }
         private:
 
                 inline bool process_complete_block(
@@ -120,6 +122,7 @@ namespace wd_codec {
                     {
                         block_.data[i] = 0;
                     }
+                    is_residue_handled = true;
                 }
 
                 for (std::size_t i = 0; i < fec_length; ++i)
@@ -141,10 +144,12 @@ namespace wd_codec {
                     out_stream.write(&buffer_[0], static_cast<std::streamsize>(read_amount - fec_length));
                     return true;
                 }
+
                 const decoder_type& decoder;
                 block_type block_;
                 std::size_t current_block_index_;
                 char buffer_[code_length];  
+                bool is_residue_handled = false;
 		};
 
     }
