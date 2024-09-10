@@ -6,19 +6,6 @@
 ////}
 #include <gtest/gtest.h>
 #include "Test_Utility.h"
-
-// Helper function to create an empty file
-void createEmptyFile(const std::string& file_name) {
-    std::ofstream file(file_name, std::ios::out | std::ios::binary);
-    // The file is created empty
-}
-//
-//// Setup and teardown functions for logging
-void setupTestEnvironment() {
-    wd_codec::Logger::init();
-}
-
-
 ///Test case for handling an empty file
 TEST(EncoderDecoderTests, HandleEmptyFile) {
 	const std::string empty_file_name = "empty_input.dat";
@@ -41,7 +28,6 @@ TEST(EncoderDecoderTests, HandleEmptyFile) {
 		wd_codec::file_decoder_t file_decoder(decoder);
 
 		// Check if the encoded file is empty
-				// Check if the encoded file is empty
 		std::ifstream encoded_file(rsencoded_output_file_name, std::ios::binary);
 		encode_success = file_encoder.encode(empty_file_name, rsencoded_output_file_name) &&
 			!(encoded_file.peek() == std::ifstream::traits_type::eof());
@@ -63,29 +49,7 @@ TEST(EncoderDecoderTests, HandleEmptyFile) {
 	//teardownTestEnvironment();
 }
 
-//// Helper function to compare files
-bool compare_files(const std::string& file1, const std::string& file2) {
-	std::ifstream f1(file1, std::ios::binary | std::ios::ate);
-	std::ifstream f2(file2, std::ios::binary | std::ios::ate);
 
-	if (!f1.good() || !f2.good()) return false;
-
-	auto size1 = f1.tellg();
-	auto size2 = f2.tellg();
-
-	if (size1 != size2) return false;
-
-	f1.seekg(0, std::ios::beg);
-	f2.seekg(0, std::ios::beg);
-
-	std::vector<char> buffer1(size1);
-	std::vector<char> buffer2(size2);
-
-	f1.read(buffer1.data(), size1);
-	f2.read(buffer2.data(), size2);
-
-	return std::equal(buffer1.begin(), buffer1.end(), buffer2.begin());
-}
 
 //test end to end
 TEST(EncoderDecoderTests, FullEncodeDecodeCycle) {
@@ -173,48 +137,7 @@ TEST(EncoderDecoderTests, UnCorruptedEncodeDecodeCycle) {
 	wd_codec::Logger::close();
 }
 
-//TODO: seperate all the UT to diffrent file
-//TODO: extract all the defentions and function outsize the test to test utility
-//TODO: add unit test for picture.
-const std::string rsencoded_output_file_name_with_residue = "output_encode.txt";
 
-TEST(EncoderDecoderTests, NonDivisibleInputByK) {
-	wd_codec::setup();
-	const std::string input_file_name = "input.dat";
-	// Create a valid input file bigger than k
-	wd_codec::fileio::create_file(input_file_name, wd_codec::data_length * (wd_codec::stack_size - 1) + 200);
-	const wd_codec::Encoder encoder(wd_codec::field, wd_codec::generator_polynomial);
-
-	// Perform encoding
-	wd_codec::file_encoder_t file_encoder(encoder);
-
-	file_encoder.encode(input_file_name, rsencoded_output_file_name_with_residue);
-
-	bool is_residue_handled = file_encoder.get_is_residue_handled();
-	EXPECT_TRUE(is_residue_handled) << "Encode does not handle the last smaller than k block.";
-
-
-	// Close the logger
-	wd_codec::Logger::close();
-}
-
-TEST(EncoderDecoderTests, NonDivisibleInputByN) {
-	wd_codec::setup();
-	const std::string rsdecoded_file_name = "output_decode.txt";
-	const wd_codec::Decoder decoder(wd_codec::field, wd_codec::generator_polynomial_index);
-
-	// Perform encoding
-	wd_codec::file_decoder_t file_decoder(decoder);
-
-	file_decoder.decode(rsencoded_output_file_name_with_residue, rsdecoded_file_name);
-
-	bool is_residue_handled = file_decoder.get_is_residue_handled();
-	EXPECT_TRUE(is_residue_handled) << "Decode does not handle the last smaller than n block.";
-
-
-	// Close the logger
-	wd_codec::Logger::close();
-}
 
 //TEST(EncoderDecoderTests, FullEncodeDecodeCycle) {
 //
