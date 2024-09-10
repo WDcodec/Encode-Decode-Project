@@ -54,7 +54,7 @@ namespace wd_codec {
                     while (remaining_bytes >= code_length)
                     {
                         if(!process_complete_block(in_stream, out_stream))
-                            return false;
+                            failed_decode = false;
                         remaining_bytes -= code_length;
                         current_block_index_++;
                     }
@@ -62,7 +62,7 @@ namespace wd_codec {
                     if (remaining_bytes > 0)
                     {
                         if (!process_partial_block(in_stream, out_stream, remaining_bytes))
-                            return false;
+                            failed_decode = false;
                     }
 
                     in_stream.close();
@@ -71,11 +71,12 @@ namespace wd_codec {
                         const std::string imageFilePath = "binary_image_data.bmp";
                         fileio::convertBinaryToImage(output_file_name, imageFilePath);
                     }*/
-                    return true;
+                    return  failed_decode;
                 }
                 bool get_is_residue_handled() {
                     return is_residue_handled;
                 }
+                bool failed_decode = true;
         private:
 
                 inline bool process_complete_block(
