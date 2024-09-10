@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "Test_Utility.h"
 
-///Test case for handling an empty file
+/// Test case for handling an empty file
 TEST(EncoderDecoderTests, HandleEmptyFile) {
 	const std::string empty_file_name = "empty_input.dat";
 	const std::string rsencoded_output_file_name = "empty_encode_output.txt";
@@ -39,7 +39,7 @@ TEST(EncoderDecoderTests, HandleEmptyFile) {
 
 
 
-//test end to end
+// Test full end to end
 TEST(EncoderDecoderTests, FullEncodeDecodeCycle) {
 	wd_codec::setup();
 
@@ -69,7 +69,7 @@ TEST(EncoderDecoderTests, FullEncodeDecodeCycle) {
 	wd_codec::Logger::close();
 }
 
-//test the encoder with data larger than k
+// Test the encoder with data larger than k
 TEST(EncoderDecoderTests, BiggerThanK) {
 	wd_codec::setup();
 	const std::string input_file_name = "input.dat";
@@ -90,7 +90,7 @@ TEST(EncoderDecoderTests, BiggerThanK) {
 	EXPECT_EQ(expected_block_count, file_encoder.get_blocks_number()) << "expected block count is different than the actual blocks number.";
 }
 
-//test UnCorruptedEncodeDecodeCycle
+// Test UnCorruptedEncodeDecodeCycle
 TEST(EncoderDecoderTests, UnCorruptedEncodeDecodeCycle) {
 
 	wd_codec::setup();
@@ -122,11 +122,8 @@ TEST(EncoderDecoderTests, UnCorruptedEncodeDecodeCycle) {
 
 
 
-
+// Test too many random errors to be handled - expected false
 TEST(EncoderDecoderTests, HandleTooManyErrors) {
-    // Initialize the logger
-
-
 	wd_codec::setup();
 
 	const std::string input_file_name = "input.dat";
@@ -150,8 +147,6 @@ TEST(EncoderDecoderTests, HandleTooManyErrors) {
 	wd_codec::error_injection::inject_random_errors<wd_codec::code_length, wd_codec::fec_length>(rsencoded_output_file_name,50);
 	bool decode_success = file_decoder.decode(rsencoded_output_file_name, rsdecoded_file_name);
 
-
-
     // Compare the decoded file with the original input file
     EXPECT_FALSE(decode_success) << "Decoder was expected to fail with too many errors.";
 	
@@ -160,4 +155,5 @@ TEST(EncoderDecoderTests, HandleTooManyErrors) {
 
 }
 
+// TODO: Test too many burst errors - expected true
 
