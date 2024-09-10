@@ -97,7 +97,7 @@ namespace wd_codec {
             // Open the binary file for reading
             std::ifstream binaryFile(binaryFilename, std::ios::binary);
             if (!binaryFile) {
-                std::cerr << "Error opening binary file for reading." << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR, "Error Injection::binary file: Error opening binary file for reading.");
                 return;
             }
 
@@ -120,7 +120,7 @@ namespace wd_codec {
             // Open the binary file for writing
             std::ofstream outFile(binaryFilename, std::ios::binary);
             if (!outFile) {
-                std::cerr << "Error opening binary file for writing." << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR, "Error Injection::binary file: Error opening binary file for writing.");
                 return;
             }
 
@@ -132,13 +132,13 @@ namespace wd_codec {
         template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
         inline void inject_random_errors_for_image(const std::string& file_name, const std::string& imageFilePath) {
             inject_random_errors<code_length, fec_length>(file_name, 0, code_length);
-            wd_codec::fileio::convertBinaryToImage<code_length, fec_length>(file_name, imageFilePath);
+            wd_codec::fileio::convert_binary_to_image<code_length, fec_length>(file_name, imageFilePath);
         }
 
         template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
         inline void inject_random_errors_for_audio(const std::string& file_name, const std::string& audioFilePath) {
             inject_random_errors(file_name);
-            wd_codec::fileio::convertBinaryToAudio(file_name, audioFilePath);
+            wd_codec::fileio::convert_binary_to_audio(file_name, audioFilePath);
         }
 
         inline void corrupt_file_with_burst_errors(const std::string& file_name,
@@ -181,7 +181,7 @@ namespace wd_codec {
 
             if (!ofile)
             {
-                wd_codec::Logger::log(wd_codec::ERROR, "Error Injection file: Cannot open file for writing!");
+                wd_codec::Logger::log(wd_codec::ERROR, "Error Injection::file: Cannot open file for writing!");
 
                 return;
             }

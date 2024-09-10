@@ -62,7 +62,7 @@ namespace wd_codec {
             // Open the Opus file
             std::ifstream audioFile(audioFilename, std::ios::binary);
             if (!audioFile) {
-                std::cerr << "Error opening Opus file." << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR, "Error opening Opus file.");
                 return;
             }
 
@@ -75,7 +75,7 @@ namespace wd_codec {
             // Open the binary file
             std::ofstream binaryFile(binaryFilename, std::ios::binary);
             if (!binaryFile) {
-                std::cerr << "Error opening binary file." << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR, "Error opening binary file.");
                 return;
             }
 
@@ -85,11 +85,11 @@ namespace wd_codec {
             // Close the binary file
             binaryFile.close();
         }
-        inline void convertBinaryToAudio(const std::string& binaryFilename, const std::string& audioFilename) {
+        inline void convert_binary_to_audio(const std::string& binaryFilename, const std::string& audioFilename) {
             // Open the binary file
             std::ifstream binaryFile(binaryFilename, std::ios::binary);
             if (!binaryFile) {
-                std::cerr << "Error opening binary file." << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR, "Error opening binary file.");
                 return;
             }
 
@@ -102,7 +102,7 @@ namespace wd_codec {
             // Open the Opus file
             std::ofstream audioFile(audioFilename, std::ios::binary);
             if (!audioFile) {
-                std::cerr << "Error opening Opus file." << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR, "Error opening Opus file.");
                 return;
             }
 
@@ -113,19 +113,19 @@ namespace wd_codec {
             audioFile.close();
         }
 
-        inline bool convertImageToBinary(const std::string& imageFilePath, const std::string& binaryFilePath)
+        inline bool convert_image_to_binary(const std::string& imageFilePath, const std::string& binaryFilePath)
         {
             std::ifstream image(imageFilePath, std::ios::in | std::ios::binary);
             if (!image)
             {
-                std::cerr << "Error opening image file: " << imageFilePath << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR, "Error opening image file: ");
                 return false;
             }
 
             std::ofstream binary(binaryFilePath, std::ios::out | std::ios::binary);
             if (!binary)
             {
-                std::cerr << "Error opening binary output file: " << binaryFilePath << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR, "Error opening binary output file: ");
                 return false;
             }
 
@@ -139,20 +139,20 @@ namespace wd_codec {
         }
 
         template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
-        inline bool convertBinaryToImage(const std::string& binaryFilePath, const std::string& imageFilePath)
        inline bool convert_binary_to_image(const std::string& binaryFilePath, const std::string& imageFilePath)
         {
             std::ifstream binary(binaryFilePath, std::ios::in | std::ios::binary);
             if (!binary)
             {
-                std::cerr << "Error opening binary file: " << binaryFilePath << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR, "Error opening binary file: ");
+                std::cerr << binaryFilePath << std::endl;
                 return false;
             }
 
             std::ofstream image(imageFilePath, std::ios::out | std::ios::binary);
             if (!image)
             {
-                std::cerr << "Error opening image output file: " << imageFilePath << std::endl;
+                wd_codec::Logger::log(wd_codec::ERROR, "Error opening image output file: ");
                 return false;
             }
 
@@ -165,7 +165,7 @@ namespace wd_codec {
 
             return true;
         }
-
+       //todo efrat
         //template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
         //inline bool convertBinaryToImage(const std::string& binaryFilePath, const std::string& imageFilePath) {
         //    std::ifstream binary(binaryFilePath, std::ios::in | std::ios::binary);
