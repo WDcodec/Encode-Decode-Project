@@ -60,7 +60,7 @@ namespace wd_codec
 					wd_codec::Logger::log(wd_codec::ERROR, "Encode: Encode failed!");
 					return false;
 				}
-                #ifdef DEBUG
+                #ifdef _DEBUG
 				wd_codec::Logger::log(wd_codec::INFO, "Encode: Encode succeeded");
                 #endif // DEBUG
 				return true;

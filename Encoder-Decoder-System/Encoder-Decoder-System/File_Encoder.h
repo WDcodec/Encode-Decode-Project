@@ -59,7 +59,7 @@ namespace wd_codec {
                 std::memset(fec_buffer_, 0, sizeof(fec_buffer_));
 
                 if (remaining_bytes >= data_length) {
-                #ifdef DEBUG
+                #ifdef _DEBUG
                     wd_codec::Logger::log(wd_codec::INFO, "INFO: dividing the file to blocks with size k");
                  #endif // DEBUG
                 }
@@ -75,7 +75,7 @@ namespace wd_codec {
                 {
                     process_block(in_stream, out_stream, remaining_bytes);
                 }
-                #ifdef DEBUG
+                #ifdef _DEBUG
                 wd_codec::Logger::log(wd_codec::INFO, "File Encoder: Encode process successed"); 
                 #endif // DEBUG
               

@@ -7,7 +7,10 @@ int main()
 {//todo : insted of if encode return 1 just call encode function
     //FLSE OR TRUE FOR THE DECIDE OF THE DEVELOPER
     wd_codec::setup();
-  
+#ifdef _DEBUG
+    wd_codec::Logger::log(wd_codec::ERROR, "CHEK ");
+#endif // _DEBUG
+
     const wd_codec::Encoder encoder(wd_codec::field, wd_codec::generator_polynomial);
     const wd_codec::Decoder decoder(wd_codec::field, wd_codec::generator_polynomial_index);
 
@@ -19,7 +22,7 @@ int main()
     std::cin >> choice;
     if (choice == 1) {
         std::string message = "An expert is someone who knows more and more about less and "
-            "less until they know absolutely everything about nothing";
+            "less until they know absolutely everything about nothing000000";
         message.resize(wd_codec::code_length, 0x00);
         if (!encoder.encode(wd_codec::block, message))
         {
