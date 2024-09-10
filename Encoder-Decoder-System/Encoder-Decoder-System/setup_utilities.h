@@ -1,5 +1,4 @@
 
-
 #pragma once
 
 #include "Logger.h";
@@ -32,10 +31,9 @@ namespace wd_codec {
         wd_codec::galois::primitive_polynomial_size06,
         wd_codec::galois::primitive_polynomial06);
 
-    wd_codec::galois::Polynomial generator_polynomial(field);
-    /* Instantiate RS Block For Codec */
-    wd_codec::reed_solomon::Block<code_length, fec_length> block;
-        /* Instantiate RS Block For Codec */
+    static wd_codec::galois::Polynomial generator_polynomial(field);
+    /* Instantiate RS Block For Codec  */
+    static wd_codec::reed_solomon::Block<code_length, fec_length> block;
 
     /* Instantiate Encoder and Decoder */
     typedef wd_codec::reed_solomon::Encoder<code_length, fec_length, data_length> Encoder;
@@ -44,11 +42,11 @@ namespace wd_codec {
     typedef wd_codec::reed_solomon::File_Encoder<code_length, fec_length> file_encoder_t;
     typedef wd_codec::reed_solomon::File_Decoder<code_length, fec_length> file_decoder_t;
 
-    void close() {
+    static inline void close() {
         wd_codec::Logger::close();
     }
 
-    void setup() {
+    static inline void setup() {
 
         Logger::init();
         //Generate G(X)

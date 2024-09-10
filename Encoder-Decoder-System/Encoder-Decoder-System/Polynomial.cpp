@@ -238,24 +238,6 @@ namespace wd_codec
 			return *this;
 		}
 
-		//Polynomial& Polynomial::operator *=  (const Polynomial& polynomial) {
-		//	if (&field_ == &(polynomial.field_)) {
-		//		Polynomial product(field_, deg() + polynomial.deg() + 1);
-		//		poly_iter prod_it = product.poly_.begin();
-		//		std::size_t A_size = deg();
-		//		std::size_t B_size = polynomial.deg();
-
-		//		for (int A_i = 0; A_i < A_size; A_i++) {
-		//			for (int B_i = 0; B_i < B_size; B_i++) {
-		//				product.poly_[A_i + B_i] += poly_[A_i] * polynomial.poly_[B_i];
-		//			}
-		//		}
-		//		simplify(product);
-		//		poly_ = product.poly_;
-		//	}
-		//	return *this;
-		//}
-
 		// Function that multiply polynomial by a scalar
 		Polynomial& Polynomial::operator *=  (const Field_Element& element) {
 			if (&field_ == &(element.galois_field())) {
