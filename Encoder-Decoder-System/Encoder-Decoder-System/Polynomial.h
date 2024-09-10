@@ -44,7 +44,7 @@ namespace wd_codec
                 simplify(*this);
             }
 
-			std::string convertToString() {
+			std::string convert_to_string() {
 				std::string polyStr;
 				if (deg() >= 0) {
 					for (unsigned int i = 0; i < poly_.size(); ++i) {

@@ -46,21 +46,21 @@ namespace wd_codec {
 
                 if (remaining_bytes == 0)
                 {
-                    std::cout << "reed_solomon::file_decoder() - Error: input file has ZERO size." << std::endl;
+                    wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder: input file has ZERO size.");
                     return false;
                 }
 
                 std::ifstream in_stream(input_file_name.c_str(), std::ios::binary);
                 if (!in_stream)
                 {
-                    std::cout << "reed_solomon::file_decoder() - Error: input file could not be opened." << std::endl;
+                    wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder: input file could not be opened.");
                     return false;
                 }
 
                 std::ofstream out_stream(output_file_name.c_str(), std::ios::binary);
                 if (!out_stream)
                 {
-                    std::cout << "reed_solomon::file_decoder() - Error: output file could not be created." << std::endl;
+                    wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder: output file could not be created.");
                     return false;
                 }
 
@@ -80,8 +80,12 @@ namespace wd_codec {
 
                 in_stream.close();
                 out_stream.close();
+                #ifdef DEBUG
+                wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder succeeded" );
+                #endif // DEBUG
                 return true;
             }
+               
 
         private:
 
@@ -92,31 +96,29 @@ namespace wd_codec {
                 in_stream.read(&buffer_[0], static_cast<std::streamsize>(code_length));
                 copy<char, code_length, fec_length>(buffer_, code_length, block_);
 
-                if (!decoder.decode(block_))
-                {
-                    std::cout << "reed_solomon::file_decoder.process_complete_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
-                    return false;
+                    if (!decoder.decode(block_))
+                    {
+                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_complete_block(): Error during decoding of block"/*<< current_block_index_ */);
+                        return false;
+                    }
+                    for (std::size_t i = 0; i < data_length; ++i)
+                    {
+                        buffer_[i] = static_cast<char>(block_[i]);
+                    }    
+                    out_stream.write(&buffer_[0], static_cast<std::streamsize>(data_length));
+                    return true;
                 }
 
-                for (std::size_t i = 0; i < data_length; ++i)
+                inline bool process_partial_block(
+                    std::ifstream& in_stream,
+                    std::ofstream& out_stream,
+                    const std::size_t& read_amount)
                 {
-                    buffer_[i] = static_cast<char>(block_[i]);
-                }
-
-                out_stream.write(&buffer_[0], static_cast<std::streamsize>(data_length));
-                return true;
-            }
-
-            inline bool process_partial_block(
-                std::ifstream& in_stream,
-                std::ofstream& out_stream,
-                const std::size_t& read_amount)
-            {
-                if (read_amount <= fec_length)
-                {
-                    std::cout << "reed_solomon::file_decoder.process_partial_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
-                    return false;
-                }
+                    if (read_amount <= fec_length)
+                    {
+                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_partial_block(): Error during decoding of block" /*<< current_block_index_ << "!"*/);
+                        return false;
+                    }
 
                 in_stream.read(&buffer_[0], static_cast<std::streamsize>(read_amount));
 
@@ -138,11 +140,11 @@ namespace wd_codec {
                     block_.fec(i) = static_cast<typename block_type::symbol_type>(buffer_[(read_amount - fec_length) + i]);
                 }
 
-                if (!decoder.decode(block_))
-                {
-                    std::cout << "reed_solomon::file_decoder.process_partial_block() - Error during decoding of block " << current_block_index_ << "!" << std::endl;
-                    return false;
-                }
+                    if (!decoder.decode(block_))
+                    {
+                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_partial_block(): Error during decoding of block" /*<< current_block_index_<<"!"*/);
+                        return false;
+                    }
 
                 for (std::size_t i = 0; i < (read_amount - fec_length); ++i)
                 {

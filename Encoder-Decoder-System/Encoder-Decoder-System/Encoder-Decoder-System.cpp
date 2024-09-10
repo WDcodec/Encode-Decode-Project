@@ -5,8 +5,13 @@
 
 #include "setup_utilities.h"
 int main()
-{
+{//todo : insted of if encode return 1 just call encode function
+    //FLSE OR TRUE FOR THE DECIDE OF THE DEVELOPER
     wd_codec::setup();
+#ifdef _DEBUG
+    wd_codec::Logger::log(wd_codec::ERROR, "CHEK ");
+#endif // _DEBUG
+
     const wd_codec::Encoder encoder(wd_codec::field, wd_codec::generator_polynomial);
     const wd_codec::Decoder decoder(wd_codec::field, wd_codec::generator_polynomial_index);
 
@@ -22,7 +27,6 @@ int main()
         message.resize(wd_codec::code_length, 0x00);
         if (!encoder.encode(wd_codec::block, message))
         {
-            std::cout << "Error - Critical encoding failure! ";
             return 1;
         }
         else {
@@ -55,7 +59,6 @@ int main()
         wd_codec::fileio::create_file(input_file_name, wd_codec::data_length * wd_codec::stack_size - 3);
         // Call the encode function
         if (!file_encoder.encode(input_file_name, rsencoded_output_file_name)) {
-            std::cout << "Encoding failed." << std::endl;
             return 1;
         }
         wd_codec::error_injection::inject_random_errors<wd_codec::code_length, wd_codec::fec_length>(rsencoded_output_file_name);
