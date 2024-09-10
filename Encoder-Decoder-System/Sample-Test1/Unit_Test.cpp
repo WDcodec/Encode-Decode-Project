@@ -1,12 +1,8 @@
 #include "pch.h"
 #include "Test_Utility.h"
 
-
-//TODO: seperate all the UT to diffrent file
-//TODO: extract all the defentions and function outsize the test to test utility
-//TODO: add unit test for picture.
+// Test if file size is Non Divisible By K is handled.
 const std::string rsencoded_output_file_name_with_residue = "output_encode.txt";
-
 TEST(EncoderDecoderTests, NonDivisibleInputByK) {
 	wd_codec::setup();
 	const std::string input_file_name = "input.dat";
@@ -22,11 +18,11 @@ TEST(EncoderDecoderTests, NonDivisibleInputByK) {
 	bool is_residue_handled = file_encoder.get_is_residue_handled();
 	EXPECT_TRUE(is_residue_handled) << "Encode does not handle the last smaller than k block.";
 
-
 	// Close the logger
 	wd_codec::Logger::close();
 }
 
+// Test if encoded file size is Non Divisible By n is handled.
 TEST(EncoderDecoderTests, NonDivisibleInputByN) {
 	wd_codec::setup();
 	const std::string rsdecoded_file_name = "output_decode.txt";
@@ -45,6 +41,7 @@ TEST(EncoderDecoderTests, NonDivisibleInputByN) {
 	wd_codec::Logger::close();
 }
 
+// Test if polynomial multiplicationin base on nGaloisField indeed works.
 TEST(EncoderDecoderTests, PolynomialMultiplicationinGaloisField) {
 	// P(x) = x^2 + x + 1
 	wd_codec::galois::Field_Element P_elements[] = {   
