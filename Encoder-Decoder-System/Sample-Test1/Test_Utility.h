@@ -13,7 +13,7 @@ static inline void setupTestEnvironment() {
 }
 
 // Helper function to compare files
-bool compare_files(const std::string& file1, const std::string& file2) {
+static inline bool compare_files(const std::string& file1, const std::string& file2) {
 	std::ifstream f1(file1, std::ios::binary | std::ios::ate);
 	std::ifstream f2(file2, std::ios::binary | std::ios::ate);
 
