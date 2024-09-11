@@ -11,8 +11,6 @@ namespace wd_codec {
         public:
             // Typedefs
             typedef galois::field_symbol symbol_type;
-            //typedef traits::reed_solomon_triat<code_length, fec_length, data_length> trait;
-            //typedef traits::symbol<code_length> symbol;
             typedef Block<code_length, fec_length, data_length> block_t;
 
             // Default constructor
@@ -21,22 +19,20 @@ namespace wd_codec {
                 errors_corrected(0),
                 zero_numerators(0),
                 unrecoverable(false)
-                //,error(e_no_error)
             {
-                // traits::validate_reed_solomon_block_parameters<code_length, fec_length, data_length>();
             }
 
             // Constructor with data and fec strings
-            Block(const std::string& _data, const std::string& _fec)
+            Block(const std::string& _data, const std::string& _fec)//todo::is nesscary?
                 : errors_detected(0),
                 errors_corrected(0),
                 zero_numerators(0),
                 unrecoverable(false)
             {
-                // Ensure _data and _fec sizes are correct before processing
-            /*    if (_data.size() != data_length || _fec.size() != fec_length) {
-                    throw std::invalid_argument("Invalid data or fec length.");
-                }*/
+                //// Ensure _data and _fec sizes are correct before processing
+                //if (_data.size() != data_length || _fec.size() != fec_length) {//todo:is nesscary
+                //    throw std::invalid_argument("Invalid data or fec length.");
+                //}
 
                 // Copy data into the array
                 for (std::size_t i = 0; i < data_length; ++i)
@@ -55,7 +51,6 @@ namespace wd_codec {
             }
 
             // Placing operators:
-
             galois::field_symbol& operator[](const std::size_t index) {
                 return data[index];
             }
@@ -67,16 +62,12 @@ namespace wd_codec {
             galois::field_symbol& operator()(const std::size_t index) {
                 return data[index];
             }
-
             // Member variables
             std::size_t errors_detected;
             std::size_t errors_corrected;
             std::size_t zero_numerators;
-
-
-            bool unrecoverable;
+            bool unrecoverable;//todo:maybe for too much errors
             galois::field_symbol data[code_length];
-
         };
         template <typename T, std::size_t code_length, std::size_t fec_length>
         inline void copy(const T src_data[],

@@ -1,8 +1,9 @@
 #include <gtest/gtest.h>
 #include "Test_Utility.h"
-
+#include "pch.h"
 /// Test case for handling an empty file
 TEST(EncoderDecoderTests, HandleEmptyFile) {
+	wd_codec::test_mode_empty_file = true;
 	const std::string empty_file_name = "empty_input.dat";
 	const std::string rsencoded_output_file_name = "empty_encode_output.txt";
 	const std::string rsdecoded_file_name = "empty_decode_output.txt";
@@ -91,7 +92,7 @@ TEST(EncoderDecoderTests, BiggerThanK) {
 }
 
 // Test UnCorruptedEncodeDecodeCycle
-TEST(EncoderDecoderTests, UnCorruptedEncodeDecodeCycle) {
+TEST(EncoderDecoderTests, UnCorruptedEncodeDecodeCycle){
 
 	wd_codec::setup();
 	const std::string input_file_name = "input.dat";

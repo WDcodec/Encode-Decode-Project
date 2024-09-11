@@ -93,7 +93,7 @@ namespace wd_codec
 
 		//function that return the placeing of value as X in the polynomial
 		Field_Element Polynomial::operator()(const Field_Element& value) {
-			//Note :  not like schifras imlementation
+			//Note :  shorter than origin
 			return (*this)(value.poly());
 		}
 
@@ -237,6 +237,8 @@ namespace wd_codec
 
 			return *this;
 		}
+
+		
 
 		// Function that multiply polynomial by a scalar
 		Polynomial& Polynomial::operator *=  (const Field_Element& element) {

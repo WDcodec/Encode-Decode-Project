@@ -7,6 +7,7 @@
 #include "Polynomial.h"
 #include "Field_Element.h"
 #include "Block.h"
+#include "Logger.h"
 namespace wd_codec
 {
 
@@ -36,10 +37,7 @@ namespace wd_codec
 				//remainder = r(x) = p(x)*x^n-k % g(x).
 				const galois::Polynomial remainder = data % generator_;
 				const galois::field_symbol     mask = field_.mask();
-
-				//fec_length = n-k, to make sure the remainder is valid.
-
-
+				////fec_length = n-k, to make sure the remainder is valid.
 				if (remainder.deg() == (fec_length - 1))
 				{
 					//make rsblock = (reversed) s(x) =  p(x)*x^n-k - r(x)
@@ -59,11 +57,12 @@ namespace wd_codec
 
 					*/
 
-					//TODO: handle errors in Block class.
-					//rsblock.error = block_type::e_encoder_error1;
+					wd_codec::Logger::log(wd_codec::ERROR, "Encode: Encode failed!");
 					return false;
 				}
-
+                #ifdef _DEBUG
+				wd_codec::Logger::log(wd_codec::INFO, "Encode: Encode succeeded");
+                #endif // DEBUG
 				return true;
 
 			}
@@ -72,7 +71,6 @@ namespace wd_codec
 				const galois::field_symbol  mask = field_.mask();
 				//iterate the data polynomial and add it to the rsblock data.
 				for (std::size_t i = 0; i < data_length; i++) {
-					//TODO: check if the cast is necessary
 					rsblock[i] = data[i] & mask;
 				}
 				return encode(rsblock);
