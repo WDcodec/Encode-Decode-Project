@@ -77,7 +77,6 @@ namespace wd_codec {
             for (std::size_t index = 0; index < src_length; ++index)
             {
                 dest_block.data[index] = static_cast<typename Block<code_length, fec_length>::symbol_type>(src_data[index]);
-                std::cout << dest_block.data[index] ;
             }
         }
     }

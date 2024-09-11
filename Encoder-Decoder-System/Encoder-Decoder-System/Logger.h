@@ -9,7 +9,7 @@
 namespace wd_codec {
     // Enum to represent log levels 
     enum LogLevel { DEBUG, INFO, WARNING, ERROR, CRITICAL };
-
+    static bool test_mode_empty_file = false;
     class Logger {
     public:
 
@@ -94,12 +94,19 @@ namespace wd_codec {
             }
         }
         // Handles critical errors by logging and terminating the program
-        static void handle_critical_error(const std::string& message) {
+        static bool handle_critical_error(const std::string& message) {
             std::cerr << "Terminating program..." << std::endl;
             logFile << "Terminating program..." << std::endl;
             logFile.flush(); // Ensure the message is written to the file before exiting
             close(); // Close the log file properly before exiting
-            std::exit(1); // Graceful exit with a critical error code
+            //std::exit(1); // Graceful exit with a critical error code
+            if (test_mode_empty_file) {
+                return false;
+           }
+            else {
+                std::exit(1); // Graceful exit with a critical error code in normal mode
+            }
+            return false;
         }
 
     private:

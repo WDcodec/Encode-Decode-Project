@@ -23,7 +23,13 @@ namespace wd_codec {
             typedef Encoder<code_length, fec_length> encoder_type;
             typedef typename encoder_type::block_type block_type;
 
-            File_Encoder(const encoder_type& encoder) :encoder(encoder) {};
+            File_Encoder(const encoder_type& encoder) :encoder(encoder), blocks_number(0){
+                static_assert(data_length > 0, "data_length must be greater than 0");
+                if (data_length <= 0) {
+                    wd_codec::Logger::log(wd_codec::CRITICAL, "Encoder FAILED: data_length is non-positive");
+                    throw std::invalid_argument("data_length must be greater than 0");
+                }
+            };
 
             bool encode_image(const std::string& input_file_name,
                 const std::string& output_file_name) {
@@ -80,12 +86,14 @@ namespace wd_codec {
                 {
                     //encode each block
                     process_block(in_stream, out_stream, data_length);
+                    inc_blocks_number();
                     remaining_bytes -= data_length;
                 }
                 //last block
                 if (remaining_bytes > 0)
                 {
                     process_block(in_stream, out_stream, remaining_bytes);
+                    
                 }
                 #ifdef _DEBUG
                 wd_codec::Logger::log(wd_codec::INFO, "File Encoder: Encode process successed"); 
@@ -95,6 +103,21 @@ namespace wd_codec {
                 out_stream.close();
 
                 return true;
+            }
+
+            std::size_t get_blocks_number() {
+                return blocks_number;
+            }
+
+            void set_blocks_number(std::size_t number) {
+                blocks_number = number;
+            }
+
+            void inc_blocks_number() {
+                blocks_number++;
+            }
+            bool get_is_residue_handled() {
+                return is_residue_handled;
             }
         private:
 
@@ -115,6 +138,7 @@ namespace wd_codec {
                     {
                         block_.data[i] = 0x00;
                     }
+                    is_residue_handled = true;
                 }
 
                 if (!encoder.encode(block_))
@@ -143,11 +167,14 @@ namespace wd_codec {
 
                 return true;
             }
+
             const encoder_type& encoder;
             block_type block_;
+            std::size_t blocks_number;
             char data_buffer_[data_length];
-            char fec_buffer_[fec_length];
 
+            char fec_buffer_[fec_length];
+            bool is_residue_handled = false;
 
         };
     }

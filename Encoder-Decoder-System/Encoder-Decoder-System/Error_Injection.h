@@ -93,7 +93,7 @@ namespace wd_codec {
 
 
         // Function that inject little bit random errors
-        void inject_random_errors(const std::string& binaryFilename) {
+        inline void inject_random_errors(const std::string& binaryFilename) {
             // Open the binary file for reading
             std::ifstream binaryFile(binaryFilename, std::ios::binary);
             if (!binaryFile) {

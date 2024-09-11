@@ -67,26 +67,30 @@ namespace wd_codec {
 
                 current_block_index_ = 0;
 
-                while (remaining_bytes >= code_length)
-                {
-                    process_complete_block(in_stream, out_stream);
-                    remaining_bytes -= code_length;
-                    current_block_index_++;
-                }
-
-                if (remaining_bytes > 0)
-                {
-                    process_partial_block(in_stream, out_stream, remaining_bytes);
-                }
+                    while (remaining_bytes >= code_length)
+                    {
+                        if(!process_complete_block(in_stream, out_stream))
+                            failed_decode = false;
+                        remaining_bytes -= code_length;
+                        current_block_index_++;
+                    }
+                     
+                    if (remaining_bytes > 0)
+                    {
+                        if (!process_partial_block(in_stream, out_stream, remaining_bytes))
+                            failed_decode = false;
+                    }
 
                 in_stream.close();
                 out_stream.close();
                 #ifdef DEBUG
                 wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder succeeded" );
                 #endif // DEBUG
-                return true;
+                return failed_decode;
             }
-               
+            bool get_is_residue_handled() {
+                return is_residue_handled;
+             }
 
         private:
 
@@ -134,6 +138,7 @@ namespace wd_codec {
                     {
                         block_.data[i] = 0;
                     }
+                    is_residue_handled = true;
                 }
 
                 for (std::size_t i = 0; i < fec_length; ++i)
@@ -152,15 +157,17 @@ namespace wd_codec {
                     buffer_[i] = static_cast<char>(block_.data[i]);
                 }
 
-                out_stream.write(&buffer_[0], static_cast<std::streamsize>(read_amount - fec_length));
-                return true;
-            }
-            const decoder_type& decoder;
-            block_type block_;
-        public:
-            std::size_t current_block_index_;
-            char buffer_[code_length];
-        };
+                    out_stream.write(&buffer_[0], static_cast<std::streamsize>(read_amount - fec_length));
+                    return true;
+                }
+
+                const decoder_type& decoder;
+                block_type block_;
+                std::size_t current_block_index_;
+                char buffer_[code_length];  
+                bool is_residue_handled = false;
+                bool failed_decode = true;
+		};
 
     }
 }

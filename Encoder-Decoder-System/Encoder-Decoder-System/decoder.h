@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include<iostream>
 
@@ -65,6 +66,7 @@ namespace wd_codec {
 #ifdef _DEBUG
 					Logger::log(wd_codec::INFO, "Decoder - decode succeed");
 #endif // DEBUG
+					out_in_syndrom = true;
 					return true;
 				}
 
@@ -159,7 +161,7 @@ namespace wd_codec {
 						}
 						else {
 							//if the denominator equal to 0, cannot evaluate
-							wd_codec::Logger::log(wd_codec::CRITICAL, "Decode: correction errors failed!");
+							wd_codec::Logger::log(wd_codec::ERROR, "Decode: correction errors failed!");
 							return false;
 						}
 
@@ -281,6 +283,8 @@ namespace wd_codec {
 
 				
 			}
+			mutable bool out_in_syndrom = false; 
+
 		protected:
 			void load_message(galois::Polynomial& received, const block_type& rsblock) const
 			{

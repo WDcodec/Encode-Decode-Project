@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "Logger.h"
 #define IMG_TYPE ".BMP" 
 #define IMG_TYPE_SIZE 4
 // Fileio.cpp
@@ -213,5 +214,58 @@ namespace wd_codec {
 
 
 
+       //template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
+       //inline bool convertBinaryToImage(const std::string& binaryFilePath, const std::string& imageFilePath)
+       //{
+       //    std::ifstream binary(binaryFilePath, std::ios::in | std::ios::binary);
+       //    if (!binary)
+       //    {
+       //        std::cerr << "Error opening binary file: " << binaryFilePath << std::endl;
+       //        return false;
+       //    }
+
+       //    std::ofstream image(imageFilePath, std::ios::out | std::ios::binary);
+       //    if (!image)
+       //    {
+       //        std::cerr << "Error opening image output file: " << imageFilePath << std::endl;
+       //        return false;
+       //    }
+
+       //    const std::size_t chunk_size = code_length;
+       //    const std::size_t write_size = data_length;
+
+       //    std::vector<char> buffer(chunk_size);
+
+       //    while (binary.read(buffer.data(), chunk_size))
+       //    {
+       //        // Number of bytes actually read
+       //        std::size_t bytes_read = binary.gcount();
+
+       //        // Write only the first data_length bytes or bytes_read if it's less than data_length
+       //        std::size_t bytes_to_write = std::min(write_size, bytes_read);
+       //        image.write(buffer.data(), bytes_to_write);
+
+       //        // Skip remaining bytes in the current chunk
+       //        if (bytes_read > write_size)
+       //        {
+       //            binary.ignore(bytes_read - write_size);
+       //        }
+       //    }
+
+       //    // Handle the case where the last chunk is less than chunk_size
+       //    if (binary.gcount() > 0)
+       //    {
+       //        std::size_t bytes_read = binary.gcount();
+       //        std::size_t bytes_to_write = std::min(write_size, bytes_read);
+       //        image.write(buffer.data(), bytes_to_write);
+       //    }
+
+       //    binary.close();
+       //    image.close();
+
+       //    return true;
+       //}
+
     }
 }
+

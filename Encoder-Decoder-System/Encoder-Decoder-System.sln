@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Encoder-Decoder-System", "Encoder-Decoder-System\Encoder-Decoder-System.vcxproj", "{6102594D-81FF-43B3-A93B-1DF35C90A239}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sample-Test1", "Sample-Test1\Sample-Test1.vcxproj", "{EA94A37C-CCDB-412D-A1AA-CD16A9E0D57F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{6102594D-81FF-43B3-A93B-1DF35C90A239}.Release|x64.Build.0 = Release|x64
 		{6102594D-81FF-43B3-A93B-1DF35C90A239}.Release|x86.ActiveCfg = Release|Win32
 		{6102594D-81FF-43B3-A93B-1DF35C90A239}.Release|x86.Build.0 = Release|Win32
+		{EA94A37C-CCDB-412D-A1AA-CD16A9E0D57F}.Debug|x64.ActiveCfg = Debug|x64
+		{EA94A37C-CCDB-412D-A1AA-CD16A9E0D57F}.Debug|x64.Build.0 = Debug|x64
+		{EA94A37C-CCDB-412D-A1AA-CD16A9E0D57F}.Debug|x86.ActiveCfg = Debug|Win32
+		{EA94A37C-CCDB-412D-A1AA-CD16A9E0D57F}.Debug|x86.Build.0 = Debug|Win32
+		{EA94A37C-CCDB-412D-A1AA-CD16A9E0D57F}.Release|x64.ActiveCfg = Release|x64
+		{EA94A37C-CCDB-412D-A1AA-CD16A9E0D57F}.Release|x64.Build.0 = Release|x64
+		{EA94A37C-CCDB-412D-A1AA-CD16A9E0D57F}.Release|x86.ActiveCfg = Release|Win32
+		{EA94A37C-CCDB-412D-A1AA-CD16A9E0D57F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
