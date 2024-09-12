@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <chrono>
 #include "Polynomial.h"
+
 #define POSTFIX ".txt"
 namespace wd_codec {
     // Enum to represent log levels 
@@ -85,11 +86,13 @@ namespace wd_codec {
             wd_codec::Logger::log(wd_codec::INFO, newMessage);
 
         }
-        static void logErrorsNumber(bool success,int number) {
+        static void logErrorsNumber(bool success,int erros_detected,int number) {
             // Create log entry 
             std::ostringstream logEntry;
-            logEntry << "Number of error that corrected: " << number
-               << std::endl;
+            logEntry << "Number of error that detected: " << error_detected
+                << "\n"
+                << "Number of error that corected: " << number
+                << std::endl;
 
             // Output to console 
             std::cout << logEntry.str();
