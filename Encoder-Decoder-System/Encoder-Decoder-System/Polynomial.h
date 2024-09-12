@@ -8,7 +8,8 @@
 
 namespace wd_codec
 {
-
+	static int errors_corrected = 0;
+	static int error_detected = 0;
 	namespace galois
 	{
 

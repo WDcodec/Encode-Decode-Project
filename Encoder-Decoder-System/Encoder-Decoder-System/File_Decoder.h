@@ -6,7 +6,8 @@
 #include "Fileio.h"
 namespace wd_codec {
     namespace reed_solomon {
-        template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
+
+        template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>      
         class File_Decoder
         {
         public:
@@ -86,7 +87,7 @@ namespace wd_codec {
                 #ifdef DEBUG
                 wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder succeeded" );
                 #endif // DEBUG
-                wd_codec::Logger::logErrorsNumber(failed_decode, error_number);
+                wd_codec::Logger::logErrorsNumber();
                 return failed_decode;
             }
             bool get_is_residue_handled() {
@@ -104,10 +105,12 @@ namespace wd_codec {
 
                     if (!decoder.decode(block_))
                     {
-                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_complete_block(): Error during decoding of block"/*<< current_block_index_ */);
+                        wd_codec::Logger::log(wd_codec::ERROR, "File Decoder::process_complete_block(): Error during decoding of block"/*<< current_block_index_ */);
+                        wd_codec::global_errors_detected += block_.errors_detected;
                         return false;
                     }
-                    error_number += decoder.error_number;
+                    wd_codec::global_errors_detected += block_.errors_detected;
+                    wd_codec::global_errors_corrected += block_.errors_corrected;
                     for (std::size_t i = 0; i < data_length; ++i)
                     {
                         buffer_[i] = static_cast<char>(block_[i]);
@@ -150,10 +153,12 @@ namespace wd_codec {
 
                     if (!decoder.decode(block_))
                     {
-                        wd_codec::Logger::log(wd_codec::CRITICAL, "File Decoder::process_partial_block(): Error during decoding of block" /*<< current_block_index_<<"!"*/);
+                        wd_codec::Logger::log(wd_codec::ERROR, "File Decoder::process_partial_block(): Error during decoding of block" /*<< current_block_index_<<"!"*/);
+                        wd_codec::global_errors_detected += block_.errors_detected;
                         return false;
                     }
-
+                    wd_codec::global_errors_detected += block_.errors_detected;
+                    wd_codec::global_errors_corrected += block_.errors_corrected;
                 for (std::size_t i = 0; i < (read_amount - fec_length); ++i)
                 {
                     buffer_[i] = static_cast<char>(block_.data[i]);
@@ -169,7 +174,8 @@ namespace wd_codec {
                 char buffer_[code_length];  
                 bool is_residue_handled = false;
                 bool failed_decode = true;
-                int error_number = 0;
+                //int error_corrected = 0;
+                //int error_detected = 0;
 		};
 
     }
