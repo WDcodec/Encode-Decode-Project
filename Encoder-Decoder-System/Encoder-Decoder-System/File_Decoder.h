@@ -92,6 +92,10 @@ namespace wd_codec {
                 return is_residue_handled;
              }
 
+            std::size_t get_current_block_index_() {
+                return current_block_index_;
+            }
+
         private:
 
             inline bool process_complete_block(
