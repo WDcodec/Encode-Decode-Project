@@ -87,7 +87,7 @@ namespace wd_codec {
                 #ifdef DEBUG
                 wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder succeeded" );
                 #endif // DEBUG
-                wd_codec::Logger::logErrorsNumber(true, block_.errors_detected, block_.errors_corrected);
+                wd_codec::Logger::logErrorsNumber();
                 return failed_decode;
             }
             bool get_is_residue_handled() {
@@ -106,11 +106,11 @@ namespace wd_codec {
                     if (!decoder.decode(block_))
                     {
                         wd_codec::Logger::log(wd_codec::ERROR, "File Decoder::process_complete_block(): Error during decoding of block"/*<< current_block_index_ */);
-                        wd_codec::error_detected += block_.errors_detected;
+                        wd_codec::global_errors_detected += block_.errors_detected;
                         return false;
                     }
-                    wd_codec::error_detected += block_.errors_detected;
-                    wd_codec::error_corrected += block_.errors_corrected;
+                    wd_codec::global_errors_detected += block_.errors_detected;
+                    wd_codec::global_errors_corrected += block_.errors_corrected;
                     for (std::size_t i = 0; i < data_length; ++i)
                     {
                         buffer_[i] = static_cast<char>(block_[i]);
@@ -154,11 +154,11 @@ namespace wd_codec {
                     if (!decoder.decode(block_))
                     {
                         wd_codec::Logger::log(wd_codec::ERROR, "File Decoder::process_partial_block(): Error during decoding of block" /*<< current_block_index_<<"!"*/);
-                        wd_codec::error_detected += block_.errors_detected;
+                        wd_codec::global_errors_detected += block_.errors_detected;
                         return false;
                     }
-                    wd_codec::error_detected += block_.errors_detected;
-                    wd_codec::error_corrected += block_.errors_corrected;
+                    wd_codec::global_errors_detected += block_.errors_detected;
+                    wd_codec::global_errors_corrected += block_.errors_corrected;
                 for (std::size_t i = 0; i < (read_amount - fec_length); ++i)
                 {
                     buffer_[i] = static_cast<char>(block_.data[i]);

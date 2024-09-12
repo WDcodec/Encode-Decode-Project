@@ -99,8 +99,7 @@ namespace wd_codec {
 				}
 				else
 					rsblock.errors_detected = error_locations.size();
-				
-				//error_number = error_locations.size();
+
 				//correct the errors 
 				return forney_algorithm(error_locations, lambda, syndrome, rsblock);
 

@@ -6,6 +6,7 @@
 #include <sstream>
 #include <iomanip>
 #include <chrono>
+#include "report.h"
 #include "Polynomial.h"
 
 #define POSTFIX ".txt"
@@ -86,12 +87,12 @@ namespace wd_codec {
             wd_codec::Logger::log(wd_codec::INFO, newMessage);
 
         }
-        static void logErrorsNumber(bool success,int erros_detected,int number) {
+        static void logErrorsNumber() {
             // Create log entry 
             std::ostringstream logEntry;
-            logEntry << "Number of error that detected: " << error_detected
+            logEntry << "Number of error that detected: " << wd_codec::global_errors_detected
                 << "\n"
-                << "Number of error that corected: " << number
+                << "Number of error that corected: " << wd_codec::global_errors_corrected
                 << std::endl;
 
             // Output to console 
