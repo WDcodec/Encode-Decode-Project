@@ -72,7 +72,7 @@ namespace wd_codec {
 
                 for (std::size_t index : error_indices)
                 {
-                    buffer[index] = char(buffer[index] + 2); // Corrupt the byte
+                    buffer[index] = char(~buffer[index]); // Corrupt the byte
                 }
 
                 // Write the corrupted chunk back to the file
@@ -190,11 +190,11 @@ namespace wd_codec {
             ofile.write(&data[0], burst_length);
             ofile.close();
         }
-        template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
+        /*template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
         inline void inject_random_errors_for_image(const std::string& file_name) {
             inject_random_errors<code_length, fec_length>(file_name, 0, code_length);
             const std::string imageFilePath = "binary_image_corrupted.bmp";
             wd_codec::fileio::convert_binary_to_image(file_name, imageFilePath);
-        }
+        }*/
 	}
 }

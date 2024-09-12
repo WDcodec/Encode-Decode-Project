@@ -7,12 +7,14 @@
 #include <iomanip>
 #include <chrono>
 #include "Polynomial.h"
+#include "Block.h"
 #define POSTFIX ".txt"
 namespace wd_codec {
     // Enum to represent log levels 
     enum LogLevel { DEBUG, INFO, WARNING, ERROR, CRITICAL };
     static bool test_mode_empty_file = false;
     static std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
+    static std::chrono::time_point<std::chrono::high_resolution_clock> duration;
 
     class Logger {
     public:
@@ -66,15 +68,62 @@ namespace wd_codec {
         // Call this function at the end of the program to log the elapsed time
         static void log_elapsed_time() {
             auto end_time = std::chrono::high_resolution_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+            duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
             std::ostringstream elapsed_time_message;
             elapsed_time_message << "Elapsed time: " << duration << " milliseconds";
             wd_codec::Logger::log(INFO, elapsed_time_message.str());
         }
+
+        // Function that update the matrics in summary_log file, with the current matrics
+        static void updateSummaryLog() {
+
+            std::ifstream inputFile("summary_log.txt");
+            int totalExecutions = 0;
+            double totalRuntime = 0;
+            int totalErrorsCorrected = 0;
+            double averageRuntime = 0;
+            char timestamp[20];
+
+            // Read the existing log file if it exists
+            if (inputFile.is_open()) {
+                std::string line;
+                while (std::getline(inputFile, line)) {
+                    std::istringstream iss(line);
+                    std::string label;
+                    if (line.find("Total Executions") != std::string::npos) {
+                        iss >> label >> label >> totalExecutions;
+                    }
+                    else if (line.find("Total Runtime") != std::string::npos) {
+                        iss >> label >> label >> label >> totalRuntime;
+                    }
+                    else if (line.find("Total Errors Corrected") != std::string::npos) {
+                        iss >> label >> label >> label >> totalErrorsCorrected;
+                    }
+                }
+                inputFile.close();
+            }
+
+            // Update values
+            totalExecutions++;
+            totalRuntime += duration;
+           // totalErrorsCorrected += errorsCorrected;
+            averageRuntime = totalRuntime / totalExecutions;
+            create_timestamp(timestamp);
+
+            // Write the updated data back to the file
+            std::ofstream outputFile("summary_log.txt");
+            outputFile << "Total Executions: " << totalExecutions << "\n";
+            outputFile << "Total Runtime (milliseconds): " << totalRuntime << "\n";
+            outputFile << "Total Errors Corrected: " << totalErrorsCorrected << "\n";
+            outputFile << "Average Runtime (milliseconds): " << averageRuntime << "\n";
+            outputFile << "Last Run: " << timestamp << "\n";
+            outputFile.close();
+        }
+
         // Closes the log file
         static void close() {
             log_elapsed_time();
-
+            updateSummaryLog();
             if (logFile.is_open()) {
                 logFile.close();
             }
@@ -125,7 +174,7 @@ namespace wd_codec {
 
     private:
         static std::ofstream logFile; // File stream for the log file 
-
+        static long long duration;
         // Converts log level to a string for output 
         static std::string levelToString(LogLevel level)
         {
