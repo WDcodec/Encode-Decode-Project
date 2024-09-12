@@ -49,7 +49,7 @@ namespace wd_codec {
             std::uniform_int_distribution<> byte_dis(0, data_length - 1);  // Uniform distribution [0, data_length]
 
             // Process the file in chunks
-            for (std::streamoff offset = start; offset < file_size; offset += code_length)
+            //for (std::streamoff offset = start; offset < file_size; offset += code_length)
             {
                 std::streamsize current_chunk_size = (data_length < file_size - offset) ? data_length : (file_size - offset);
                 file.seekg(offset);

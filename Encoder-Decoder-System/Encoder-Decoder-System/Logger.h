@@ -1,16 +1,12 @@
 
 #pragma once
-#include <ctime>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <iomanip>
-#include <chrono>
+
 #include "report.h"
 #include "Polynomial.h"
 
 #define POSTFIX ".txt"
 namespace wd_codec {
+
     // Enum to represent log levels 
     enum LogLevel { DEBUG, INFO, WARNING, ERROR, CRITICAL };
     static bool test_mode_empty_file = false;
@@ -20,27 +16,10 @@ namespace wd_codec {
     class Logger {
     public:
 
-        // Creates a timestamp string in the format "YYYY-MM-DD HH:MM:SS"
-        static void create_timestamp(char* timestamp) {
-            // Get current timestamp 
-            time_t now = time(0);
-            tm timeinfo;
-
-            // Use localtime_s or localtime_r based on the platform
-#ifdef _WIN32
-            localtime_s(&timeinfo, &now);
-#else
-            localtime_r(&now, &timeinfo);
-#endif
-
-            // Format the timestamp
-            strftime(timestamp, 20, "%Y-%m-%d %H:%M:%S", &timeinfo);
-        }
-
         // Initializes the logger, opens the log file in append mode 
         static void init() {
-            start_timer();
             char timestamp[20];
+            start_timer();
             create_timestamp(timestamp);
 
             // Convert C-style timestamp to std::string for concatenation
@@ -61,86 +40,32 @@ namespace wd_codec {
                 }
             }
         }
+        
         // Call this function at the beginning of the program to start the timer
         static void start_timer() {
             start_time = std::chrono::high_resolution_clock::now();
         }
 
-        // Call this function at the end of the program to log the elapsed time
-        static void log_elapsed_time() {
+        // Call this function at the end of the program to log the elapsed time and other metrics
+        static void log_report_metrics_summary(long long& duration) {
             auto end_time = std::chrono::high_resolution_clock::now();
             duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
             std::ostringstream elapsed_time_message;
             elapsed_time_message << "Elapsed time: " << duration << " milliseconds";
+            //wd_codec::Logger::log_errors_number();
             wd_codec::Logger::log(INFO, elapsed_time_message.str());
         }
 
-        // Function that update the matrics in summary_log file, with the current matrics
-        static void updateSummaryLog() {
-
-            std::ifstream inputFile("summary_log.txt");
-            int totalExecutions = 0;
-            double totalRuntime = 0;
-            int totalErrorsCorrected = 0;
-            double averageRuntime = 0;
-            char timestamp[20];
-
-            // Read the existing log file if it exists
-            if (inputFile.is_open()) {
-                std::string line;
-                while (std::getline(inputFile, line)) {
-                    std::istringstream iss(line);
-                    std::string label;
-                    if (line.find("Total Executions") != std::string::npos) {
-                        iss >> label >> label >> totalExecutions;
-                    }
-                    else if (line.find("Total Runtime") != std::string::npos) {
-                        iss >> label >> label >> label >> totalRuntime;
-                    }
-                    else if (line.find("Total Errors Corrected") != std::string::npos) {
-                        iss >> label >> label >> label >> totalErrorsCorrected;
-                    }
-                }
-                inputFile.close();
-            }
-
-            // Update values
-            totalExecutions++;
-            totalRuntime += duration;
-           // totalErrorsCorrected += errorsCorrected;
-            averageRuntime = totalRuntime / totalExecutions;
-            create_timestamp(timestamp);
-
-            // Write the updated data back to the file
-            std::ofstream outputFile("summary_log.txt");
-            outputFile << "Total Executions: " << totalExecutions << "\n";
-            outputFile << "Total Runtime (milliseconds): " << totalRuntime << "\n";
-            outputFile << "Total Errors Corrected: " << totalErrorsCorrected << "\n";
-            outputFile << "Average Runtime (milliseconds): " << averageRuntime << "\n";
-            outputFile << "Last Run: " << timestamp << "\n";
-            outputFile.close();
-        }
-
-        // Closes the log file
-        static void close() {
-            log_elapsed_time();
-            updateSummaryLog();
-            if (logFile.is_open()) {
-                logFile.close();
-            }
-        }
-
-        static void log(LogLevel level,const std::string& message, galois::Polynomial& poly) {
-            std::string newMessage = message + poly.convert_to_string();
-            wd_codec::Logger::log(wd_codec::INFO, newMessage);
-
-        }
-        static void logErrorsNumber() {
+        // Function that log the report of the errors after the process
+        static void log_errors_number() {
             // Create log entry 
             std::ostringstream logEntry;
             logEntry << "Number of error that detected: " << wd_codec::global_errors_detected
                 << "\n"
                 << "Number of error that corected: " << wd_codec::global_errors_corrected
+                << "\n"
+                << "Success rate: " << ( wd_codec::global_errors_corrected / (double)wd_codec::global_errors_detected ) * 100
+                << "%" 
                 << std::endl;
 
             // Output to console 
@@ -152,10 +77,16 @@ namespace wd_codec {
                 logFile.flush(); // Ensure immediate write to file 
             }
         }
-        // Logs a message with a given log level 
+
+    // Overloading of log function:
+        static void log(LogLevel level, const std::string& message, galois::Polynomial& poly) {
+            std::string newMessage = message + poly.convert_to_string();
+            wd_codec::Logger::log(wd_codec::INFO, newMessage);
+
+        }
+
         static void log(LogLevel level, const std::string& message)
         {
-           
             char timestamp[20];
             create_timestamp(timestamp);
 
@@ -172,6 +103,17 @@ namespace wd_codec {
             if (logFile.is_open()) {
                 logFile << logEntry.str();
                 logFile.flush(); // Ensure immediate write to file 
+            }
+        }
+
+        // Closes the log file
+        static void close() {
+            char timestamp[20];
+            create_timestamp(timestamp);
+            log_report_metrics_summary(duration);
+            log_update_total_metrics_report_for_all_runnings(duration, timestamp);
+            if (logFile.is_open()) {
+                logFile.close();
             }
         }
 

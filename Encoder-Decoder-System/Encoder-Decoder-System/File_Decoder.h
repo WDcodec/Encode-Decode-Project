@@ -86,7 +86,7 @@ namespace wd_codec {
                 #ifdef DEBUG
                 wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder succeeded" );
                 #endif // DEBUG
-                wd_codec::Logger::logErrorsNumber();
+               // wd_codec::Logger::logErrorsNumber();
                 return failed_decode;
             }
             bool get_is_residue_handled() {
