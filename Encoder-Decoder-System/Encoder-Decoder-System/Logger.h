@@ -6,7 +6,9 @@
 #include <iomanip>
 #include "Polynomial.h"
 #define POSTFIX ".txt"
+#define NUM_STAGES 7
 namespace wd_codec {
+
     // Enum to represent log levels 
     enum LogLevel { DEBUG, INFO, WARNING, ERROR, CRITICAL };
     static bool test_mode_empty_file = false;
@@ -34,7 +36,7 @@ namespace wd_codec {
         static void init() {
             char timestamp[20];
             create_timestamp(timestamp);
-
+            coverage = 0;
             // Convert C-style timestamp to std::string for concatenation
             std::string filename = std::string("logfile_") + timestamp + POSTFIX;
 
@@ -49,7 +51,7 @@ namespace wd_codec {
                 // Open the log file in append mode
                 logFile.open(filename, std::ios::out | std::ios::trunc);
                 if (!logFile.is_open()) {
-                    std::cerr << "Error opening log file." << std::endl;
+                    wd_codec::Logger::log(wd_codec::ERROR, "Error opening log file.");
                 }
             }
         }
@@ -59,6 +61,8 @@ namespace wd_codec {
             if (logFile.is_open()) {
                 logFile.close();
             }
+            wd_codec::Logger::log(wd_codec::INFO, "Coverage system: " + std::to_string((coverage * 100) / NUM_STAGES) + "% done.");
+
         }
 
         static void log(LogLevel level, const std::string& message, galois::Polynomial& poly) {
@@ -108,10 +112,21 @@ namespace wd_codec {
             }
             return false;
         }
+       /* static int getCoverage() {
+            return coverage;
+        }
+        static void setCoverage(int value) {
+             coverage=value;
+        }*/
 
+        static void increaseCoverage() {
+            if (coverage < NUM_STAGES) {
+                coverage++;
+            }
+        }
     private:
         static std::ofstream logFile; // File stream for the log file 
-
+        static int coverage;
         // Converts log level to a string for output 
         static std::string level_to_string(LogLevel level)
         {

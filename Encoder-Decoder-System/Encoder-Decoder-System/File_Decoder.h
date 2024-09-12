@@ -10,7 +10,9 @@ namespace wd_codec {
         class File_Decoder
         {
         public:
-
+            std::size_t getCurrentBlockIndex() const {
+                return current_block_index_;
+            }
             typedef Decoder<code_length, fec_length> decoder_type;
             typedef typename decoder_type::block_type block_type;
 
@@ -66,6 +68,7 @@ namespace wd_codec {
                 }
 
                 current_block_index_ = 0;
+                wd_codec::Logger::log(wd_codec::INFO, "File Decoder: decodeing file ");
 
                     while (remaining_bytes >= code_length)
                     {

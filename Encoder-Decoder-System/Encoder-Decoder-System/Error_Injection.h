@@ -24,7 +24,7 @@ namespace wd_codec {
         // Function that inject a lot of random errors for files input
         template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
         inline void inject_random_errors(const std::string& file_name, int errors_number = 0, std::size_t start = 0) {
-
+            wd_codec::Logger::log(wd_codec::INFO, "Error Injection: inject random errors.");
             if (!wd_codec::fileio::file_exists(file_name))
             {
                 wd_codec::Logger::log(wd_codec::ERROR,"Error Injection: file does not exist!");
@@ -91,10 +91,10 @@ namespace wd_codec {
             file.close();
         }
 
-
         // Function that inject little bit random errors
         inline void inject_random_errors(const std::string& binaryFilename) {
             // Open the binary file for reading
+            wd_codec::Logger::log(wd_codec::INFO, "Error Injection: inject random errors.");
             std::ifstream binaryFile(binaryFilename, std::ios::binary);
             if (!binaryFile) {
                 wd_codec::Logger::log(wd_codec::ERROR, "Error Injection::binary file: Error opening binary file for reading.");
@@ -145,6 +145,7 @@ namespace wd_codec {
             const long& start_position,
             const long& burst_length)
         {
+            wd_codec::Logger::log(wd_codec::INFO, "Error Injection: corrupt file with burst errors");
             if (!wd_codec::fileio::file_exists(file_name))
             {
 
@@ -190,8 +191,10 @@ namespace wd_codec {
             ofile.write(&data[0], burst_length);
             ofile.close();
         }
+
         template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
         inline void inject_random_errors_for_image(const std::string& file_name) {
+            wd_codec::Logger::log(wd_codec::INFO, "Error Injection: inject random errors for image");
             inject_random_errors<code_length, fec_length>(file_name, 0, code_length);
             const std::string imageFilePath = "binary_image_corrupted.bmp";
             wd_codec::fileio::convert_binary_to_image(file_name, imageFilePath);
