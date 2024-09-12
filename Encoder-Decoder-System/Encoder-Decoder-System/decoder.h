@@ -99,8 +99,7 @@ namespace wd_codec {
 				}
 				else
 					rsblock.errors_detected = error_locations.size();
-				
-				error_number = error_locations.size();
+
 				//correct the errors 
 				return forney_algorithm(error_locations, lambda, syndrome, rsblock);
 
@@ -283,10 +282,10 @@ namespace wd_codec {
 				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
 				#endif // DEBUG
 
-				
+			
 			}
 			mutable bool out_in_syndrom = false; 
-			mutable int error_number = 0;
+	
 
 		protected:
 			void load_message(galois::Polynomial& received, const block_type& rsblock) const

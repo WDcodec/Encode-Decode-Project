@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "Test_Utility.h"
 #include "pch.h"
-/// Test case for handling an empty file
+ //Test case for handling an empty file
 TEST(EncoderDecoderTests, HandleEmptyFile) {
 	wd_codec::test_mode_empty_file = true;
 	const std::string empty_file_name = "empty_input.dat";
