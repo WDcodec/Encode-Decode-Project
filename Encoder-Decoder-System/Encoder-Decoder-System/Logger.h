@@ -1,15 +1,19 @@
+
 #pragma once
 #include <ctime>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <chrono>
 #include "Polynomial.h"
 #define POSTFIX ".txt"
 namespace wd_codec {
     // Enum to represent log levels 
     enum LogLevel { DEBUG, INFO, WARNING, ERROR, CRITICAL };
     static bool test_mode_empty_file = false;
+    static std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
+
     class Logger {
     public:
 
@@ -32,6 +36,7 @@ namespace wd_codec {
 
         // Initializes the logger, opens the log file in append mode 
         static void init() {
+            start_timer();
             char timestamp[20];
             create_timestamp(timestamp);
 
@@ -53,20 +58,48 @@ namespace wd_codec {
                 }
             }
         }
+        // Call this function at the beginning of the program to start the timer
+        static void start_timer() {
+            start_time = std::chrono::high_resolution_clock::now();
+        }
 
+        // Call this function at the end of the program to log the elapsed time
+        static void log_elapsed_time() {
+            auto end_time = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+            std::ostringstream elapsed_time_message;
+            elapsed_time_message << "Elapsed time: " << duration << " milliseconds";
+            wd_codec::Logger::log(INFO, elapsed_time_message.str());
+        }
         // Closes the log file
         static void close() {
+            log_elapsed_time();
+
             if (logFile.is_open()) {
                 logFile.close();
             }
         }
 
-        static void log(LogLevel level, const std::string& message, galois::Polynomial& poly) {
+        static void log(LogLevel level,const std::string& message, galois::Polynomial& poly) {
             std::string newMessage = message + poly.convert_to_string();
             wd_codec::Logger::log(wd_codec::INFO, newMessage);
 
         }
+        static void logErrorsNumber(bool success,int number) {
+            // Create log entry 
+            std::ostringstream logEntry;
+            logEntry << "Number of error that corrected: " << number
+               << std::endl;
 
+            // Output to console 
+            std::cout << logEntry.str();
+
+            // Output to log file 
+            if (logFile.is_open()) {
+                logFile << logEntry.str();
+                logFile.flush(); // Ensure immediate write to file 
+            }
+        }
         // Logs a message with a given log level 
         static void log(LogLevel level, const std::string& message)
         {
@@ -77,7 +110,7 @@ namespace wd_codec {
             // Create log entry 
             std::ostringstream logEntry;
             logEntry << "[" << timestamp << "] "
-                << level_to_string(level) << ": " << message
+                << levelToString(level) << ": " << message
                 << std::endl;
 
             // Output to console 
@@ -88,32 +121,13 @@ namespace wd_codec {
                 logFile << logEntry.str();
                 logFile.flush(); // Ensure immediate write to file 
             }
-            // Handle critical errors by exiting the program
-            if (level == CRITICAL) {
-                handle_critical_error(message);
-            }
-        }
-        // Handles critical errors by logging and terminating the program
-        static bool handle_critical_error(const std::string& message) {
-            std::cerr << "Terminating program..." << std::endl;
-            logFile << "Terminating program..." << std::endl;
-            logFile.flush(); // Ensure the message is written to the file before exiting
-            close(); // Close the log file properly before exiting
-            //std::exit(1); // Graceful exit with a critical error code
-            if (test_mode_empty_file) {
-                return false;
-           }
-            else {
-                std::exit(1); // Graceful exit with a critical error code in normal mode
-            }
-            return false;
         }
 
     private:
         static std::ofstream logFile; // File stream for the log file 
 
         // Converts log level to a string for output 
-        static std::string level_to_string(LogLevel level)
+        static std::string levelToString(LogLevel level)
         {
             switch (level) {
             case DEBUG:
@@ -131,17 +145,5 @@ namespace wd_codec {
             }
         }
     };
-
-
-
-
-
-
-
-
-
-       
-           
-
 
 }
