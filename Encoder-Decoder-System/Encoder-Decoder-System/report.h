@@ -11,6 +11,7 @@ namespace wd_codec {
 	static std::size_t global_errors_corrected = 0;
     static std::size_t num_uncorrected_blocks = 0;
     static std::size_t num_blocks = 0;
+    static std::string errors_block_locations = " ";
 
     // Function that update the matrics in summary_log file, with the current matrics
     inline static void log_update_total_metrics_report_for_all_runnings(long long duration, const char* timestamp) {
