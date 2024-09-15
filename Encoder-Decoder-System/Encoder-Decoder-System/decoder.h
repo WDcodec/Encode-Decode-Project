@@ -112,7 +112,10 @@ namespace wd_codec {
 			//Function that compute the result of placing all the generate roots in the recieved poly.
 			int compute_syndrome(const galois::Polynomial& received,galois::Polynomial& syndrome) const
 			{
-				Logger::log(wd_codec::INFO, "Decoder - compute syndrome.");
+#ifdef _DEBUG
+				Logger::log(wd_codec::INFO, "Decoder: compute syndrome.");
+#endif // DEBUG
+
 				int error_flag = 0;
 				syndrome = galois::Polynomial(field_, fec_length - 1);
 				for (std::size_t i = 0; i < fec_length; i++)
@@ -128,10 +131,11 @@ namespace wd_codec {
 			bool forney_algorithm(const std::vector<int>& error_locations, const galois::Polynomial& lambda,
 				                  const galois::Polynomial& syndrome, block_type& rsblock) const
 			{
-                
+#ifdef _DEBUG                
 				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
 				Logger::log(wd_codec::INFO, "Decoder - forney algorithm.");
-              
+#endif // DEBUG
+
 				
 				/* the forney algorthim is a formula that find the correct data base on the lambda, syndrom and error_locations*/
 				galois::Polynomial omega = (lambda * syndrome) % fec_length;
@@ -146,7 +150,6 @@ namespace wd_codec {
 				rsblock.errors_corrected = 0;
 				rsblock.zero_numerators = 0;
 				// pass over all the error_locations in E(x).
-				std::cout << "Decoder - correction errors:"<<std::endl;
 
 				wd_codec::Logger::log(wd_codec::INFO, "Decode: correction errors");
 
@@ -157,9 +160,17 @@ namespace wd_codec {
 					const galois::field_symbol denominator = lambda_derivative(alpha_inverse).poly();
 					if (numerator != 0) {
 						if (denominator != 0) {
+#ifdef _DEBUG
+
+							
 							std::cout << "befor: " << char(rsblock[error_location - 1]) << " ";
+#endif // DEBUG
+
 							rsblock[error_location - 1] ^= field_.div(numerator, denominator);
+#ifdef _DEBUG
 							std::cout << "after: " << char(rsblock[error_location - 1]) << "\n";
+#endif // DEBUG
+
 							rsblock.errors_corrected++;
 						}
 						else {
@@ -203,8 +214,10 @@ namespace wd_codec {
 
 			void chien_sreach(const galois::Polynomial& lambda, std::vector<int>& error_locations) const {
 				// Locate the exact positions of the errors
+#ifdef _DEBUG
 				wd_codec::Logger::log(wd_codec::INFO, "Decoder - cheain sreach");
 				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
+#endif // DEBUG
 				error_locations.reserve(fec_length << 1);
 				error_locations.resize(0);
 				const std::size_t lambda_degree = lambda.deg();
@@ -253,7 +266,7 @@ namespace wd_codec {
 				//b
 				galois::Polynomial previous_lambda = lambda << 1;
                 #ifdef _DEBUG
-				Logger::log(wd_codec::INFO, "Decoder - compute discrepancy n times.");
+				Logger::log(wd_codec::INFO, "Decoder: compute discrepancy n times.");
                 #endif // DEBUG
 				for (std::size_t round = 0; round < fec_length; ++round)
 				{

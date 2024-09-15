@@ -71,7 +71,7 @@ int main()
         }
         std::cout << "num blocks " << file_decoder.get_current_block_index_();
     }
-    if (choice == 3)
+    else if (choice == 3)
     {
         //TODO: handle the files names will be input from the client
         const std::string input_file_name = "picture.bmp";
