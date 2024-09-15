@@ -56,7 +56,8 @@ int main()
         }
         wd_codec::error_injection::inject_random_errors<wd_codec::code_length, wd_codec::fec_length>(rsencoded_output_file_name);
         if (!file_decoder.decode(rsencoded_output_file_name, rsdecoded_file_name)) {
-            std::cout << "Decoding failed." << std::endl;
+            wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder failed " + file_decoder.get_errors_block_locations());
+            wd_codec::close();
             return 1;
         }
         else {
@@ -76,12 +77,14 @@ int main()
         wd_codec::error_injection::inject_random_errors_for_image<wd_codec::code_length, wd_codec::fec_length>(binaryFilePath, "binary_image_corrupted.bmp");
         if (!file_encoder.encode_image(input_file_name, rsencoded_output_file_name)) {
             std::cout << "Encoding failed." << std::endl;
+            wd_codec::close();
             return 1;
         }
         wd_codec::error_injection::inject_random_errors_for_image<wd_codec::code_length, wd_codec::fec_length>(rsencoded_output_file_name, "binary_image_encoded.bmp");
 
         if (!file_decoder.decode_image(rsencoded_output_file_name, rsdecoded_file_name)) {
             std::cout << "Decoding failed." << std::endl;
+            wd_codec::close();
             return 1;
         }
         else {
@@ -104,12 +107,14 @@ int main()
         wd_codec::error_injection::inject_random_errors_for_audio<wd_codec::code_length, wd_codec::fec_length>(binaryFilePath, "binary_audio_corrupted.opus");
         if (!file_encoder.encode_audio(input_file_name, rsencoded_output_file_name)) {
             std::cout << "Encoding failed." << std::endl;
+            wd_codec::close();
             return 1;
         }
         wd_codec::error_injection::inject_random_errors_for_audio<wd_codec::code_length, wd_codec::fec_length>(rsencoded_output_file_name, "binary_audio_encoded.opus");
 
         if (!file_decoder.decode_audio(rsencoded_output_file_name, rsdecoded_file_name)) {
             std::cout << "Decoding failed." << std::endl;
+            wd_codec::close();
             return 1;
         }
         else {

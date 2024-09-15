@@ -60,11 +60,16 @@ namespace wd_codec {
         static void log_errors_number() {
             // Create log entry 
             std::ostringstream logEntry;
+            std::size_t num_corrected_blocks = num_blocks - num_uncorrected_blocks;
             logEntry << "Number of error that detected: " << wd_codec::global_errors_detected
                 << "\n"
                 << "Number of error that corected: " << wd_codec::global_errors_corrected
                 << "\n"
-                << "Success rate: " << ( wd_codec::global_errors_corrected / (double)wd_codec::global_errors_detected ) * 100
+                << "Number of blocks: " << num_blocks
+                << "\n"
+                << "Number of corrected blocks: " << num_corrected_blocks
+                << "\n"
+                << "Success rate: " <<  (((double)(num_corrected_blocks)/ num_blocks) * 100)
                 << "%" 
                 << std::endl;
 
@@ -94,6 +99,24 @@ namespace wd_codec {
             std::ostringstream logEntry;
             logEntry << "[" << timestamp << "] "
                 << levelToString(level) << ": " << message
+                << std::endl;
+
+            // Output to console 
+            std::cout << logEntry.str();
+
+            // Output to log file 
+            if (logFile.is_open()) {
+                logFile << logEntry.str();
+                logFile.flush(); // Ensure immediate write to file 
+            }
+        }
+        static void log(const std::string& message)
+        {
+
+
+            // Create log entry 
+            std::ostringstream logEntry;
+            logEntry <<  message
                 << std::endl;
 
             // Output to console 

@@ -94,12 +94,16 @@ namespace wd_codec {
 					rsblock.zero_numerators = 0;
 					rsblock.unrecoverable = true;
 					//rsblock.error = block_type::e_decoder_error1;
-					wd_codec::Logger::log(wd_codec::CRITICAL, "Decode: Decode failed!");
+					wd_codec::Logger::log(wd_codec::ERROR, "Decode: Decode failed!");
 					return false;
 				}
 				else
 					rsblock.errors_detected = error_locations.size();
-
+				if (lambda.deg() != static_cast<int>(rsblock.errors_detected)) {
+					rsblock.errors_corrected = 0;
+					return false;
+				}
+					
 				//correct the errors 
 				return forney_algorithm(error_locations, lambda, syndrome, rsblock);
 
@@ -155,9 +159,9 @@ namespace wd_codec {
 					const galois::field_symbol denominator = lambda_derivative(alpha_inverse).poly();
 					if (numerator != 0) {
 						if (denominator != 0) {
-							//std::cout << "\nbefor: " << char(rsblock[error_location - 1]) << " ";
+							std::cout << "befor: " << char(rsblock[error_location - 1]) << " ";
 							rsblock[error_location - 1] ^= field_.div(numerator, denominator);
-							//std::cout << "after: " << char(rsblock[error_location - 1]) << " ";
+							std::cout << "after: " << char(rsblock[error_location - 1]) << "\n";
 							rsblock.errors_corrected++;
 						}
 						else {
