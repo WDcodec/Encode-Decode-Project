@@ -52,7 +52,7 @@ namespace wd_codec {
             duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
             std::ostringstream elapsed_time_message;
             elapsed_time_message << "Elapsed time: " << duration << " milliseconds";
-            //wd_codec::Logger::log_errors_number();
+            wd_codec::Logger::log_errors_number();
             wd_codec::Logger::log(INFO, elapsed_time_message.str());
         }
 
