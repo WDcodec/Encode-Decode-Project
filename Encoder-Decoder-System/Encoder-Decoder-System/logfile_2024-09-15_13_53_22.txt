@@ -1,0 +1,2089 @@
+[2024-09-15 13:53:22] INFO: Generator Polynomial - creation succeeded!, G(x)= 2 x^0 + 155 x^1 + 135 x^2 + 52 x^3 + 206 x^4 + 88 x^5 + 178 x^6 + 231 x^7 + 217 x^8 + 195 x^9 + 48 x^10 + 145 x^11 + 244 x^12 + 47 x^13 + 184 x^14 + 34 x^15 + 236 x^16 + 13 x^17 + 163 x^18 + 78 x^19 + 18 x^20 + 199 x^21 + 128 x^22 + 34 x^23 + 206 x^24 + 27 x^25 + 238 x^26 + 244 x^27 + 224 x^28 + 175 x^29 + 49 x^30 + 104 x^31 + 1 x^32
+[2024-09-15 13:53:22] INFO: Decoder: generate decoder.
+[2024-09-15 13:53:22] INFO: Decoder: create lookup tables 
+[2024-09-15 13:53:25] INFO: INFO: dividing the file to blocks with size k
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: Encode: Encode succeeded
+[2024-09-15 13:53:25] INFO: File Encoder: Encode process successed
+Decoding block number 0
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] ERROR: File Decoder::process_complete_block(): Error during decoding of block 0
+Decoding block number 1
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] INFO: Decoder - forney algorithm.
+Decoding block number 2
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:29] ERROR: File Decoder::process_complete_block(): Error during decoding of block 2
+Decoding block number 3
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] INFO: Decoder - forney algorithm.
+Decoding block number 4
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] ERROR: File Decoder::process_complete_block(): Error during decoding of block 4
+Decoding block number 5
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] INFO: Decoder - forney algorithm.
+Decoding block number 6
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] ERROR: File Decoder::process_complete_block(): Error during decoding of block 6
+Decoding block number 7
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] INFO: Decoder - forney algorithm.
+Decoding block number 8
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] ERROR: File Decoder::process_complete_block(): Error during decoding of block 8
+Decoding block number 9
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] INFO: Decoder - forney algorithm.
+Decoding block number 10
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:29] ERROR: File Decoder::process_complete_block(): Error during decoding of block 10
+Decoding block number 11
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] INFO: Decoder - forney algorithm.
+Decoding block number 12
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] ERROR: File Decoder::process_complete_block(): Error during decoding of block 12
+Decoding block number 13
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:29] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:29] INFO: Decoder - forney algorithm.
+Decoding block number 14
+[2024-09-15 13:53:29] INFO: Decoder: decoding...
+[2024-09-15 13:53:29] INFO: Decoder - load message.
+[2024-09-15 13:53:29] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:29] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 14
+Decoding block number 15
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 16
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 16
+Decoding block number 17
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 18
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 18
+Decoding block number 19
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 20
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 20
+Decoding block number 21
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 22
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 22
+Decoding block number 23
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 24
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 24
+Decoding block number 25
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 26
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 26
+Decoding block number 27
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 28
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 28
+Decoding block number 29
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 30
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 30
+Decoding block number 31
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 32
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 32
+Decoding block number 33
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 34
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 34
+Decoding block number 35
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 36
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 36
+Decoding block number 37
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 38
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 38
+Decoding block number 39
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 40
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 40
+Decoding block number 41
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 42
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 42
+Decoding block number 43
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 44
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 44
+Decoding block number 45
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 46
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 46
+Decoding block number 47
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 48
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 48
+Decoding block number 49
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 50
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 50
+Decoding block number 51
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 52
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 52
+Decoding block number 53
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 54
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 54
+Decoding block number 55
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 56
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 56
+Decoding block number 57
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 58
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 58
+Decoding block number 59
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 60
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 60
+Decoding block number 61
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 62
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 62
+Decoding block number 63
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 64
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 64
+Decoding block number 65
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 66
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 66
+Decoding block number 67
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 68
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 68
+Decoding block number 69
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 70
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 70
+Decoding block number 71
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 72
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 72
+Decoding block number 73
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 74
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 74
+Decoding block number 75
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 76
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] ERROR: File Decoder::process_complete_block(): Error during decoding of block 76
+Decoding block number 77
+[2024-09-15 13:53:30] INFO: Decoder: decoding...
+[2024-09-15 13:53:30] INFO: Decoder - load message.
+[2024-09-15 13:53:30] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:30] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:30] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:30] INFO: Decoder - forney algorithm.
+Decoding block number 78
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 78
+Decoding block number 79
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 80
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 80
+Decoding block number 81
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 82
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 82
+Decoding block number 83
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 84
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 84
+Decoding block number 85
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 86
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 86
+Decoding block number 87
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 88
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 88
+Decoding block number 89
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 90
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 90
+Decoding block number 91
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 92
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 92
+Decoding block number 93
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 94
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 94
+Decoding block number 95
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 96
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 96
+Decoding block number 97
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 98
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 98
+Decoding block number 99
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 100
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 100
+Decoding block number 101
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 102
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 102
+Decoding block number 103
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 104
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 104
+Decoding block number 105
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 106
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 106
+Decoding block number 107
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 108
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 108
+Decoding block number 109
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 110
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 110
+Decoding block number 111
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 112
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 112
+Decoding block number 113
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 114
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 114
+Decoding block number 115
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 116
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 116
+Decoding block number 117
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 118
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 118
+Decoding block number 119
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 120
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 120
+Decoding block number 121
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 122
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 122
+Decoding block number 123
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 124
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 124
+Decoding block number 125
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 126
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 126
+Decoding block number 127
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 128
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 128
+Decoding block number 129
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 130
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 130
+Decoding block number 131
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 132
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 132
+Decoding block number 133
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 134
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 134
+Decoding block number 135
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 136
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 136
+Decoding block number 137
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 138
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] ERROR: File Decoder::process_complete_block(): Error during decoding of block 138
+Decoding block number 139
+[2024-09-15 13:53:31] INFO: Decoder: decoding...
+[2024-09-15 13:53:31] INFO: Decoder - load message.
+[2024-09-15 13:53:31] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:31] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:31] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:31] INFO: Decoder - forney algorithm.
+Decoding block number 140
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 140
+Decoding block number 141
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 142
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 142
+Decoding block number 143
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 144
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 144
+Decoding block number 145
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 146
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 146
+Decoding block number 147
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 148
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 148
+Decoding block number 149
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 150
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 150
+Decoding block number 151
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 152
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 152
+Decoding block number 153
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 154
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 154
+Decoding block number 155
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 156
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 156
+Decoding block number 157
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 158
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 158
+Decoding block number 159
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 160
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 160
+Decoding block number 161
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 162
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 162
+Decoding block number 163
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 164
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 164
+Decoding block number 165
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 166
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 166
+Decoding block number 167
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 168
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 168
+Decoding block number 169
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 170
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 170
+Decoding block number 171
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 172
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 172
+Decoding block number 173
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 174
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 174
+Decoding block number 175
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 176
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 176
+Decoding block number 177
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 178
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 178
+Decoding block number 179
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 180
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 180
+Decoding block number 181
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 182
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 182
+Decoding block number 183
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 184
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 184
+Decoding block number 185
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 186
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 186
+Decoding block number 187
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 188
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 188
+Decoding block number 189
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 190
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 190
+Decoding block number 191
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 192
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 192
+Decoding block number 193
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 194
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 194
+Decoding block number 195
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 196
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 196
+Decoding block number 197
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 198
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 198
+Decoding block number 199
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 200
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 200
+Decoding block number 201
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] INFO: Decoder - forney algorithm.
+Decoding block number 202
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:32] ERROR: File Decoder::process_complete_block(): Error during decoding of block 202
+Decoding block number 203
+[2024-09-15 13:53:32] INFO: Decoder: decoding...
+[2024-09-15 13:53:32] INFO: Decoder - load message.
+[2024-09-15 13:53:32] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:32] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:32] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 204
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 204
+Decoding block number 205
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 206
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 206
+Decoding block number 207
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 208
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 208
+Decoding block number 209
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 210
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 210
+Decoding block number 211
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 212
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 212
+Decoding block number 213
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 214
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 214
+Decoding block number 215
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 216
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 216
+Decoding block number 217
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 218
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 218
+Decoding block number 219
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 220
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 220
+Decoding block number 221
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 222
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 222
+Decoding block number 223
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 224
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 224
+Decoding block number 225
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 226
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 226
+Decoding block number 227
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 228
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 228
+Decoding block number 229
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 230
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 230
+Decoding block number 231
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 232
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 232
+Decoding block number 233
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 234
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 234
+Decoding block number 235
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 236
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 236
+Decoding block number 237
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 238
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 238
+Decoding block number 239
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 240
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 240
+Decoding block number 241
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 242
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 242
+Decoding block number 243
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 244
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 244
+Decoding block number 245
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 246
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 246
+Decoding block number 247
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 248
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 248
+Decoding block number 249
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 250
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: Decode: Decode failed!
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 250
+Decoding block number 251
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+Decoding block number 252
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] ERROR: File Decoder::process_complete_block(): Error during decoding of block 252
+Decoding block number 253
+[2024-09-15 13:53:33] INFO: Decoder: decoding...
+[2024-09-15 13:53:33] INFO: Decoder - load message.
+[2024-09-15 13:53:33] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:33] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:33] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:33] INFO: Decoder - forney algorithm.
+[2024-09-15 13:53:34] INFO: Decoder: decoding...
+[2024-09-15 13:53:34] INFO: Decoder - load message.
+[2024-09-15 13:53:34] INFO: Decoder - berlekamp massey algo'.
+[2024-09-15 13:53:34] INFO: Decoder - compute discrepancy n times.
+[2024-09-15 13:53:34] INFO: Decoder - cheain sreach
+[2024-09-15 13:53:34] ERROR: File Decoder::process_partial_block(): Error during decoding of block
+Number of error that detected: 2080
+Number of error that corected: 1955
+[2024-09-15 13:53:34] INFO: File Decoder: Decoder failed  0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 192, 194, 196, 198, 200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 222, 224, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 248, 250, 252
