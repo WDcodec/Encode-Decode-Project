@@ -126,7 +126,24 @@ namespace wd_codec {
                 logFile.flush(); // Ensure immediate write to file 
             }
         }
+        static void log(const std::string& message)
+        {
 
+
+            // Create log entry 
+            std::ostringstream logEntry;
+            logEntry <<  message
+                << std::endl;
+
+            // Output to console 
+            std::cout << logEntry.str();
+
+            // Output to log file 
+            if (logFile.is_open()) {
+                logFile << logEntry.str();
+                logFile.flush(); // Ensure immediate write to file 
+            }
+        }
     private:
         static std::ofstream logFile; // File stream for the log file 
 

@@ -49,6 +49,7 @@ namespace wd_codec {
             std::uniform_int_distribution<> byte_dis(0, data_length - 1);  // Uniform distribution [0, data_length]
 
             // Process the file in chunks
+            int i = 0;
             for (std::streamoff offset = start; offset < file_size; offset += code_length)
             {
                 std::streamsize current_chunk_size = (data_length < file_size - offset) ? data_length : (file_size - offset);
@@ -57,7 +58,13 @@ namespace wd_codec {
 
                 // Inject random errors
                 std::set<std::size_t> error_indices;
-                int counter_errors = 0;
+              int counter_errors = 0;
+              if (i % 2 == 0) {
+                  errors_number = 20;
+               }                   
+               else
+                    errors_number = 0;
+              i++;
                 while (counter_errors < fec_length / 2 + errors_number)
                     //while (counter_errors < 1)
                 {

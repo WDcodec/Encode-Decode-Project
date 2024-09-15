@@ -56,7 +56,7 @@ int main()
         }
         wd_codec::error_injection::inject_random_errors<wd_codec::code_length, wd_codec::fec_length>(rsencoded_output_file_name);
         if (!file_decoder.decode(rsencoded_output_file_name, rsdecoded_file_name)) {
-            std::cout << "Decoding failed." << std::endl;
+            wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder failed " + file_decoder.errors_block_locations);
             return 1;
         }
         else {
