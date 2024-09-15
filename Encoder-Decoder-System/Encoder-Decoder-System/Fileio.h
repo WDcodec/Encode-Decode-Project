@@ -61,6 +61,7 @@ namespace wd_codec {
 
         inline void converAudioToBinary(const std::string& audioFilename, const std::string& binaryFilename) {
             // Open the Opus file
+            wd_codec::Logger::log(wd_codec::INFO, "convet audio to binary");
             std::ifstream audioFile(audioFilename, std::ios::binary);
             if (!audioFile) {
                 wd_codec::Logger::log(wd_codec::ERROR, "Error opening Opus file.");
@@ -88,6 +89,8 @@ namespace wd_codec {
         }
         inline void convert_binary_to_audio(const std::string& binaryFilename, const std::string& audioFilename) {
             // Open the binary file
+            wd_codec::Logger::log(wd_codec::INFO, "convet binary to audio ");
+
             std::ifstream binaryFile(binaryFilename, std::ios::binary);
             if (!binaryFile) {
                 wd_codec::Logger::log(wd_codec::ERROR, "Error opening binary file.");
@@ -116,6 +119,8 @@ namespace wd_codec {
 
         inline bool convert_image_to_binary(const std::string& imageFilePath, const std::string& binaryFilePath)
         {
+            wd_codec::Logger::log(wd_codec::INFO, "convet image to binary ");
+
             std::ifstream image(imageFilePath, std::ios::in | std::ios::binary);
             if (!image)
             {
@@ -142,6 +147,8 @@ namespace wd_codec {
         template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
        inline bool convert_binary_to_image(const std::string& binaryFilePath, const std::string& imageFilePath)
         {
+           wd_codec::Logger::log(wd_codec::INFO, "convet binary to image ");
+
             std::ifstream binary(binaryFilePath, std::ios::in | std::ios::binary);
             if (!binary)
             {

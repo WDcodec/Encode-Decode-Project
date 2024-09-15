@@ -5,6 +5,7 @@
 #include "Polynomial.h"
 
 #define POSTFIX ".txt"
+#define NUM_STAGES 7
 namespace wd_codec {
 
     // Enum to represent log levels 
@@ -21,7 +22,7 @@ namespace wd_codec {
             char timestamp[20];
             start_timer();
             create_timestamp(timestamp);
-
+            coverage = 0;
             // Convert C-style timestamp to std::string for concatenation
             std::string filename = std::string("logfile_") + timestamp + POSTFIX;
 
@@ -36,7 +37,7 @@ namespace wd_codec {
                 // Open the log file in append mode
                 logFile.open(filename, std::ios::out | std::ios::trunc);
                 if (!logFile.is_open()) {
-                    std::cerr << "Error opening log file." << std::endl;
+                    wd_codec::Logger::log(wd_codec::ERROR, "Error opening log file.");
                 }
             }
         }
@@ -51,9 +52,11 @@ namespace wd_codec {
             auto end_time = std::chrono::high_resolution_clock::now();
             duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
             std::ostringstream elapsed_time_message;
-            elapsed_time_message << "Elapsed time: " << duration << " milliseconds";
+            wd_codec::Logger::log("-REPORT- ");
+            elapsed_time_message << "* Elapsed time: " << duration << " milliseconds";
             wd_codec::Logger::log_errors_number();
-            wd_codec::Logger::log(INFO, elapsed_time_message.str());
+            wd_codec::Logger::log( "* Coverage system: " + std::to_string((coverage * 100) / NUM_STAGES) + "% done.");
+            wd_codec::Logger::log( elapsed_time_message.str());
         }
 
         // Function that log the report of the errors after the process
@@ -61,15 +64,19 @@ namespace wd_codec {
             // Create log entry 
             std::ostringstream logEntry;
             std::size_t num_corrected_blocks = num_blocks - num_uncorrected_blocks;
-            logEntry << "Number of error that detected: " << wd_codec::global_errors_detected
+            logEntry << "* Number of error that detected: " << wd_codec::global_errors_detected
                 << "\n"
-                << "Number of error that corected: " << wd_codec::global_errors_corrected
+                << "* Number of error that corected: " << wd_codec::global_errors_corrected
                 << "\n"
-                << "Number of blocks: " << num_blocks
+                << "* Number of blocks: " << num_blocks
                 << "\n"
-                << "Number of corrected blocks: " << num_corrected_blocks
+                << "* Number of corrected blocks: " << num_corrected_blocks
                 << "\n"
-                << "Success rate: " <<  (((double)(num_corrected_blocks)/ num_blocks) * 100)
+                << "* Number of uncorrected blocks: " << num_uncorrected_blocks
+                << "\n"
+                << "  The uncorrected blocks are:" << errors_block_locations
+                << "\n"
+                << "* Success rate: " <<  (((double)(num_corrected_blocks)/ num_blocks) * 100)
                 << "%" 
                 << std::endl;
 
@@ -81,6 +88,7 @@ namespace wd_codec {
                 logFile << logEntry.str();
                 logFile.flush(); // Ensure immediate write to file 
             }
+
         }
 
     // Overloading of log function:
@@ -139,9 +147,21 @@ namespace wd_codec {
                 logFile.close();
             }
         }
+       /* static int getCoverage() {
+            return coverage;
+        }
+        static void setCoverage(int value) {
+             coverage=value;
+        }*/
 
+        static void increaseCoverage() {
+            if (coverage < NUM_STAGES) {
+                coverage++;
+            }
+        }
     private:
         static std::ofstream logFile; // File stream for the log file 
+        static int coverage;
         static long long duration;
         // Converts log level to a string for output 
         static std::string levelToString(LogLevel level)
