@@ -43,7 +43,6 @@ namespace wd_codec {
             bool decode(const std::string& input_file_name,
                 const std::string& output_file_name)
             {
-
                 std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
 
                 if (remaining_bytes == 0)
@@ -87,13 +86,17 @@ namespace wd_codec {
                 #ifdef DEBUG
                 wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder succeeded" );
                 #endif // DEBUG
-                wd_codec::Logger::logErrorsNumber();
+               // wd_codec::Logger::logErrorsNumber();
                 return failed_decode;
             }
             bool get_is_residue_handled() {
                 return is_residue_handled;
              }
-            std::size_t current_block_index_;
+
+            std::size_t get_current_block_index_() {
+                return current_block_index_;
+            }
+
         private:
 
             inline bool process_complete_block(
@@ -170,7 +173,7 @@ namespace wd_codec {
 
                 const decoder_type& decoder;
                 block_type block_;
-                
+                int current_block_index_;
                 char buffer_[code_length];  
                 bool is_residue_handled = false;
                 bool failed_decode = true;

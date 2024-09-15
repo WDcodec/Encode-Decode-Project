@@ -62,7 +62,7 @@ int main()
         else {
             std::cout << "Decoding succeed." << std::endl;
         }
-        std::cout << "num blocks " << file_decoder.current_block_index_;
+        std::cout << "num blocks " << file_decoder.get_current_block_index_();
     }
     if (choice == 3)
     {
@@ -87,7 +87,7 @@ int main()
         else {
             std::cout << "Decoding succeed." << std::endl;
         }
-        std::cout << "num blocks " << file_decoder.current_block_index_;
+        std::cout << "num blocks " << file_decoder.get_current_block_index_();
 
 
     }
@@ -115,7 +115,7 @@ int main()
         else {
             std::cout << "Decoding succeed." << std::endl;
         }
-        std::cout << "num blocks " << file_decoder.current_block_index_;
+        std::cout << "num blocks " << file_decoder.get_current_block_index_();
     }
 
     wd_codec::close();
