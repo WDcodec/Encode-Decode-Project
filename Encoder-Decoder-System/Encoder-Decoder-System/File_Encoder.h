@@ -52,6 +52,8 @@ namespace wd_codec {
                      const std::string binaryFilePath = "binary_image_data.bin";
                      fileio::convertImageToBinary(input_file_name, binaryFilePath);
                  }*/
+                wd_codec::Logger::log(wd_codec::INFO, "INFO: encoding");
+
                 std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
                 if (remaining_bytes == 0)
                 {

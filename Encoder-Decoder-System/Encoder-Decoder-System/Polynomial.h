@@ -8,7 +8,6 @@
 
 namespace wd_codec
 {
-
 	namespace galois
 	{
 

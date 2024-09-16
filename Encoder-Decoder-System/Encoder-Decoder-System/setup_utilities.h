@@ -48,7 +48,8 @@ namespace wd_codec {
     }
 
     static inline void setup() {
-
+        wd_codec::Logger::increaseCoverage();
+        wd_codec::Logger::log(wd_codec::INFO, "init system");
         Logger::init();
         //Generate G(X)
         if (!wd_codec::create_root_generator_polynomial(field,

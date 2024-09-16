@@ -24,7 +24,7 @@ namespace wd_codec {
         // Function that inject a lot of random errors for files input
         template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
         inline void inject_random_errors(const std::string& file_name, int errors_number = 0, std::size_t start = 0) {
-
+            wd_codec::Logger::log(wd_codec::INFO, "Error Injection: inject random errors.");
             if (!wd_codec::fileio::file_exists(file_name))
             {
                 wd_codec::Logger::log(wd_codec::ERROR,"Error Injection: file does not exist!");
@@ -49,6 +49,7 @@ namespace wd_codec {
             std::uniform_int_distribution<> byte_dis(0, data_length - 1);  // Uniform distribution [0, data_length]
 
             // Process the file in chunks
+            int i = 0;
             for (std::streamoff offset = start; offset < file_size; offset += code_length)
             {
                 std::streamsize current_chunk_size = (data_length < file_size - offset) ? data_length : (file_size - offset);
@@ -57,14 +58,19 @@ namespace wd_codec {
 
                 // Inject random errors
                 std::set<std::size_t> error_indices;
-                int counter_errors = 0;
+              int counter_errors = 0;
+             /* if (i % 10 == 0) {
+                  errors_number = 20;
+               }                   
+               else
+                    errors_number = 0;
+              i++;*/
                 while (counter_errors < fec_length / 2 + errors_number)
-                    //while (counter_errors < 1)
                 {
                     std::size_t random_index = byte_dis(gen);
                     // Valid condition
                     if (random_index < current_chunk_size)
-                    {
+                   {
                         error_indices.insert(random_index);
                         counter_errors++;
                     }
@@ -72,7 +78,7 @@ namespace wd_codec {
 
                 for (std::size_t index : error_indices)
                 {
-                    buffer[index] = char(buffer[index] + 2); // Corrupt the byte
+                    buffer[index] = char(~buffer[index]); // Corrupt the byte
                 }
 
                 // Write the corrupted chunk back to the file
@@ -91,10 +97,10 @@ namespace wd_codec {
             file.close();
         }
 
-
         // Function that inject little bit random errors
         inline void inject_random_errors(const std::string& binaryFilename) {
             // Open the binary file for reading
+            wd_codec::Logger::log(wd_codec::INFO, "Error Injection: inject random errors.");
             std::ifstream binaryFile(binaryFilename, std::ios::binary);
             if (!binaryFile) {
                 wd_codec::Logger::log(wd_codec::ERROR, "Error Injection::binary file: Error opening binary file for reading.");
@@ -145,6 +151,7 @@ namespace wd_codec {
             const long& start_position,
             const long& burst_length)
         {
+            wd_codec::Logger::log(wd_codec::INFO, "Error Injection: corrupt file with burst errors");
             if (!wd_codec::fileio::file_exists(file_name))
             {
 
@@ -190,11 +197,12 @@ namespace wd_codec {
             ofile.write(&data[0], burst_length);
             ofile.close();
         }
-        template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
+        /*template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
         inline void inject_random_errors_for_image(const std::string& file_name) {
+            wd_codec::Logger::log(wd_codec::INFO, "Error Injection: inject random errors for image");
             inject_random_errors<code_length, fec_length>(file_name, 0, code_length);
             const std::string imageFilePath = "binary_image_corrupted.bmp";
             wd_codec::fileio::convert_binary_to_image(file_name, imageFilePath);
-        }
+        }*/
 	}
 }

@@ -65,6 +65,7 @@ namespace wd_codec {
             // Member variables
             std::size_t errors_detected;
             std::size_t errors_corrected;
+
             std::size_t zero_numerators;
             bool unrecoverable;//todo:maybe for too much errors
             galois::field_symbol data[code_length];

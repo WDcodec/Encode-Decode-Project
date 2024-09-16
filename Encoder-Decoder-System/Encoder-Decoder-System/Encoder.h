@@ -23,13 +23,22 @@ namespace wd_codec
 				: encoder_valid(code_length == gfield.size()),
 				field_(gfield),
 				generator_(generator)
-			{}
+			{
+				wd_codec::Logger::increaseCoverage();
+
+#ifdef _DEBUG
+				Logger::log(wd_codec::INFO, "Decoder: generate encoder.");
+#endif // DEBUG
+			}
 
 			~Encoder()
 			{}
 
 			//Encoding the message.
 			bool encode(block_type& rsblock) const {
+#ifdef _DEBUG
+				wd_codec::Logger::log(wd_codec::INFO, "Encode: Encoding...");
+#endif // DEBUG
 				//Computing data = p(x)*x^n-k,
 				//where p(x) in rsblock.
 				galois::Polynomial data(field_, code_length);
@@ -64,7 +73,6 @@ namespace wd_codec
 				wd_codec::Logger::log(wd_codec::INFO, "Encode: Encode succeeded");
                 #endif // DEBUG
 				return true;
-
 			}
 
 			bool encode(block_type& rsblock, const std::string& data) const {
@@ -83,6 +91,9 @@ namespace wd_codec
 
 			//Compute the P(x)*x^(n-k) for making place to the redundancy. 
 			inline void place_data_in_codeword(const block_type& rsblock, galois::Polynomial& data) const {
+#ifdef _DEBUG
+				wd_codec::Logger::log(wd_codec::INFO, "Encode: place data in codeword");
+#endif // DEBUG
 				for (std::size_t i = code_length - 1; i >= fec_length; i--) {
 					data[i] = rsblock[code_length - 1 - i];
 				}
