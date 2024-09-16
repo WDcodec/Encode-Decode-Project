@@ -59,12 +59,12 @@ namespace wd_codec {
                 // Inject random errors
                 std::set<std::size_t> error_indices;
               int counter_errors = 0;
-              if (i % 10 == 0) {
+             /* if (i % 10 == 0) {
                   errors_number = 20;
                }                   
                else
                     errors_number = 0;
-              i++;
+              i++;*/
                 while (counter_errors < fec_length / 2 + errors_number)
                 {
                     std::size_t random_index = byte_dis(gen);
