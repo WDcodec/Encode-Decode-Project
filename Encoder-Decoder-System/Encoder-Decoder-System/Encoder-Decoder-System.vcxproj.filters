@@ -86,6 +86,9 @@
     <ClInclude Include="report.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Mixing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Decoder.h">
