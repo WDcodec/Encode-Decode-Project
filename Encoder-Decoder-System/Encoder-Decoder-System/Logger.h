@@ -1,26 +1,46 @@
 
 #pragma once
-
+#include <ctime>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <iomanip>
+#include <chrono>
 #include "report.h"
 #include "Polynomial.h"
 
 #define POSTFIX ".txt"
 #define NUM_STAGES 7
 namespace wd_codec {
-
     // Enum to represent log levels 
     enum LogLevel { DEBUG, INFO, WARNING, ERROR, CRITICAL };
     static bool test_mode_empty_file = false;
     static std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
-    static std::chrono::time_point<std::chrono::high_resolution_clock> duration;
 
     class Logger {
     public:
 
+        // Creates a timestamp string in the format "YYYY-MM-DD HH:MM:SS"
+        static void create_timestamp(char* timestamp) {
+            // Get current timestamp 
+            time_t now = time(0);
+            tm timeinfo;
+
+            // Use localtime_s or localtime_r based on the platform
+#ifdef _WIN32
+            localtime_s(&timeinfo, &now);
+#else
+            localtime_r(&now, &timeinfo);
+#endif
+
+            // Format the timestamp
+            strftime(timestamp, 20, "%Y-%m-%d %H:%M:%S", &timeinfo);
+        }
+
         // Initializes the logger, opens the log file in append mode 
         static void init() {
-            char timestamp[20];
             start_timer();
+            char timestamp[20];
             create_timestamp(timestamp);
             coverage = 0;
             // Convert C-style timestamp to std::string for concatenation
@@ -41,10 +61,35 @@ namespace wd_codec {
                 }
             }
         }
-        
         // Call this function at the beginning of the program to start the timer
         static void start_timer() {
             start_time = std::chrono::high_resolution_clock::now();
+        }
+
+        // Call this function at the end of the program to log the elapsed time
+        static void log_elapsed_time() {
+            auto end_time = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+            std::ostringstream elapsed_time_message;
+            wd_codec::Logger::log("-REPORT- ");
+            elapsed_time_message << "* Elapsed time: " << duration << " milliseconds";
+            wd_codec::Logger::log_errors_number();
+            wd_codec::Logger::log( "* Coverage system: " + std::to_string((coverage * 100) / NUM_STAGES) + "% done.");
+            wd_codec::Logger::log( elapsed_time_message.str());
+        }
+        // Closes the log file
+        //static void close() {
+        //    log_elapsed_time();
+
+        //    if (logFile.is_open()) {
+        //        logFile.close();
+        //    }
+        //}
+
+        static void log(LogLevel level,const std::string& message, galois::Polynomial& poly) {
+            std::string newMessage = message + poly.convert_to_string();
+            wd_codec::Logger::log(wd_codec::INFO, newMessage);
+
         }
 
         // Call this function at the end of the program to log the elapsed time and other metrics
@@ -55,11 +100,10 @@ namespace wd_codec {
             wd_codec::Logger::log("-REPORT- ");
             elapsed_time_message << "* Elapsed time: " << duration << " milliseconds";
             wd_codec::Logger::log_errors_number();
-            wd_codec::Logger::log( "* Coverage system: " + std::to_string((coverage * 100) / NUM_STAGES) + "% done.");
-            wd_codec::Logger::log( elapsed_time_message.str());
+            wd_codec::Logger::log("* Coverage system: " + std::to_string((coverage * 100) / NUM_STAGES) + "% done.");
+            wd_codec::Logger::log(elapsed_time_message.str());
         }
 
-        // Function that log the report of the errors after the process
         static void log_errors_number() {
             // Create log entry 
             std::ostringstream logEntry;
@@ -90,16 +134,10 @@ namespace wd_codec {
             }
 
         }
-
-    // Overloading of log function:
-        static void log(LogLevel level, const std::string& message, galois::Polynomial& poly) {
-            std::string newMessage = message + poly.convert_to_string();
-            wd_codec::Logger::log(wd_codec::INFO, newMessage);
-
-        }
-
+        // Logs a message with a given log level 
         static void log(LogLevel level, const std::string& message)
         {
+           
             char timestamp[20];
             create_timestamp(timestamp);
 
