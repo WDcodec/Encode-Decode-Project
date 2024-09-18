@@ -172,9 +172,7 @@ int main()
         wd_codec::Logger::log(wd_codec::ERROR, "your choice is invalid!");
 
     }
-
     wd_codec::close();
-
 }
-//
-//
+
+

@@ -47,11 +47,7 @@ namespace wd_codec {
 
             bool encode(const std::string& input_file_name,
                 const std::string& output_file_name)
-            {//todo:efrat
-                /* if (input_file_name.length() >= IMG_TYPE_SIZE && input_file_name.substr(input_file_name.length() - IMG_TYPE_SIZE) == IMG_TYPE) {
-                     const std::string binaryFilePath = "binary_image_data.bin";
-                     fileio::convertImageToBinary(input_file_name, binaryFilePath);
-                 }*/
+            {
                 wd_codec::Logger::log(wd_codec::INFO, "INFO: encoding");
 
                 std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);

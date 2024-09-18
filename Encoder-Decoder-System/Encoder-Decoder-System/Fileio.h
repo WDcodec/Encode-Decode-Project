@@ -119,7 +119,7 @@ namespace wd_codec {
 
         inline bool convert_image_to_binary(const std::string& imageFilePath, const std::string& binaryFilePath)
         {
-            wd_codec::Logger::log(wd_codec::INFO, "convet image to binary ");
+            wd_codec::Logger::log(wd_codec::INFO, "convert image to binary ");
 
             std::ifstream image(imageFilePath, std::ios::in | std::ios::binary);
             if (!image)
@@ -147,7 +147,7 @@ namespace wd_codec {
         template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
        inline bool convert_binary_to_image(const std::string& binaryFilePath, const std::string& imageFilePath)
         {
-           wd_codec::Logger::log(wd_codec::INFO, "convet binary to image ");
+           wd_codec::Logger::log(wd_codec::INFO, "convert binary to image ");
 
             std::ifstream binary(binaryFilePath, std::ios::in | std::ios::binary);
             if (!binary)
@@ -165,7 +165,6 @@ namespace wd_codec {
             }
 
             std::vector<char> buffer((std::istreambuf_iterator<char>(binary)), std::istreambuf_iterator<char>());
-            //TODO: add a loop that copy from the buffer in chunks of block_size (to not copy the redentucey)
             image.write(buffer.data(), buffer.size());
 
             binary.close();
@@ -173,106 +172,6 @@ namespace wd_codec {
 
             return true;
         }
-       //todo efrat
-        //template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
-        //inline bool convertBinaryToImage(const std::string& binaryFilePath, const std::string& imageFilePath) {
-        //    std::ifstream binary(binaryFilePath, std::ios::in | std::ios::binary);
-        //    if (!binary) {
-        //        std::cerr << "Error opening binary file: " << binaryFilePath << std::endl;
-        //        return false;
-        //    }
-
-        //    std::ofstream image(imageFilePath, std::ios::out | std::ios::binary);
-        //    if (!image) {
-        //        std::cerr << "Error opening image output file: " << imageFilePath << std::endl;
-        //        return false;
-        //    }
-
-        //    const std::size_t chunk_size = code_length;
-        //    const std::size_t write_size = data_length;
-
-        //    std::vector<char> buffer(chunk_size);
-
-        //    // Read and process the binary file in chunks
-        //    while (binary.read(buffer.data(), chunk_size) || binary.gcount() > 0) {
-        //        std::size_t bytes_read = static_cast<std::size_t>(binary.gcount());
-
-        //        // Write only the first data_length bytes or bytes_read if it's less than data_length
-        //        std::size_t bytes_to_write = std::min(write_size, bytes_read);
-        //        image.write(buffer.data(), bytes_to_write);
-
-        //        // If more bytes were read than needed, skip the excess (fec_length)
-        //        if (bytes_read > write_size) {
-        //            binary.seekg(bytes_read - write_size, std::ios::cur);
-        //        }
-
-        //        // If at the end of file, ensure last incomplete chunk is handled
-        //        if (binary.eof()) {
-        //            break;
-        //        }
-        //    }
-
-        //    binary.close();
-        //    image.close();
-
-        //    return true;
-        //}
-
-
-
-
-       //template <std::size_t code_length, std::size_t fec_length, std::size_t data_length = code_length - fec_length>
-       //inline bool convertBinaryToImage(const std::string& binaryFilePath, const std::string& imageFilePath)
-       //{
-       //    std::ifstream binary(binaryFilePath, std::ios::in | std::ios::binary);
-       //    if (!binary)
-       //    {
-       //        std::cerr << "Error opening binary file: " << binaryFilePath << std::endl;
-       //        return false;
-       //    }
-
-       //    std::ofstream image(imageFilePath, std::ios::out | std::ios::binary);
-       //    if (!image)
-       //    {
-       //        std::cerr << "Error opening image output file: " << imageFilePath << std::endl;
-       //        return false;
-       //    }
-
-       //    const std::size_t chunk_size = code_length;
-       //    const std::size_t write_size = data_length;
-
-       //    std::vector<char> buffer(chunk_size);
-
-       //    while (binary.read(buffer.data(), chunk_size))
-       //    {
-       //        // Number of bytes actually read
-       //        std::size_t bytes_read = binary.gcount();
-
-       //        // Write only the first data_length bytes or bytes_read if it's less than data_length
-       //        std::size_t bytes_to_write = std::min(write_size, bytes_read);
-       //        image.write(buffer.data(), bytes_to_write);
-
-       //        // Skip remaining bytes in the current chunk
-       //        if (bytes_read > write_size)
-       //        {
-       //            binary.ignore(bytes_read - write_size);
-       //        }
-       //    }
-
-       //    // Handle the case where the last chunk is less than chunk_size
-       //    if (binary.gcount() > 0)
-       //    {
-       //        std::size_t bytes_read = binary.gcount();
-       //        std::size_t bytes_to_write = std::min(write_size, bytes_read);
-       //        image.write(buffer.data(), bytes_to_write);
-       //    }
-
-       //    binary.close();
-       //    image.close();
-
-       //    return true;
-       //}
-
     }
 }
 

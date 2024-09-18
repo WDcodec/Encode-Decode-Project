@@ -1,6 +1,9 @@
 #include "Field.h"
 #include "Logger.h"
 
+
+
+
 namespace wd_codec {
     namespace galois {
 
@@ -24,7 +27,6 @@ namespace wd_codec {
             offset = create_2d_array(buffer_, (field_size_ + 1), (field_size_ + 1), offset, &mul_table_);
             offset = create_2d_array(buffer_, (field_size_ + 1), (field_size_ + 1), offset, &div_table_);
             offset = create_2d_array(buffer_, (field_size_ + 1), (field_size_ + 1), offset, &exp_table_);
-            //TODO: check about linear_exp_table_
             offset = create_array(buffer_, (field_size_ + 1) * 2, offset, &mul_inverse_);
 
             prim_poly_ = new unsigned int[prim_poly_deg_ + 1];
@@ -80,7 +82,6 @@ namespace wd_codec {
                 return alpha_to_[normalize(index_of_[a] + index_of_[b])];
         }
 
-
         field_symbol Field::gen_div(const field_symbol& a, const field_symbol& b) const
         {
             if ((a == 0) || (b == 0)) {// if the numerator or denominator is zero, the result is zero or error(which represnt in the table as zero)
@@ -93,7 +94,8 @@ namespace wd_codec {
                 return alpha_to_[normalize(index_of_[a] - index_of_[b] + (field_size_ - 1))];
             }
         }
-         field_symbol Field::gen_exp(const field_symbol& a, const std::size_t& n) const
+
+        field_symbol Field::gen_exp(const field_symbol& a, const std::size_t& n) const
         {
             if (a != 0)
             {   // if exponent is zero, return 1 (a^0 = 1)
@@ -105,6 +107,7 @@ namespace wd_codec {
                 return 0;  // 0^x = 0 for any x
             }
         }
+        
         // computes the multiplicative inverse of a field element 'val'
          field_symbol Field::gen_inverse(const field_symbol& val) const
         {
@@ -114,19 +117,6 @@ namespace wd_codec {
             // e + b = 0 = field_size_(because the field is cyclic)
             //b = field_size_ - log(val)
             return alpha_to_[normalize(field_size_ - index_of_[val])];
-        }
-
-        //A function that normalizes the values that deviate from the field value range.
-         field_symbol Field::normalize(field_symbol x) const {
-            while (x < 0) {
-                x += static_cast<field_symbol>(field_size_);
-            }
-            while (x > static_cast<field_symbol>(field_size_)) {
-                x -= static_cast<field_symbol>(field_size_);
-                //optimization of the typical normalization(using mod) to addition of div and mod
-                x = (x >> power_) + (x & field_size_);
-            }
-            return x;
         }
 
          void Field::generate_field(const unsigned int* prim_poly)
@@ -190,6 +180,7 @@ namespace wd_codec {
 
 #endif
         }
+        
         std::size_t Field::create_array(char buffer[], const std::size_t& length, const std::size_t offset, field_symbol** array)
         {
             const std::size_t row_size = length * sizeof(field_symbol);

@@ -70,10 +70,11 @@ namespace wd_codec {
 
                 current_block_index_ = 0;
                 wd_codec::Logger::log(wd_codec::INFO, "File Decoder: decodeing file ");
-
+                std::string message;
                     while (remaining_bytes >= code_length)
                     {
-                        wd_codec::Logger::log( "Decoding block number " + std::to_string(current_block_index_));
+                        message = "Decoding block number "+ std::to_string(current_block_index_);
+                        wd_codec::Logger::log(INFO, message);
 
                         if (!process_complete_block(in_stream, out_stream)) {
                             wd_codec::errors_block_locations += " ";
