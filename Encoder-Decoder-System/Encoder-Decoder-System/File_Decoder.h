@@ -46,6 +46,7 @@ namespace wd_codec {
             bool decode(const std::string& input_file_name,
                 const std::string& output_file_name)
             {
+
                 std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
 
                 if (remaining_bytes == 0)
@@ -190,7 +191,7 @@ namespace wd_codec {
 
                 const decoder_type& decoder;
                 block_type block_;
-                int current_block_index_;
+                std::size_t current_block_index_;
                 char buffer_[code_length];  
                 bool is_residue_handled = false;
                 bool failed_decode = true;
