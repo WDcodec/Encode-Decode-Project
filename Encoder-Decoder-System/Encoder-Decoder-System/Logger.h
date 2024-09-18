@@ -10,6 +10,7 @@
 #include "Polynomial.h"
 
 #define POSTFIX ".txt"
+#define NUM_STAGES 7
 namespace wd_codec {
     // Enum to represent log levels 
     enum LogLevel { DEBUG, INFO, WARNING, ERROR, CRITICAL };
@@ -41,7 +42,7 @@ namespace wd_codec {
             start_timer();
             char timestamp[20];
             create_timestamp(timestamp);
-
+            coverage = 0;
             // Convert C-style timestamp to std::string for concatenation
             std::string filename = std::string("logfile_") + timestamp + POSTFIX;
 
@@ -56,7 +57,7 @@ namespace wd_codec {
                 // Open the log file in append mode
                 logFile.open(filename, std::ios::out | std::ios::trunc);
                 if (!logFile.is_open()) {
-                    std::cerr << "Error opening log file." << std::endl;
+                    wd_codec::Logger::log(wd_codec::ERROR, "Error opening log file.");
                 }
             }
         }
@@ -70,29 +71,57 @@ namespace wd_codec {
             auto end_time = std::chrono::high_resolution_clock::now();
             auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
             std::ostringstream elapsed_time_message;
-            elapsed_time_message << "Elapsed time: " << duration << " milliseconds";
-            wd_codec::Logger::log(INFO, elapsed_time_message.str());
+            wd_codec::Logger::log("-REPORT- ");
+            elapsed_time_message << "* Elapsed time: " << duration << " milliseconds";
+            wd_codec::Logger::log_errors_number();
+            wd_codec::Logger::log( "* Coverage system: " + std::to_string((coverage * 100) / NUM_STAGES) + "% done.");
+            wd_codec::Logger::log( elapsed_time_message.str());
         }
         // Closes the log file
-        static void close() {
-            log_elapsed_time();
+        //static void close() {
+        //    log_elapsed_time();
 
-            if (logFile.is_open()) {
-                logFile.close();
-            }
-        }
+        //    if (logFile.is_open()) {
+        //        logFile.close();
+        //    }
+        //}
 
         static void log(LogLevel level,const std::string& message, galois::Polynomial& poly) {
             std::string newMessage = message + poly.convert_to_string();
             wd_codec::Logger::log(wd_codec::INFO, newMessage);
 
         }
-        static void logErrorsNumber() {
+
+        // Call this function at the end of the program to log the elapsed time and other metrics
+        static void log_report_metrics_summary(long long& duration) {
+            auto end_time = std::chrono::high_resolution_clock::now();
+            duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+            std::ostringstream elapsed_time_message;
+            wd_codec::Logger::log("-REPORT- ");
+            elapsed_time_message << "* Elapsed time: " << duration << " milliseconds";
+            wd_codec::Logger::log_errors_number();
+            wd_codec::Logger::log("* Coverage system: " + std::to_string((coverage * 100) / NUM_STAGES) + "% done.");
+            wd_codec::Logger::log(elapsed_time_message.str());
+        }
+
+        static void log_errors_number() {
             // Create log entry 
             std::ostringstream logEntry;
-            logEntry << "Number of error that detected: " << wd_codec::global_errors_detected
+            std::size_t num_corrected_blocks = num_blocks - num_uncorrected_blocks;
+            logEntry << "* Number of error that detected: " << wd_codec::global_errors_detected
                 << "\n"
-                << "Number of error that corected: " << wd_codec::global_errors_corrected
+                << "* Number of error that corected: " << wd_codec::global_errors_corrected
+                << "\n"
+                << "* Number of blocks: " << num_blocks
+                << "\n"
+                << "* Number of corrected blocks: " << num_corrected_blocks
+                << "\n"
+                << "* Number of uncorrected blocks: " << num_uncorrected_blocks
+                << "\n"
+                << "  The uncorrected blocks are:" << errors_block_locations
+                << "\n"
+                << "* Success rate: " <<  (((double)(num_corrected_blocks)/ num_blocks) * 100)
+                << "%" 
                 << std::endl;
 
             // Output to console 
@@ -103,6 +132,7 @@ namespace wd_codec {
                 logFile << logEntry.str();
                 logFile.flush(); // Ensure immediate write to file 
             }
+
         }
         // Logs a message with a given log level 
         static void log(LogLevel level, const std::string& message)
@@ -144,9 +174,33 @@ namespace wd_codec {
                 logFile.flush(); // Ensure immediate write to file 
             }
         }
+
+        // Closes the log file
+        static void close() {
+            char timestamp[20];
+            create_timestamp(timestamp);
+            log_report_metrics_summary(duration);
+            log_update_total_metrics_report_for_all_runnings(duration, timestamp);
+            if (logFile.is_open()) {
+                logFile.close();
+            }
+        }
+       /* static int getCoverage() {
+            return coverage;
+        }
+        static void setCoverage(int value) {
+             coverage=value;
+        }*/
+
+        static void increaseCoverage() {
+            if (coverage < NUM_STAGES) {
+                coverage++;
+            }
+        }
     private:
         static std::ofstream logFile; // File stream for the log file 
-
+        static int coverage;
+        static long long duration;
         // Converts log level to a string for output 
         static std::string levelToString(LogLevel level)
         {

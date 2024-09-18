@@ -24,6 +24,8 @@ namespace wd_codec {
 				gen_initial_index_(gen_initial_index),
 				X_(wd_codec::galois::generate_X(field_))
 			{
+				wd_codec::Logger::increaseCoverage();
+
 #ifdef _DEBUG
             Logger::log(wd_codec::INFO, "Decoder: generate decoder.");
 #endif // DEBUG
@@ -38,9 +40,7 @@ namespace wd_codec {
 
 			//Function that try to detect and correct the errors
 			bool decode(block_type& rsblock) const {
-#ifdef _DEBUG
 				Logger::log(wd_codec::INFO, "Decoder: decoding...");
-#endif // DEBUG
 				//TODO: handle the erasure_list
 				if (!decoder_valid_) {
 					rsblock.errors_detected = 0;
@@ -112,9 +112,10 @@ namespace wd_codec {
 			//Function that compute the result of placing all the generate roots in the recieved poly.
 			int compute_syndrome(const galois::Polynomial& received,galois::Polynomial& syndrome) const
 			{
-                #ifdef _DEBUÉG
-				Logger::log(wd_codec::INFO, "Decoder - compute syndrome.");
-                #endif // DEBUG				
+#ifdef _DEBUG
+				Logger::log(wd_codec::INFO, "Decoder: compute syndrome.");
+#endif // DEBUG
+
 				int error_flag = 0;
 				syndrome = galois::Polynomial(field_, fec_length - 1);
 				for (std::size_t i = 0; i < fec_length; i++)
@@ -130,10 +131,11 @@ namespace wd_codec {
 			bool forney_algorithm(const std::vector<int>& error_locations, const galois::Polynomial& lambda,
 				                  const galois::Polynomial& syndrome, block_type& rsblock) const
 			{
-                #ifdef _DEBUG
+#ifdef _DEBUG                
 				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
 				Logger::log(wd_codec::INFO, "Decoder - forney algorithm.");
-                #endif // DEBUG
+#endif // DEBUG
+
 				
 				/* the forney algorthim is a formula that find the correct data base on the lambda, syndrom and error_locations*/
 				galois::Polynomial omega = (lambda * syndrome) % fec_length;
@@ -148,9 +150,8 @@ namespace wd_codec {
 				rsblock.errors_corrected = 0;
 				rsblock.zero_numerators = 0;
 				// pass over all the error_locations in E(x).
-#ifdef _DEBUG
-				std::cout << " Decoder - correction errors:"<<std::endl;
-#endif // DEBUG
+
+				wd_codec::Logger::log(wd_codec::INFO, "Decode: correction errors");
 
 				for (const unsigned int error_location : error_locations) {
 					// compute the polynomial expression alpha at the error location (alpha^E[i])
@@ -159,9 +160,17 @@ namespace wd_codec {
 					const galois::field_symbol denominator = lambda_derivative(alpha_inverse).poly();
 					if (numerator != 0) {
 						if (denominator != 0) {
+#ifdef _DEBUG
+
+							
 							std::cout << "befor: " << char(rsblock[error_location - 1]) << " ";
+#endif // DEBUG
+
 							rsblock[error_location - 1] ^= field_.div(numerator, denominator);
+#ifdef _DEBUG
 							std::cout << "after: " << char(rsblock[error_location - 1]) << "\n";
+#endif // DEBUG
+
 							rsblock.errors_corrected++;
 						}
 						else {
@@ -205,11 +214,10 @@ namespace wd_codec {
 
 			void chien_sreach(const galois::Polynomial& lambda, std::vector<int>& error_locations) const {
 				// Locate the exact positions of the errors
-
-                #ifdef _DEBUG
+#ifdef _DEBUG
 				wd_codec::Logger::log(wd_codec::INFO, "Decoder - cheain sreach");
 				std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
-                #endif // DEBUG
+#endif // DEBUG
 				error_locations.reserve(fec_length << 1);
 				error_locations.resize(0);
 				const std::size_t lambda_degree = lambda.deg();
@@ -229,6 +237,9 @@ namespace wd_codec {
 				const std::size_t& l,
 				const std::size_t& round) const
 			{
+//#ifdef _DEBUG
+//				wd_codec::Logger::log(wd_codec::INFO, "Decoder: compute discrepancy ");
+//#endif // DEBUG
 				/*
 				   Compute the lambda discrepancy at the current round of BMA
 				*/
@@ -244,7 +255,7 @@ namespace wd_codec {
 				const galois::Polynomial& syndrome) const
 			{
                 #ifdef _DEBUG
-				Logger::log(wd_codec::INFO, "Decoder - berlekamp massey algo'.");
+				Logger::log(wd_codec::INFO, "Decoder: berlekamp massey algo'.");
                 #endif // DEBUG
 				//f - last faild
 				int i = -1;
@@ -255,7 +266,7 @@ namespace wd_codec {
 				//b
 				galois::Polynomial previous_lambda = lambda << 1;
                 #ifdef _DEBUG
-				Logger::log(wd_codec::INFO, "Decoder - compute discrepancy n times.");
+				Logger::log(wd_codec::INFO, "Decoder: compute discrepancy n times.");
                 #endif // DEBUG
 				for (std::size_t round = 0; round < fec_length; ++round)
 				{
@@ -296,7 +307,7 @@ namespace wd_codec {
 			{
 #ifdef _DEBUG
 
-				Logger::log(wd_codec::INFO, "Decoder - load message.");
+				Logger::log(wd_codec::INFO, "Decoder: load message.");
 #endif // DEBUG
 				//Load message data into received polynomial in reverse order.
 				for (std::size_t i = 0; i < code_length; ++i)

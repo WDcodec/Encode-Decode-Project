@@ -12,7 +12,9 @@ namespace wd_codec {
         class File_Decoder
         {
         public:
-
+            std::size_t getCurrentBlockIndex() const {
+                return current_block_index_;
+            }
             typedef Decoder<code_length, fec_length> decoder_type;
             typedef typename decoder_type::block_type block_type;
 
@@ -68,15 +70,17 @@ namespace wd_codec {
                 }
 
                 current_block_index_ = 0;
+                wd_codec::Logger::log(wd_codec::INFO, "File Decoder: decodeing file ");
 
                     while (remaining_bytes >= code_length)
                     {
                         wd_codec::Logger::log( "Decoding block number " + std::to_string(current_block_index_));
 
                         if (!process_complete_block(in_stream, out_stream)) {
-                            errors_block_locations += " ";
-                            errors_block_locations += std::to_string(current_block_index_);
-                            errors_block_locations += ",";
+                            wd_codec::errors_block_locations += " ";
+                            wd_codec::errors_block_locations += std::to_string(current_block_index_);
+                            wd_codec::errors_block_locations += ",";
+                            wd_codec::num_uncorrected_blocks ++;
                             failed_decode = false;
                         }                          
                         remaining_bytes -= code_length;
@@ -88,20 +92,25 @@ namespace wd_codec {
                         if (!process_partial_block(in_stream, out_stream, remaining_bytes))
                             failed_decode = false;
                     }
-                    errors_block_locations.pop_back();
+                    if(!wd_codec::errors_block_locations.empty())
+                        wd_codec::errors_block_locations.pop_back();
                 in_stream.close();
                 out_stream.close();
                 #ifdef DEBUG
-                wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder succeeded" + errors_block_locations);
+                wd_codec::Logger::log(wd_codec::INFO, "File Decoder: Decoder succeeded" );
                 #endif // DEBUG
-                wd_codec::Logger::logErrorsNumber();
+               // wd_codec::Logger::logErrorsNumber();
+                wd_codec::num_blocks = current_block_index_;
                 return failed_decode;
             }
             bool get_is_residue_handled() {
                 return is_residue_handled;
              }
-            std::size_t current_block_index_;
-            std::string errors_block_locations;
+
+            std::size_t get_current_block_index_() {
+                return current_block_index_;
+            }
+
         private:
 
             inline bool process_complete_block(
@@ -182,12 +191,10 @@ namespace wd_codec {
 
                 const decoder_type& decoder;
                 block_type block_;
-                
+                std::size_t current_block_index_;
                 char buffer_[code_length];  
                 bool is_residue_handled = false;
                 bool failed_decode = true;
-                //int error_corrected = 0;
-                //int error_detected = 0;
 		};
 
     }
