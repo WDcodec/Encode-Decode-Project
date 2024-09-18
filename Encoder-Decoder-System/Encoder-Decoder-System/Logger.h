@@ -80,6 +80,7 @@ namespace wd_codec {
                 << "%" 
                 << std::endl;
 
+
             // Output to console 
             std::cout << logEntry.str();
 
@@ -108,10 +109,10 @@ namespace wd_codec {
             logEntry << "[" << timestamp << "] "
                 << levelToString(level) << ": " << message
                 << std::endl;
-
+//#ifdef _DEBUG||_RELEASE//todo for run tests 
             // Output to console 
             std::cout << logEntry.str();
-
+//#endif
             // Output to log file 
             if (logFile.is_open()) {
                 logFile << logEntry.str();
@@ -120,16 +121,12 @@ namespace wd_codec {
         }
         static void log(const std::string& message)
         {
-
-
             // Create log entry 
             std::ostringstream logEntry;
             logEntry <<  message
                 << std::endl;
-
             // Output to console 
             std::cout << logEntry.str();
-
             // Output to log file 
             if (logFile.is_open()) {
                 logFile << logEntry.str();
@@ -147,13 +144,6 @@ namespace wd_codec {
                 logFile.close();
             }
         }
-       /* static int getCoverage() {
-            return coverage;
-        }
-        static void setCoverage(int value) {
-             coverage=value;
-        }*/
-
         static void increaseCoverage() {
             if (coverage < NUM_STAGES) {
                 coverage++;

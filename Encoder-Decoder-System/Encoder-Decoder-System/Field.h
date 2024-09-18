@@ -20,31 +20,49 @@ namespace wd_codec {
             inline field_symbol index(const field_symbol value) const {
                 return index_of_[value];
             }
+           
             //returns the field element corresponding to a given exponent using a precomputed antilog table.
             inline field_symbol alpha(const field_symbol value) const {
                 return alpha_to_[value];
             }
+           
             //get size of the Galois Field.
             inline unsigned int size() const {
                 return field_size_;
             }
+           
             //returns the power m used to define the field size 2^m
             inline unsigned int pwr() const {
                 return power_;
             }
+            
             //returns a mask value used for bitwise operations
             inline unsigned int mask() const {
                 return field_size_;
             }
+           
             //addition in a Galois Field
             inline field_symbol add(const field_symbol& a, const field_symbol& b) const {
                 return (a ^ b);
             }
+           
             //subtraction of two field elements
             inline field_symbol sub(const field_symbol& a, const field_symbol& b) const {
                 return (a ^ b);
             }
-            inline field_symbol normalize(field_symbol x) const;
+           
+            //A function that normalizes the values that deviate from the field value range.
+            inline field_symbol normalize(field_symbol x) const {
+                while (x < 0) {
+                    x += static_cast<field_symbol>(field_size_);
+                }
+                while (x > static_cast<field_symbol>(field_size_)) {
+                    x -= static_cast<field_symbol>(field_size_);
+                    //optimization of the typical normalization(using mod) to addition of div and mod
+                    x = (x >> power_) + (x & field_size_);
+                }
+                return x;
+            }
 
             inline field_symbol mul(const field_symbol& a, const field_symbol& b) const
             {

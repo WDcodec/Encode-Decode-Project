@@ -2,6 +2,7 @@
 #include <string>
 #include "Field.h"
 
+
 namespace wd_codec {
     namespace reed_solomon
     {
@@ -67,7 +68,7 @@ namespace wd_codec {
             std::size_t errors_corrected;
 
             std::size_t zero_numerators;
-            bool unrecoverable;//todo:maybe for too much errors
+            bool unrecoverable;
             galois::field_symbol data[code_length];
         };
         template <typename T, std::size_t code_length, std::size_t fec_length>

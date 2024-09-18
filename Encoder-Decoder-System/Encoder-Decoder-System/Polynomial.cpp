@@ -209,7 +209,7 @@ namespace wd_codec
 		}
 
 		// Function that multiply two polynomials
-		inline Polynomial& Polynomial::operator *= (const Polynomial& polynomial)
+		 Polynomial& Polynomial::operator *= (const Polynomial& polynomial)
 		{
 			if (&field_ == &(polynomial.field_))
 			{
