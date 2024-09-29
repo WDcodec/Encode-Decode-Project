@@ -41,7 +41,7 @@ namespace wd_codec {
                 }
             }
         }
-        
+
         // Call this function at the beginning of the program to start the timer
         static void start_timer() {
             start_time = std::chrono::high_resolution_clock::now();
@@ -55,8 +55,8 @@ namespace wd_codec {
             wd_codec::Logger::log("-REPORT- ");
             elapsed_time_message << "* Elapsed time: " << duration << " milliseconds";
             wd_codec::Logger::log_errors_number();
-            wd_codec::Logger::log( "* Coverage system: " + std::to_string((coverage * 100) / NUM_STAGES) + "% done.");
-            wd_codec::Logger::log( elapsed_time_message.str());
+            wd_codec::Logger::log("* Coverage system: " + std::to_string((coverage * 100) / NUM_STAGES) + "% done.");
+            wd_codec::Logger::log(elapsed_time_message.str());
         }
 
         // Function that log the report of the errors after the process
@@ -76,8 +76,8 @@ namespace wd_codec {
                 << "\n"
                 << "  The uncorrected blocks are:" << errors_block_locations
                 << "\n"
-                << "* Success rate: " <<  (((double)(num_corrected_blocks)/ num_blocks) * 100)
-                << "%" 
+                << "* Success rate: " << (((double)(num_corrected_blocks) / num_blocks) * 100)
+                << "%"
                 << std::endl;
 
 
@@ -92,7 +92,7 @@ namespace wd_codec {
 
         }
 
-    // Overloading of log function:
+        // Overloading of log function:
         static void log(LogLevel level, const std::string& message, galois::Polynomial& poly) {
             std::string newMessage = message + poly.convert_to_string();
             wd_codec::Logger::log(wd_codec::INFO, newMessage);
@@ -109,11 +109,11 @@ namespace wd_codec {
             logEntry << "[" << timestamp << "] "
                 << levelToString(level) << ": " << message
                 << std::endl;
-//TODO: switch for run tests 
-//#ifdef _DEBUG||_RELEASE
-//       std::cout << logEntry.str();
-//#endif
-            // Output to log file 
+            //TODO: switch for run tests 
+            //#ifdef _DEBUG||_RELEASE
+               //std::cout << logEntry.str();
+            //#endif
+                        // Output to log file 
             if (logFile.is_open()) {
                 logFile << logEntry.str();
                 logFile.flush(); // Ensure immediate write to file 
@@ -123,7 +123,7 @@ namespace wd_codec {
         {
             // Create log entry 
             std::ostringstream logEntry;
-            logEntry <<  message
+            logEntry << message
                 << std::endl;
             // Output to console 
             std::cout << logEntry.str();

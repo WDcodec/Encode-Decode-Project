@@ -7,8 +7,8 @@
 #include <iomanip>
 #include <chrono>
 namespace wd_codec {
-	static std::size_t global_errors_detected = 0;
-	static std::size_t global_errors_corrected = 0;
+    static std::size_t global_errors_detected = 0;
+    static std::size_t global_errors_corrected = 0;
     static std::size_t num_uncorrected_blocks = 0;
     static std::size_t num_blocks = 0;
     static std::string errors_block_locations = " ";
@@ -44,7 +44,7 @@ namespace wd_codec {
                 }
             }
             inputFile.close();
-}
+        }
 
         // Update values
         totalExecutions++;

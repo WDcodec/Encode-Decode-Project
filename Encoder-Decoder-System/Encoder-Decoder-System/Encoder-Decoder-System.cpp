@@ -69,7 +69,7 @@ int main()
         else {
             std::cout << "Decoding succeed." << std::endl;
         }
-        std::cout << "num blocks " << file_decoder.get_current_block_index_();
+        std::cout << "num blocks " << file_decoder.getCurrentBlockIndex();
     }
     else if (choice == 3)
     {

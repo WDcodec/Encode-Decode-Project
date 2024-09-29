@@ -46,6 +46,7 @@ namespace wd_codec {
             bool decode(const std::string& input_file_name,
                 const std::string& output_file_name)
             {
+
                 std::size_t remaining_bytes = wd_codec::fileio::file_size(input_file_name);
 
                 if (remaining_bytes == 0)
