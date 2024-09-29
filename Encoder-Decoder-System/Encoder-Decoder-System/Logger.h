@@ -109,9 +109,9 @@ namespace wd_codec {
             logEntry << "[" << timestamp << "] "
                 << levelToString(level) << ": " << message
                 << std::endl;
-//#ifdef _DEBUG||_RELEASE//todo for run tests 
-            // Output to console 
-            std::cout << logEntry.str();
+//TODO: switch for run tests 
+//#ifdef _DEBUG||_RELEASE
+//       std::cout << logEntry.str();
 //#endif
             // Output to log file 
             if (logFile.is_open()) {
