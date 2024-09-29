@@ -3,7 +3,7 @@ The wd_codec library is an Encoder-Decoder System for protecting and recovering 
 
 ## Installation
 
-Open the cmd in your local folder for install the code 
+Open the cmd in your local folder to install the code 
 
 ```bash
 git clone https://github.com/WDcodec/Encode-Decode-Project.git
@@ -26,7 +26,7 @@ int main()
     wd_codec::file_decoder_t file_decoder(decoder);
 
 ```
-Chosing type of input:
+Choosing type of input:
 
 ### Primitive Input
 ```
@@ -135,7 +135,7 @@ if (!file_decoder.decode(remixing_output_file_name, rsdecoded_file_name))
 ```
 
 ### Polynomial Support
-support of Polynomial data structure 
+Support of Polynomial data structure 
 
 An example of multiplying 2 polynomials:
 ```
@@ -170,7 +170,7 @@ Chose the Test mode for run
 
 ![mode for run](https://github.com/user-attachments/assets/33138b8a-457e-4017-a7a6-942f97e3913d)
 
-Unmarked the lines in Logger.h:
+Unmark the lines in Logger.h:
 
 ![Unmarked the lines](https://github.com/user-attachments/assets/4d3fe26a-0936-4db0-8f73-aa79227302f5)
 
@@ -178,7 +178,7 @@ Run
 
 you should see: 9/9 tests passed 
 
-you can write more tests acroding your goals
+you can write more tests according to your goals
 
 ##
 #### Run Time: O(n^2)
