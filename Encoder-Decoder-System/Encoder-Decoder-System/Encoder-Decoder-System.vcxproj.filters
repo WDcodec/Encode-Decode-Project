@@ -45,6 +45,9 @@
     <ClCompile Include="File_Decoder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Mixing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Encoder.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="report.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mixing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

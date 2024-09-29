@@ -1,5 +1,5 @@
 #pragma once
-#include "setup_utilities.h"
+#include "../Encoder-Decoder-System/setup_utilities.h"
 
 // Helper function to create an empty file
 static inline void createEmptyFile(const std::string& file_name) {
